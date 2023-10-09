@@ -18,7 +18,7 @@ class Wallet{
         }
     }
 
-    public void minusCard(){
+    public void minusCards(){
         if (cards > 0){
             cards = cards - 1;
         }
