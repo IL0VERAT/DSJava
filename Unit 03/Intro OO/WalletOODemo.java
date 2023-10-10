@@ -42,7 +42,7 @@ class Wallet{ //class created
 }
 public class WalletOODemo { //Program class
     public static void main (String[]args){
-        Wallet wallet = new Wallet(); //implements the class created
+        Wallet wallet = new Wallet(); //installs the class created
         System.out.printf("The number of cards in your wallet is %d and the number of bills is %d" ,wallet.getCards(), wallet.getBills()); //Displays wallets current status to user
         System.out.printf("%nNow the computer will add 1 card and 1 bill to the wallet."); //Example of what program can do
         wallet.plusCards(); //Lines 48-49: Code needed to add 1 card and 1 bill
