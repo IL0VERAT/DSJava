@@ -27,6 +27,7 @@ class OnlineWallet implements Wallet{
 
     public void plusCards(){
         cards = cards + 1;
+        credits = credits + 1;
     }
 
     public void minusCards(){
@@ -36,6 +37,7 @@ class OnlineWallet implements Wallet{
 
     public void plusBills(){
         bills = bills + 1;
+        credits = credits + 1;
     }
 
     public void minusBills(){
@@ -43,21 +45,20 @@ class OnlineWallet implements Wallet{
          bills = bills - 1;}
     }
 
-    public void plusCredits(){
-        credits = credits + 1;
-    }
 
-    public void minusCredits(){
-        if (credits > 1){
-            credits = credits - 1;
-
-            }
         }
-    }
+    
 
 public class InterfaceDemo{
     public static void main (String[]args){
         OnlineWallet ewallet = new OnlineWallet();
-        System.out.printf("Number of cards is %d%nNumber of bills is %d%nNumber of credits is %d", ewallet.getCards(), ewallet.getBills(), ewallet.getCredits());
+        System.out.printf("Number of cards is %d%nNumber of bills is %d%nNumber of credits is %d%n", ewallet.getCards(), ewallet.getBills(), ewallet.getCredits());
+        
+        System.out.printf("Now lets add a bill and a card to your Online Wallet.%n");
+        ewallet.plusBills();
+        ewallet.plusCards();
+        
+        System.out.printf("Number of cards is %d%nNumber of bills is %d%nNumber of credits is %d%n", ewallet.getCards(), ewallet.getBills(), ewallet.getCredits());
+        System.out.println("Look, you now have two credits that you got by added a card and a bill to your Online Wallet");
     }
 }
