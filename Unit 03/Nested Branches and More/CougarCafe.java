@@ -20,14 +20,13 @@ public class CougarCafe{
             }
 
         } else if (day.equals("y")){
-            if (age<=49 && age >= 13){
-                price = price * 0.95;
-            }
             if(age < 13){
                 price = price * 0.925;
             }
             if(age >= 50){
                 price = price * 0.85;
+            }else{
+                price = price * 0.95;
             }
         }
         System.out.printf("The cost of the customers meal is: $%.2f ", price);

@@ -10,7 +10,7 @@ public class CougarCafeEnum{
         
         System.out.print("What is the age of the customer? (0 = Child, 1 = Adult, 2 = Senior Citizen) ");
         int age = in.nextInt();
-        AgeOfPerson stage;
+        AgeOfPerson stage = AgeOfPerson.ADULT;
 
         System.out.print("What is the cost of the customers meal: ");
         double price = in.nextDouble();
