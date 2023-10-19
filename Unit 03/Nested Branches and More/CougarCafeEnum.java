@@ -1,33 +1,41 @@
 import java.util.Scanner;
 public class CougarCafeEnum{
-    public enum DayOfWeek {MONDAY, OTHER_DAY}
+    public enum DayOfWeek {MONDAY, OTHER_DAY,ERROR}
     public enum AgeOfPerson {CHILD, ADULT, SENIOR}
     public static void main (String[]args)throws Exception{
         Scanner in = new Scanner(System.in);
-        System.out.print("What day of the week is it? (0 = Sunday ... 6 = Saturday) ");
-        int day = in.nextInt();
+        System.out.print("Is today Monday? Print Yes or No.");
+        String day = in.nextLine();
         DayOfWeek today;
         
-        System.out.print("What is the age of the customer? (0 = Child, 1 = Adult, 2 = Senior Citizen) ");
+        System.out.print("What is the age of the customer? ");
         int age = in.nextInt();
-        AgeOfPerson stage = AgeOfPerson.ADULT;
+        AgeOfPerson stage;
+
 
         System.out.print("What is the cost of the customers meal: ");
         double price = in.nextDouble();
-        if (day == 1){
+        if (day.equals("Yes")){
             today = DayOfWeek.MONDAY;
-        }else{
+        }
+        if(day.equals("No")){
             today = DayOfWeek.OTHER_DAY;
+        }else{
+            today = DayOfWeek.ERROR; 
+            if(today == DayOfWeek.ERROR){
+                System.out.print("Error! Put in a correct answer for question.");
+                price = 0;
+            }
         }
 
-        if (age == 0){
+        if (age <13){
             stage = AgeOfPerson.CHILD;
         }
-        if (age == 1){
-            stage = AgeOfPerson.ADULT;
-        }
-        if (age == 2){
+        if (age >= 50){
             stage = AgeOfPerson.SENIOR;
+        }
+        else{
+            stage = AgeOfPerson.ADULT;
         }
        
         if (today == DayOfWeek.OTHER_DAY){
