@@ -3,29 +3,19 @@ public class DoorSystem {
 
     public enum GearShift { P, N, D, ONE, TWO, THREE, R }
 
-    public static void main (String[]args){
-        String Dash_Switch_Left; 
-        String Dash_Switch_Right;
-        String Child_Lock;
-        String Master_Unlock;
-        String Outside_Handle_Left;
-        String Outside_Handle_Right;
-        String Inside_Handle_Left;
-        String Inside_Handle_Right;
-        Gearshift level;
-        
+public static void main (String[]args){
         Scanner in = new Scanner(System.in);
         System.out.print("Enter permitted code for minivan doors: ");
         String code = in.nextLine();
 
-        Dash_Switch_Left = code.substring(0);
-        Dash_Switch_Right = code.substring(1);
-        Child_Lock = code.substring(2);
-        Master_Unlock = code.substring(3);
-        Outside_Handle_Left = code.substring(4);
-        Outside_Handle_Right = code.substring(5);
-        Inside_Handle_Left = code.substring(6);
-        Inside_Handle_Right = code.substring(7);
+        String Dash_Switch_Left = code.substring(0);
+        String Dash_Switch_Right = code.substring(1);
+        String Child_Lock = code.substring(2);
+        String Master_Unlock = code.substring(3);
+        String Outside_Handle_Left = code.substring(4);
+        String Outside_Handle_Right = code.substring(5);
+        String Inside_Handle_Left = code.substring(6);
+        String Inside_Handle_Right = code.substring(7);
         String Gear = code.substring(8);
         
         //Code for Gearshifter 
@@ -97,6 +87,7 @@ public class DoorSystem {
     
 
         //Code for Outside Handle Left
+        if(level ==GearShift.P){
         if(cl = true){
         if (Outside_Handle_Left.equals("0")){ 
             boolean ohl = false;
@@ -119,7 +110,10 @@ public class DoorSystem {
             System.out.print("Error: Input a correct value for Outside Handle Right");
         }
     } else if (cl = false){
-        System.out.print("Please unlock the Child Lock function to use interior door handles.")
+        System.out.print("Please unlock the Child Lock function to use interior door handles.");
+    }
+    else {
+        System.out.print("Please ensure the car is parked.");
     }
 
         //Code for Inside Handle Left
@@ -143,6 +137,7 @@ public class DoorSystem {
         else {
             System.out.print("Error: Input a correct value for Inside Handle Right");
         }
+    }
 
     }  
 }
