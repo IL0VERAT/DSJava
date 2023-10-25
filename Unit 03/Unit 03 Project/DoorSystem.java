@@ -1,8 +1,6 @@
 import java.util.Scanner;
 public class DoorSystem {
-
-    public enum GearShift { P, N, D, ONE, TWO, THREE, R }
-
+public enum GearShift { P, N, D, ONE, TWO, THREE, R }
 public static void main (String[]args){
         Scanner in = new Scanner(System.in);
         System.out.print("Enter permitted code for minivan doors: ");
@@ -88,7 +86,6 @@ public static void main (String[]args){
 
         //Code for Outside Handle Left
         if(level ==GearShift.P){
-        if(cl = true){
         if (Outside_Handle_Left.equals("0")){ 
             boolean ohl = false;
         }
@@ -109,14 +106,10 @@ public static void main (String[]args){
         else {
             System.out.print("Error: Input a correct value for Outside Handle Right");
         }
-    } else if (cl = false){
-        System.out.print("Please unlock the Child Lock function to use interior door handles.");
-    }
-    else {
-        System.out.print("Please ensure the car is parked.");
-    }
+    
 
         //Code for Inside Handle Left
+        if(cl = true){
         if (Inside_Handle_Left.equals("0")){ 
             boolean ihl = false;
         }
@@ -137,7 +130,12 @@ public static void main (String[]args){
         else {
             System.out.print("Error: Input a correct value for Inside Handle Right");
         }
+        } else if (cl = false){
+        System.out.print("Please unlock the Child Lock function to use interior door handles.");
+    
+    }else{
+        System.out.print("Error: Car must be parked to open doors");
     }
-
-    }  
+    }
+    }
 }
