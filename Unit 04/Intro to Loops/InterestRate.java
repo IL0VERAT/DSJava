@@ -6,10 +6,14 @@ public class InterestRate {
     double interest_rate = in.nextDouble();
     System.out.print("What is the initial balance amount in dollars: ");
     double initial_balance = in.nextDouble();
-    double result;
-    for (int y = 1; y < 6; y++){
-        result = initial_balance + (initial_balance * 0.05);
-        System.out.printf("")
+    double total;
+    double earnings;
+    int y = 1;
+    for (;y < 6;){
+        earnings = (initial_balance * interest_rate);
+        total = initial_balance + earnings;
+        System.out.printf("%n%d|%,12.02f|%,12.02f", y, earnings, total);
+        y++;
     }
     }
     }
