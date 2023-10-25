@@ -9,11 +9,10 @@ public class InterestRate {
     double total;
     double earnings;
     int y = 1;
-    for (;y < 6;){
+    for (;y < 6;y++){
         earnings = (initial_balance * interest_rate);
         total = initial_balance + earnings;
         System.out.printf("%n%d|%,12.02f|%,12.02f", y, earnings, total);
-        y++;
     }
     }
     }

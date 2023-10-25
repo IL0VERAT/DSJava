@@ -1,20 +1,27 @@
 import java.util.Scanner;
-public class DoorSystem {
-public enum GearShift { P, N, D, ONE, TWO, THREE, R }
+class DoorSystem {
+        enum GearShift { P, N, D, ONE, TWO, THREE, R }
+        boolean Dash_Switch_Left; 
+        boolean Dash_Switch_Right;
+        boolean Child_Lock;
+        boolean Master_Unlock;
+        boolean Outside_Handle_Left;
+        boolean Outside_Handle_Right;
+        boolean Inside_Handle_Left;
+        boolean Inside_Handle_Right;
+        Gearshift Gear;
+
+        public void Dash_SwitchL_Status(){
+            if(Dash_Switch_Left = true){
+                
+            }
+        }
 public static void main (String[]args){
+    //use charAt for if statements
+    //use private then boolean or variable
         Scanner in = new Scanner(System.in);
         System.out.print("Enter permitted code for minivan doors: ");
         String code = in.nextLine();
-
-        String Dash_Switch_Left = code.substring(0);
-        String Dash_Switch_Right = code.substring(1);
-        String Child_Lock = code.substring(2);
-        String Master_Unlock = code.substring(3);
-        String Outside_Handle_Left = code.substring(4);
-        String Outside_Handle_Right = code.substring(5);
-        String Inside_Handle_Left = code.substring(6);
-        String Inside_Handle_Right = code.substring(7);
-        String Gear = code.substring(8);
         
         //Code for Gearshifter 
         if(Gear.equals("P")){
