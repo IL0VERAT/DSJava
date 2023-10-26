@@ -88,38 +88,36 @@ class DoorSystem {
                 System.out.println("Error with Outside Handle Right Input");
             }
         }
-        boolean Inside_Handle_Left_boo;
         public void Inside_Handle_Left_Code(){
         if(lock_of_child = false){
             if(Inside_Handle_Left.equals("0")){
-                Inside_Handle_Left_boo = false;
+                left_door = false;
             }
             else if(Inside_Handle_Left.equals("1")){
-                Inside_Handle_Left_boo = true;
+                left_door = true;
             }
             else{
                 System.out.println("Error with Inside Handle Left Input");
             }
         }
         else if(lock_of_child = true){
-            Inside_Handle_Left_boo = false;
+            left_door = false;
         }
         }
-        boolean Inside_Handle_Right_boo;
         public void Inside_Handle_Right_Code(){
         if(lock_of_child = false){
             if(Inside_Handle_Right.equals("0")){
-                Inside_Handle_Right_boo = false;
+                right_door = false;
             }
             else if(Inside_Handle_Right.equals("1")){
-                Inside_Handle_Right_boo = true;
+                right_door = true;
             }
             else{
                 System.out.println("Error with Inside Handle Right Input");
             }
         }
         else if(lock_of_child = true){
-            Inside_Handle_Right_boo = false;
+            left_door = false;
         }
         }
         public void Gear_Shift_Code(){
@@ -156,6 +154,22 @@ class DoorSystem {
         else{
             System.out.println("Error: Input a correct value for gear");
         }
+        }
+        public void left_door_status(){
+            if(left_door = true){
+                System.out.println("Left door open");
+            }
+            else if(left_door = false){
+                System.out.println("Left door closed");
+            }
+        }
+        public void right_door_status(){
+            if(right_door = true){
+                System.out.println("Right door open");
+            }
+            else if(left_door = false){
+                System.out.println("Right door closed");
+            }
         }
 
 
