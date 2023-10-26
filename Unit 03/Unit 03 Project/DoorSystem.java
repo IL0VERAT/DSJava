@@ -11,7 +11,9 @@ class DoorSystem {
         String Inside_Handle_Left;
         String Inside_Handle_Right;
         Gearshift Gear;
-        
+        String Gear_shifter;
+        boolean left_door;
+        boolean right_door;
         
         boolean left_door_dashswitch;
         public void Dash_SwitchL_Code(){
@@ -50,7 +52,6 @@ class DoorSystem {
                 System.out.println("Error with master lock input.");
             }
         }
-
         boolean lock_of_child;
         public void Child_Lock_Code(){
             if(Child_Lock.equals("0")){
@@ -121,6 +122,42 @@ class DoorSystem {
             Inside_Handle_Right_boo = false;
         }
         }
+        public void Gear_Shift_Code(){
+            if(Gear_shifter.equals("P")){
+            level = GearShift.P;
+            left_door = true;
+            right_door = true;
+        }
+        else if(Gear_shifter.equals("N")){
+            level = GearShift.N;
+            left_door = false;
+            right_door = false;
+        }
+        else if(Gear_shifter.equals("D")){
+            level = GearShift.D;
+            left_door = false;
+            right_door = false;
+        }
+        else if(Gear_shifter.equals("One")){
+            level = GearShift.ONE;
+            left_door = false;
+            right_door = false;
+        }
+        else if(Gear_shifter.equals("Two")){
+            level = GearShift.TWO;
+            left_door = false;
+            right_door = false;
+        }
+        else if(Gear_shifter.equals("Three")){
+            level = GearShift.THREE;
+            left_door = false;
+            right_door = false;
+        }
+        else{
+            System.out.println("Error: Input a correct value for gear");
+        }
+        }
+
 
 
 public static void main (String[]args){
@@ -129,127 +166,5 @@ public static void main (String[]args){
         Scanner in = new Scanner(System.in);
         System.out.print("Enter permitted code for minivan doors: ");
         String code = in.nextLine();
-        
-        //Code for Gearshifter 
-        if(Gear.equals("P")){
-            level = GearShift.P;
-        }
-        else if(Gear.equals("N")){
-            level = GearShift.N;
-        }
-        else if(Gear.equals("D")){
-            level = GearShift.D;
-        }
-        else if(Gear.equals("One")){
-            level = GearShift.ONE;
-        }
-        else if(Gear.equals("Two")){
-            level = GearShift.TWO;
-        }
-        else if(Gear.equals("Three")){
-            level = GearShift.THREE;
-        }
-        else{
-            System.out.println("Error: Input a correct value for gear");
-        }
-
-        //Code for Dash Switch Left
-        if (Dash_Switch_Left.equals("0")){ 
-            boolean dsl = false;
-        }
-        else if (Dash_Switch_Left.equals("1")){
-            dsl = true;
-        }
-        else {
-            System.outprint("Error: Input a corrct value for Dash Switch Left");
-        }
-
-        //Code for Dash Switch Right
-        if (Dash_Switch_Right.equals("0")){
-            boolean dsr = false;
-        }
-        else if (Dash_Switch_Right.equals("1")){
-            dsl = true;
-        }
-        else {
-            System.out.print("Error: Input a correct value for Dash Switch Right");
-        }
-        
-        //Code for Child Lock 
-        if (Child_Lock.equals("0")){
-            boolean cl = false;
-        }
-        else if (Child_Lock.equals("1")){
-            cl = true;
-        }
-        else {
-            System.out.print("Error: Input a correct value for Child Lock");
-        }
-
-        //Code for Master Unlock
-        if (Master_Unlock.equals("0")){
-            boolean mu = false;
-        }
-        else if (Master_Unlock.equals("1")){
-            mu = true;
-        }
-        else {
-            System.out.print("Error: Input a correct value for Master Unlock");
-        }
-    
-
-        //Code for Outside Handle Left
-        if(level ==GearShift.P){
-        if (Outside_Handle_Left.equals("0")){ 
-            boolean ohl = false;
-        }
-        else if (Outside_Handle_Left.equals("1")){
-            ohl = true;
-        }
-        else {
-            System.outprint("Error: Input a corrct value for Outside Handle Left");
-        }
-
-        //Code for Outside Handle Right
-        if (Outside_Handle_Right.equals("0")){
-            boolean ohr = false;
-        }
-        else if (Outside_Handle_Right.equals("1")){
-            ohr = true;
-        }
-        else {
-            System.out.print("Error: Input a correct value for Outside Handle Right");
-        }
-    
-
-        //Code for Inside Handle Left
-        if(cl = true){
-        if (Inside_Handle_Left.equals("0")){ 
-            boolean ihl = false;
-        }
-        else if (Inside_Handle_Left.equals("1")){
-            ihl = true;
-        }
-        else {
-            System.outprint("Error: Input a corrct value for Inside Handle Left");
-        }
-
-        //Code for Inside Handle Right
-        if (Inside_Handle_Right.equals("0")){
-            boolean ihr = false;
-        }
-        else if (Inside_Handle_Right.equals("1")){
-            ihr = true;
-        }
-        else {
-            System.out.print("Error: Input a correct value for Inside Handle Right");
-        }
-        } else if (cl = false){
-        System.out.print("Please unlock the Child Lock function to use interior door handles.");
-    
-    }else{
-        System.out.print("Error: Car must be parked to open doors");
-    }
-    }
     }
 }
