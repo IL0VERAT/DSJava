@@ -1,5 +1,5 @@
 import java.util.Scanner;
-class DoorSystem {
+private class DoorSystem {
         enum GearShift { P, N, D, ONE, TWO, THREE, R }
         //Note to self: eventually just make one string and use substrings for methods + fix capitalzation 
         String Dash_Switch_Left; 
@@ -15,25 +15,23 @@ class DoorSystem {
         boolean left_door;
         boolean right_door;
         
-        boolean left_door_dashswitch;
         public void Dash_SwitchL_Code(){
             if(Dash_Switch_Left.equals("0")){
-                left_door_dashswitch = false;
+                left_door = false;
             }
             else if(Dash_Switch_Left.equals("1")){
-                left_door_dashswitch = true;
+                left_door = true;
             }
             else{
                 System.out.println("Error with dash switch left input.");
             }
         }
-        boolean right_door_dashswitch;
         public void Dash_SwitchR_Code(){
             if(Dash_Switch_Right.equals("0")){
-                right_door_dashswitch = false;
+                right_door = false;
             }
             else if(Dash_Switch_Right.equals("0")){
-                right_door_dashswitch = true;
+                right_door = true;
             }
             else{
                 System.out.println("Error with dash switch right input.");
@@ -44,9 +42,13 @@ class DoorSystem {
         public void Master_Lock_Code(){
             if(Master_Unlock.equals("0")){
                 the_masters_unlock = false;
+                left_door = false;
+                right_door = false;
             }
             else if(Master_Unlock.equals("1")){
                 the_masters_unlock = true;
+                left_door = true;
+                right_door = true;
             }
             else{
                 System.out.println("Error with master lock input.");
@@ -64,25 +66,23 @@ class DoorSystem {
                 System.out.println("Error with child lock input.");
             }
         }
-        boolean Outside_Handle_Left_boo;
         public void Outside_Handle_Left_Code(){
             if(Outside_Handle_Left.equals("0")){
-                Outside_Handle_Left_boo = false;
+                left_door = false;
             }
             else if(Outside_Handle_Left.equals("1")){
-                Outside_Handle_Left_boo = true;
+                left_door = true;
             }
             else{
                 System.out.println("Error with Outside Handle Left Input");
             }
         }
-        boolean Outside_Handle_Right_boo;
         public void Outside_Handle_Right_Code(){
             if(Outside_Handle_Right.equals("0")){
-                Outside_Handle_Right_boo = false;
+                right_door = false;
             }
             else if(Outside_Handle_Right.equals("1")){
-                Outside_Handle_Right_boo = true;
+                right_door = true;
             }
             else{
                 System.out.println("Error with Outside Handle Right Input");
@@ -130,26 +130,31 @@ class DoorSystem {
             level = GearShift.N;
             left_door = false;
             right_door = false;
+            System.out.println("Shift into park to activate doors.");
         }
         else if(Gear_shifter.equals("D")){
             level = GearShift.D;
             left_door = false;
             right_door = false;
+            System.out.println("Shift into park to activate doors.");
         }
         else if(Gear_shifter.equals("One")){
             level = GearShift.ONE;
             left_door = false;
             right_door = false;
+            System.out.println("Shift into park to activate doors.");
         }
         else if(Gear_shifter.equals("Two")){
             level = GearShift.TWO;
             left_door = false;
             right_door = false;
+            System.out.println("Shift into park to activate doors.");
         }
         else if(Gear_shifter.equals("Three")){
             level = GearShift.THREE;
             left_door = false;
             right_door = false;
+            System.out.println("Shift into park to activate doors.");
         }
         else{
             System.out.println("Error: Input a correct value for gear");
@@ -176,7 +181,7 @@ class DoorSystem {
 
 public static void main (String[]args){
     //use charAt for if statements
-    //use private then boolean or variable
+
         Scanner in = new Scanner(System.in);
         System.out.print("Enter permitted code for minivan doors: ");
         String code = in.nextLine();
