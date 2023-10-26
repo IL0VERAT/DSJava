@@ -9,11 +9,11 @@ private class DoorSystem {
         char Dash_Switch_Left = code.charAt(0);
         char Dash_Switch_Right = code.charAt(1);
         char Child_Lock = code.charAt(2);
-        String Master_Unlock;
-        String Outside_Handle_Left;
-        String Outside_Handle_Right;
-        String Inside_Handle_Left;
-        String Inside_Handle_Right;
+        char Master_Unlock = code.charAt(3);
+        char Outside_Handle_Left = code.charAt(6);
+        char Outside_Handle_Right = code.charAt(7);
+        char Inside_Handle_Left = code.charAt(4);
+        char Inside_Handle_Right = code.charAt(5);
         Gearshift Gear;
         String Gear_shifter;
         boolean left_door;
@@ -42,15 +42,12 @@ private class DoorSystem {
             }
 
         }
-        boolean the_masters_unlock;
         public void Master_Lock_Code(){
-            if(Master_Unlock.equals("0")){
-                the_masters_unlock = false;
+            if(Master_Unlock == 0){
                 left_door = false;
                 right_door = false;
             }
-            else if(Master_Unlock.equals("1")){
-                the_masters_unlock = true;
+            else if(Master_Unlock == 1){
                 left_door = true;
                 right_door = true;
             }
@@ -71,10 +68,10 @@ private class DoorSystem {
             }
         }
         public void Outside_Handle_Left_Code(){
-            if(Outside_Handle_Left.equals("0")){
+            if(Outside_Handle_Left == 0){
                 left_door = false;
             }
-            else if(Outside_Handle_Left.equals("1")){
+            else if(Outside_Handle_Left == 1){
                 left_door = true;
             }
             else{
@@ -82,10 +79,10 @@ private class DoorSystem {
             }
         }
         public void Outside_Handle_Right_Code(){
-            if(Outside_Handle_Right.equals("0")){
+            if(Outside_Handle_Right == 0){
                 right_door = false;
             }
-            else if(Outside_Handle_Right.equals("1")){
+            else if(Outside_Handle_Right == 1){
                 right_door = true;
             }
             else{
@@ -94,10 +91,10 @@ private class DoorSystem {
         }
         public void Inside_Handle_Left_Code(){
         if(lock_of_child = false){
-            if(Inside_Handle_Left.equals("0")){
+            if(Inside_Handle_Left == 0){
                 left_door = false;
             }
-            else if(Inside_Handle_Left.equals("1")){
+            else if(Inside_Handle_Left == 1){
                 left_door = true;
             }
             else{
@@ -110,10 +107,10 @@ private class DoorSystem {
         }
         public void Inside_Handle_Right_Code(){
         if(lock_of_child = false){
-            if(Inside_Handle_Right.equals("0")){
+            if(Inside_Handle_Right == 0){
                 right_door = false;
             }
-            else if(Inside_Handle_Right.equals("1")){
+            else if(Inside_Handle_Right == 1){
                 right_door = true;
             }
             else{
