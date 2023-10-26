@@ -1,10 +1,14 @@
 import java.util.Scanner;
 private class DoorSystem {
         enum GearShift { P, N, D, ONE, TWO, THREE, R }
-        //Note to self: eventually just make one string and use substrings for methods + fix capitalzation 
-        String Dash_Switch_Left; 
-        String Dash_Switch_Right;
-        String Child_Lock;
+         public void Input(){
+            Scanner in = new Scanner(System.in);
+            System.out.println("Enter an appropriate code for minivan doors: ");
+            String code = in.nextLine();
+        }
+        char Dash_Switch_Left = code.charAt(0);
+        char Dash_Switch_Right = code.charAt(1);
+        char Child_Lock = code.charAt(2);
         String Master_Unlock;
         String Outside_Handle_Left;
         String Outside_Handle_Right;
@@ -16,10 +20,10 @@ private class DoorSystem {
         boolean right_door;
         
         public void Dash_SwitchL_Code(){
-            if(Dash_Switch_Left.equals("0")){
+            if(Dash_Switch_Left == 0){
                 left_door = false;
             }
-            else if(Dash_Switch_Left.equals("1")){
+            else if(Dash_Switch_Left == 0){
                 left_door = true;
             }
             else{
@@ -27,10 +31,10 @@ private class DoorSystem {
             }
         }
         public void Dash_SwitchR_Code(){
-            if(Dash_Switch_Right.equals("0")){
+            if(Dash_Switch_Right == 0){
                 right_door = false;
             }
-            else if(Dash_Switch_Right.equals("0")){
+            else if(Dash_Switch_Right == 1){
                 right_door = true;
             }
             else{
@@ -56,10 +60,10 @@ private class DoorSystem {
         }
         boolean lock_of_child;
         public void Child_Lock_Code(){
-            if(Child_Lock.equals("0")){
+            if(Child_Lock == 0){
                 lock_of_child = false;
             }
-            else if(Child_Lock.equals("1")){
+            else if(Child_Lock == 1){
                 lock_of_child = true;
             }
             else{
