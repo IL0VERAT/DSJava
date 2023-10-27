@@ -9,7 +9,7 @@ class DoorSystem {
         boolean dash_Switch_Left;
         boolean dash_Switch_Right;
         boolean child_Lock;
-        char Master_Unlock = code.charAt(3);
+        boolean Master_Unlock;
         char Outside_Handle_Left = code.charAt(6);
         char Outside_Handle_Right = code.charAt(7);
         char Inside_Handle_Left = code.charAt(4);
@@ -47,9 +47,7 @@ class DoorSystem {
             
 
         }
-        
-        public void Dash_SwitchL_Code(){
-            if(Dash_Switch_Left == 0){
+            if(targetCode.charAt(2 == '2')){
                 left_door = false;
             }
             else if(Dash_Switch_Left == 0){
