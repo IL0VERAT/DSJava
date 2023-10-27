@@ -1,15 +1,14 @@
 import java.util.Scanner;
 class DoorSystem {
-         DoorSystem(){
-            Scanner in = new Scanner(System.in);
-            System.out.println("Enter an appropriate code for minivan doors: ");
-            String code = in.nextLine();
+         DoorSystem(String targetCode){
+            update(targetCode);
         }
+
         enum GearShift { P, N, D, ONE, TWO, THREE, R }
-        String code;
-        char Dash_Switch_Left = code.charAt(0);
-        char Dash_Switch_Right = code.charAt(1);
-        char Child_Lock = code.charAt(2);
+
+        boolean dash_Switch_Left;
+        boolean dash_Switch_Right;
+        boolean child_Lock;
         char Master_Unlock = code.charAt(3);
         char Outside_Handle_Left = code.charAt(6);
         char Outside_Handle_Right = code.charAt(7);
@@ -19,6 +18,35 @@ class DoorSystem {
         char Gear_shifter = code.charAt(8);
         boolean left_door;//change to designated names
         boolean right_door;
+
+        public void update(String targetCode) {
+
+            // determine state of left dash switch.
+            if (targetCode.charAt(0) == '1' ) {
+                // the switch is enabled.
+                dash_Switch_Left = true;
+            } else {
+                dash_Switch_Left = false;
+            }
+            
+
+            // determine state of right dash switch.
+            if (targetCode.charAt(1) == '1' ) {
+                // the switch is enabled.
+                dash_Switch_Right = true;
+            } else {
+                dash_Switch_Right = false;
+            }
+
+            if(targetCode.charAt(2) == '1'){
+                child_Lock = true;
+            } else{
+                child_Lock = false;
+            }
+
+            
+
+        }
         
         public void Dash_SwitchL_Code(){
             if(Dash_Switch_Left == 0){
@@ -182,9 +210,10 @@ class DoorSystem {
     }
 public class Minivan{
     public static void main(String[]args){
-        DoorSystem DoorSystem = new DoorSystem();
-        
-        DoorSystem();
+        DoorSystem doorSystem = new DoorSystem("00010100P");
+
+        doorSystem.right_door_status();
+        // Make sure to calculate all the variables. 
 
     }
 }
