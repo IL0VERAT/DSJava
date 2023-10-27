@@ -6,18 +6,16 @@ class DoorSystem {
 
         enum GearShift { P, N, D, ONE, TWO, THREE, R }
 
-        boolean dash_Switch_Left;
-        boolean dash_Switch_Right;
+        boolean dash_Switch_Left; //good
+        boolean dash_Switch_Right; //good
         boolean child_Lock;
         boolean Master_Unlock;
-        char Outside_Handle_Left = code.charAt(6);
-        char Outside_Handle_Right = code.charAt(7);
-        char Inside_Handle_Left = code.charAt(4);
-        char Inside_Handle_Right = code.charAt(5);
+        boolean Inside_Handle_Left;
+        boolean Inside_Handle_Right;
+        boolean Outside_Handle_Left;
+        boolean Outside_Handle_Right;
         Gearshift Gear;
         char Gear_shifter = code.charAt(8);
-        boolean left_door;//change to designated names
-        boolean right_door;
 
         public void update(String targetCode) {
 
@@ -38,116 +36,53 @@ class DoorSystem {
                 dash_Switch_Right = false;
             }
 
+            //determine the state of child lock.
             if(targetCode.charAt(2) == '1'){
                 child_Lock = true;
-            } else{
+            } else {
                 child_Lock = false;
             }
 
-            
-
-        }
-            if(targetCode.charAt(2 == '2')){
-                left_door = false;
-            }
-            else if(Dash_Switch_Left == 0){
-                left_door = true;
-            }
-            else{
-                System.out.println("Error with dash switch left input.");
-            }
-        }
-        public void Dash_SwitchR_Code(){
-            if(Dash_Switch_Right == 0){
-                right_door = false;
-            }
-            else if(Dash_Switch_Right == 1){
-                right_door = true;
-            }
-            else{
-                System.out.println("Error with dash switch right input.");
+            //determines the state of master lock
+            if(targetCode.charAt(3) == '1'){
+                Master_Unlock = true;
+            } else {
+                Master_Unlock = false;
             }
 
-        }
-        public void Master_Lock_Code(){
-            if(Master_Unlock == 0){
-                left_door = false;
-                right_door = false;
+            //determines the state of the inside handle on the left
+            if(child_Lock = false){
+                if(targetCode.chatAt(4) == '1'){
+                    Inside_Handle_Left = true;
+                 } else {
+                    Inside_Handle_Left = false;
+                }
+            } else {
+                Inside_Handle_Left = false;
             }
-            else if(Master_Unlock == 1){
-                left_door = true;
-                right_door = true;
+
+            //determines the state of the inside handle on the right
+            if(targetCode.charAt(5) == '1'){
+                Inside_Handle_Right = true;
+            } else {
+                Inside_Handle_Right = false;
             }
-            else{
-                System.out.println("Error with master lock input.");
+
+            //determines the state of the outside handle on the left
+            if(targetCode.charAt(6) == '1'){
+                Outside_Handle_Left = true;
+            } else {
+                Outside_Handle_Left = false;
             }
-        }
-        boolean lock_of_child;
-        public void Child_Lock_Code(){
-            if(Child_Lock == 0){
-                lock_of_child = false;
-            }
-            else if(Child_Lock == 1){
-                lock_of_child = true;
-            }
-            else{
-                System.out.println("Error with child lock input.");
-            }
-        }
-        public void Outside_Handle_Left_Code(){
-            if(Outside_Handle_Left == 0){
-                left_door = false;
-            }
-            else if(Outside_Handle_Left == 1){
-                left_door = true;
-            }
-            else{
-                System.out.println("Error with Outside Handle Left Input");
+
+            //determines the state of the outside handle on the right
+            if(targetCode.charAt(7) == '1'){
+                Outside_Handle_Right = true;
+            } else {
+                Outside_Handle_Right = false;
             }
         }
-        public void Outside_Handle_Right_Code(){
-            if(Outside_Handle_Right == 0){
-                right_door = false;
-            }
-            else if(Outside_Handle_Right == 1){
-                right_door = true;
-            }
-            else{
-                System.out.println("Error with Outside Handle Right Input");
-            }
-        }
-        public void Inside_Handle_Left_Code(){
-        if(lock_of_child = false){
-            if(Inside_Handle_Left == 0){
-                left_door = false;
-            }
-            else if(Inside_Handle_Left == 1){
-                left_door = true;
-            }
-            else{
-                System.out.println("Error with Inside Handle Left Input");
-            }
-        }
-        else if(lock_of_child = true){
-            left_door = false;
-        }
-        }
-        public void Inside_Handle_Right_Code(){
-        if(lock_of_child = false){
-            if(Inside_Handle_Right == 0){
-                right_door = false;
-            }
-            else if(Inside_Handle_Right == 1){
-                right_door = true;
-            }
-            else{
-                System.out.println("Error with Inside Handle Right Input");
-            }
-        }
-        else if(lock_of_child = true){
-            left_door = false;
-        }
-        }
+        
         public void Gear_Shift_Code(){
             if(Gear_shifter == "P"){
             level = GearShift.P;
