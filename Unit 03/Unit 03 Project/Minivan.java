@@ -15,7 +15,7 @@ class DoorSystem {
         boolean Outside_Handle_Left;
         boolean Outside_Handle_Right;
         Gearshift Gear;
-        char Gear_shifter = code.charAt(8);
+        boolean Gear_shifter;
 
         public void update(String targetCode) {
 
@@ -81,48 +81,19 @@ class DoorSystem {
             } else {
                 Outside_Handle_Right = false;
             }
-        }
         
-        public void Gear_Shift_Code(){
-            if(Gear_shifter == "P"){
+        
+        if(targetCode.charAt(8) == 'P')
             level = GearShift.P;
-            left_door = true;
-            right_door = true;
+            if(level = GearShift.P){
+                Gear_shifter = true;
+            }
+            else{
+                Gear_shifter = false;
+                System.out.println("Warning! Please ensure car is in park (P)");
+            }
         }
-        else if(Gear_shifter == "N"){
-            level = GearShift.N;
-            left_door = false;
-            right_door = false;
-            System.out.println("Shift into park to activate doors.");
-        }
-        else if(Gear_shifter == "D"){
-            level = GearShift.D;
-            left_door = false;
-            right_door = false;
-            System.out.println("Shift into park to activate doors.");
-        }
-        else if(Gear_shifter == "ONE"){
-            level = GearShift.ONE;
-            left_door = false;
-            right_door = false;
-            System.out.println("Shift into park to activate doors.");
-        }
-        else if(Gear_shifter == "TWO"){
-            level = GearShift.TWO;
-            left_door = false;
-            right_door = false;
-            System.out.println("Shift into park to activate doors.");
-        }
-        else if(Gear_shifter == "THREE"){
-            level = GearShift.THREE;
-            left_door = false;
-            right_door = false;
-            System.out.println("Shift into park to activate doors.");
-        }
-        else{
-            System.out.println("Error: Input a correct value for gear");
-        }
-        }
+  
         public void left_door_status(){
             if(left_door = true){
                 System.out.println("Left door open");
