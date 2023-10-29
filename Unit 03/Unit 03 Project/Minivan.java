@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.Scanner; //WATCH FOR CAMEL CASE BEFORE SUBMITTING!!!!!
 class DoorSystem {
          DoorSystem(String targetCode){
             update(targetCode);
@@ -16,6 +16,8 @@ class DoorSystem {
         boolean Outside_Handle_Right;
         Gearshift Gear;
         boolean Gear_shifter;
+        boolean leftDoor;
+        boolean rightDoor;
 
         public void update(String targetCode) {
 
@@ -23,8 +25,10 @@ class DoorSystem {
             if (targetCode.charAt(0) == '1' ) {
                 // the switch is enabled.
                 dash_Switch_Left = true;
+                leftDoor = false;
             } else {
                 dash_Switch_Left = false;
+                leftDoor = true;
             }
             
 
@@ -39,31 +43,42 @@ class DoorSystem {
             //determine the state of child lock.
             if(targetCode.charAt(2) == '1'){
                 child_Lock = true;
+                leftDoor = false;
             } else {
                 child_Lock = false;
+                leftDoor = true;
             }
 
             //determines the state of master lock
             if(targetCode.charAt(3) == '1'){
                 Master_Unlock = true;
+                leftDoor = false;
             } else {
                 Master_Unlock = false;
+                leftDoor = true;
             }
 
             //determines the state of the inside handle on the left
             if(child_Lock = false){
                 if(targetCode.chatAt(4) == '1'){
                     Inside_Handle_Left = true;
+                    leftDoor = true;
                  } else {
                     Inside_Handle_Left = false;
+                    leftDoor = false;
                 }
             } else {
                 Inside_Handle_Left = false;
+                leftDoor = false;
             }
 
             //determines the state of the inside handle on the right
-            if(targetCode.charAt(5) == '1'){
-                Inside_Handle_Right = true;
+            if(child_Lock = false){
+                if(targetCode.charAt(5) == '1'){
+                    Inside_Handle_Right = true;
+                } else {
+                    Inside_Handle_Right = false;
+                }
             } else {
                 Inside_Handle_Right = false;
             }
@@ -71,8 +86,10 @@ class DoorSystem {
             //determines the state of the outside handle on the left
             if(targetCode.charAt(6) == '1'){
                 Outside_Handle_Left = true;
+                leftDoor = true;
             } else {
                 Outside_Handle_Left = false;
+                leftDoor = false;
             }
 
             //determines the state of the outside handle on the right
@@ -87,27 +104,20 @@ class DoorSystem {
             level = GearShift.P;
             if(level = GearShift.P){
                 Gear_shifter = true;
+                leftDoor = true;
             }
             else{
                 Gear_shifter = false;
+                leftDoor = false;
                 System.out.println("Warning! Please ensure car is in park (P)");
             }
         }
-  
-        public void left_door_status(){
-            if(left_door = true){
-                System.out.println("Left door open");
-            }
-            else if(left_door = false){
-                System.out.println("Left door closed");
-            }
-        }
-        public void right_door_status(){
-            if(right_door = true){
-                System.out.println("Right door open");
-            }
-            else if(left_door = false){
-                System.out.println("Right door closed");
+
+        public void isLeftOpen(){
+            if(leftDoor = true){
+                System.out.println("Left door opens");
+            } else {
+                System.out.println("Left door stay's closed");
             }
         }
 
@@ -116,7 +126,7 @@ public class Minivan{
     public static void main(String[]args){
         DoorSystem doorSystem = new DoorSystem("00010100P");
 
-        doorSystem.right_door_status();
+        doorSystem.isLeftOpen();
         // Make sure to calculate all the variables. 
 
     }
