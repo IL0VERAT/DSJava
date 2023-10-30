@@ -100,26 +100,45 @@ class DoorSystem {
         }
     }
 
-        public void leftDoorOpen(){
+        public void leftDoorCode(){
             if(gearShifter == true && master_Unlock == true){
                 if(outside_Handle_Left == true || inside_Handle_Left == true || dash_Switch_Left == true){
-                    System.out.println("Left door opens");
+                    isLeftOpen = true;
                 } else {
-                    System.out.println("Left door closes");
+                    isLeftOpen = false;
                 }
             } else {
-                System.out.println("Left door closes");
+                isLeftOpen = false;
             }
         }
-        public void rightDoorOpen(){
+        public void rightDoorCode(){
             if(gearShifter == true && master_Unlock == true){
                 if(outside_Handle_Right == true || inside_Handle_Right == true || dash_Switch_Right == true){
-                    System.out.println("Right door opens");
+                    isRightOpen = true;
                 } else {
-                    System.out.println("Right door closes");
+                    isRightOpen = false;
                 }
             } else {
-                System.out.println("Right door closes");
+                isRightOpen = false;
+            }
+        }
+        public void Doors(){
+            if(isLeftOpen == true){
+                System.out.println("Left door opens");
+            } else {
+                System.out.println("Left door closed");
+            }
+
+            if(isRightOpen == true){
+                System.out.println("Right door opens");
+            } else {
+                System.out.println("Right door closed");
+            }
+
+            if(isLeftOpen == true && isRightOpen == true){
+                System.out.println("Both doors open");
+            } else if(isLeftOpen == false && isRightOpen == false){
+                System.out.println("Both doors closed");
             }
         }
 
@@ -128,8 +147,7 @@ public class Minivan{
     public static void main(String[]args){
         DoorSystem doorSystem = new DoorSystem("00010100P");
         
-        doorSystem.rightDoorOpen();
-        doorSystem.leftDoorOpen();
+        doorSystem.Doors();
     }
 }
 
