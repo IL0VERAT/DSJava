@@ -3,16 +3,18 @@ class DoorSystem {
 
         enum GearShift { P, N, D, ONE, TWO, THREE, R }
 
-        boolean dash_Switch_Left; //good
-        boolean dash_Switch_Right; //good
+        boolean dash_Switch_Left; 
+        boolean dash_Switch_Right; 
         boolean child_Lock;
-        boolean Master_Unlock;
-        boolean Inside_Handle_Left;
-        boolean Inside_Handle_Right;
-        boolean Outside_Handle_Left;
-        boolean Outside_Handle_Right;
+        boolean master_Unlock;
+        boolean inside_Handle_Left;
+        boolean inside_Handle_Right;
+        boolean outside_Handle_Left;
+        boolean outside_Handle_Right;
         GearShift Gear;
-        boolean Gear_shifter;
+        boolean gearShifter;
+        boolean isRightOpen;
+        boolean isLeftOpen;
 
         //constructor
         public DoorSystem(String initState){
@@ -47,71 +49,75 @@ class DoorSystem {
 
             //determines the state of master lock
             if(targetCode.charAt(3) == '1'){
-                Master_Unlock = true;
+                master_Unlock = true;
             } else {
-                Master_Unlock = false;
+                master_Unlock = false;
             }
 
             //determines the state of the inside handle on the left
             if(child_Lock = false){
                 if(targetCode.charAt(4) == '1'){
-                    Inside_Handle_Left = true;
+                    inside_Handle_Left = true;
                  } else {
-                    Inside_Handle_Left = false;
+                    inside_Handle_Left = false;
                     
                 }
             } else {
-                Inside_Handle_Left = false;
+                inside_Handle_Left = false;
             }
 
             //determines the state of the inside handle on the right
             if(child_Lock = false){
                 if(targetCode.charAt(5) == '1'){
-                    Inside_Handle_Right = true;
+                    inside_Handle_Right = true;
                 } else {
-                    Inside_Handle_Right = false;
+                    inside_Handle_Right = false;
                 }
             } else {
-                Inside_Handle_Right = false;
+                inside_Handle_Right = false;
             }
 
             //determines the state of the outside handle on the left
             if(targetCode.charAt(6) == '1'){
-                Outside_Handle_Left = true;
+                outside_Handle_Left = true;
             } else {
-                Outside_Handle_Left = false;
+                outside_Handle_Left = false;
             }
 
             //determines the state of the outside handle on the right
             if(targetCode.charAt(7) == '1'){
-                Outside_Handle_Right = true;
+                outside_Handle_Right = true;
             } else {
-                Outside_Handle_Right = false;
+                outside_Handle_Right = false;
             }
         
         
         if(targetCode.charAt(8) == 'P') {
             Gear = GearShift.P;
-            Gear_shifter = true;
+            gearShifter = true;
         } else {
-            Gear_shifter = false;
+            gearShifter = false;
         }
     }
 
-        public void isLeftOpen(){
-            if(Gear_shifter == true && Master_Unlock == true){
-                if(Outside_Handle_Left == true || Inside_Handle_Left == true || dash_Switch_Left == true){
+        public void leftDoorOpen(){
+            if(gearShifter == true && master_Unlock == true){
+                if(outside_Handle_Left == true || inside_Handle_Left == true || dash_Switch_Left == true){
                     System.out.println("Left door opens");
-                } 
+                } else {
+                    System.out.println("Left door closes");
+                }
             } else {
                 System.out.println("Left door closes");
             }
         }
-        public void isRightOpen(){
-            if(Gear_shifter == true && Master_Unlock == true){
-                if(Outside_Handle_Right == true || Inside_Handle_Right == true || dash_Switch_Right == true){
+        public void rightDoorOpen(){
+            if(gearShifter == true && master_Unlock == true){
+                if(outside_Handle_Right == true || inside_Handle_Right == true || dash_Switch_Right == true){
                     System.out.println("Right door opens");
-                } 
+                } else {
+                    System.out.println("Right door closes");
+                }
             } else {
                 System.out.println("Right door closes");
             }
@@ -121,10 +127,9 @@ class DoorSystem {
 public class Minivan{
     public static void main(String[]args){
         DoorSystem doorSystem = new DoorSystem("00010100P");
-
-        doorSystem.isLeftOpen();
-        // Make sure to calculate all the variables. 
-
+        
+        doorSystem.rightDoorOpen();
+        doorSystem.leftDoorOpen();
     }
 }
 
