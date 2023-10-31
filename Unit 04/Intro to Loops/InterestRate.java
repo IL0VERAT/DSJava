@@ -15,7 +15,7 @@ public class InterestRate {
     for (int y = 1;y < 6;y++){ //for loop: sets y (year) equal to 1, then adds 1 to that everytime it loops, for as long as y is less than 6. 
         earnings = initial_balance * interest_rate; //calculates the earnings
         initial_balance = initial_balance + earnings; //calculates the new intital balance to recheck every loop. 
-        System.out.printf("%n%d|%,12.02f|%,20.02f", y, earnings, initial_balance); //prints out the results of the loop. 
+        System.out.printf("%n%d|%,16.02f|%,20.02f", y, earnings, initial_balance); //prints out the results of the loop. 
     }
     }
     }
