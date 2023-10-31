@@ -145,8 +145,10 @@ class DoorSystem {
     }
 public class Minivan{
     public static void main(String[]args){
-        DoorSystem doorSystem = new DoorSystem("00010100P");
-        
+        Scanner in = new Scanner(System.in);
+        System.out.print("Enter appropriate code for new door state: ");
+        String newState = in.nextLine();
+        DoorSystem doorSystem = new DoorSystem(newState);
         doorSystem.Doors();
     }
 }
