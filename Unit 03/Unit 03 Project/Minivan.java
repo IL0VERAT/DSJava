@@ -6,7 +6,7 @@ class DoorSystem {
         boolean dash_Switch_Left; 
         boolean dash_Switch_Right; 
         boolean child_Lock;
-        boolean master_Unlock;
+        boolean master_Lock;
         boolean inside_Handle_Left;
         boolean inside_Handle_Right;
         boolean outside_Handle_Left;
@@ -47,33 +47,24 @@ class DoorSystem {
 
             //determines the state of master lock
             if(targetCode.charAt(3) == '1'){
-                master_Unlock = false;
+                master_Lock = false;
             } else {
-                master_Unlock = true;
+                master_Lock = true;
             }
 
             //determines the state of the inside handle on the left
-            if(child_Lock = false){
                 if(targetCode.charAt(4) == '1'){
                     inside_Handle_Left = true;
                  } else {
                     inside_Handle_Left = false;
-                    
                 }
-            } else {
-                inside_Handle_Left = false;
-            }
 
             //determines the state of the inside handle on the right
-            if(child_Lock = false){
                 if(targetCode.charAt(5) == '1'){
                     inside_Handle_Right = true;
                 } else {
                     inside_Handle_Right = false;
                 }
-            } else {
-                inside_Handle_Right = false;
-            }
 
             //determines the state of the outside handle on the left
             if(targetCode.charAt(6) == '1'){
@@ -98,8 +89,11 @@ class DoorSystem {
             }
     }
         public boolean isLeftOpen(){
-            if(gearShifter == true && master_Unlock == true){
-                if(outside_Handle_Left == true || inside_Handle_Left == true || dash_Switch_Left == true){
+            if(gearShifter == true && master_Lock == true){
+                if(outside_Handle_Left == true || dash_Switch_Left == true){
+                    return true;
+                } 
+                if(child_Lock == false && inside_Handle_Left == true){
                     return true;
                 } else {
                     return false;
@@ -109,9 +103,13 @@ class DoorSystem {
             }
         }
         public boolean isRightOpen(){
-            if(gearShifter == true && master_Unlock == true){
-                if(outside_Handle_Right == true || inside_Handle_Right == true || dash_Switch_Right == true){
+            if(gearShifter == true && master_Lock == true){
+                if(outside_Handle_Right == true || dash_Switch_Right == true){
                     return true;
+                } 
+                if(child_Lock == false && inside_Handle_Right == true){
+                    return true;
+
                 } else {
                     return false;
                 }
