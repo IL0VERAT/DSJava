@@ -13,9 +13,11 @@ class DoorSystem {
         boolean outside_Handle_Right;
         GearShift Gear;
         boolean gearShifter;
-        boolean flag;
         boolean isLeftOpen;
         boolean isRightOpen;
+        boolean bothRight;
+        boolean bothLeft;
+        boolean flag = false;
 
         //constructor
         public DoorSystem(String initState){
@@ -50,9 +52,9 @@ class DoorSystem {
 
             //determines the state of master lock
             if(targetCode.charAt(3) == '1'){
-                master_Unlock = true;
-            } else {
                 master_Unlock = false;
+            } else {
+                master_Unlock = true;
             }
 
             //determines the state of the inside handle on the left
@@ -105,36 +107,45 @@ class DoorSystem {
             if(gearShifter == true && master_Unlock == false){
                 if(outside_Handle_Left == true || inside_Handle_Left == true || dash_Switch_Left == true){
                     isLeftOpen = true;
+                    bothLeft = true;
                 } else {
                     isLeftOpen = false;
+                    bothLeft = false;
                 }
             } else {
-                isLeftOpen = false;
+                bothLeft = false;
             }
         }
         public void rightDoorCode(){
-            if(gearShifter == true && master_Unlock == false){
+            if(gearShifter == true && master_Unlock == true){
                 if(outside_Handle_Right == true || inside_Handle_Right == true || dash_Switch_Right == true){
                     isRightOpen = true;
+                    bothRight = true;
                 } else {
                     isRightOpen = false;
+                    bothRight = false;
                 }
             } else {
-                isRightOpen = false;
+               bothRight = false;
             }
         }
         public void Doors(){
-                if(isLeftOpen == false && isRightOpen == false) {
-                    System.out.println("Both doors closed");
-                } else if(isLeftOpen == true ){
-                        System.out.println("Left door opens");
-                    } else if (isLeftOpen == false) {
-                        System.out.println("Left door closed");
-                } else if(isRightOpen == true){
-                        System.out.println("Right door opens");
-                    } else if (isRightOpen == false){
-                        System.out.println("Right door closed");
-                    } 
+            if(bothLeft == false && bothRight == false) {
+                System.out.println("Both doors closed");
+                flag = true;
+            }
+            if(flag == false){
+                if(isLeftOpen == true ){
+                    System.out.println("Left door opens");
+                } else if (isLeftOpen == false) {
+                    System.out.println("Left door closed");
+                } 
+                if(isRightOpen == true){
+                    System.out.println("Right door opens");
+                } else if (isRightOpen == false){
+                    System.out.println("Right door closed");
+                } 
+            }
     } 
 }
 public class Minivan{
