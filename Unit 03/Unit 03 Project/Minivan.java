@@ -13,11 +13,6 @@ class DoorSystem {
         boolean outside_Handle_Right;
         GearShift Gear;
         boolean gearShifter;
-        boolean isLeftOpen;
-        boolean isRightOpen;
-        boolean bothRight;
-        boolean bothLeft;
-        boolean flag = false;
 
         //constructor
         public DoorSystem(String initState){
@@ -102,59 +97,54 @@ class DoorSystem {
                 gearShifter = false;
             }
     }
-
-        public void leftDoorCode(){
-            if(gearShifter == true && master_Unlock == false){
+        public boolean isLeftOpen(){
+            if(gearShifter == true && master_Unlock == true){
                 if(outside_Handle_Left == true || inside_Handle_Left == true || dash_Switch_Left == true){
-                    isLeftOpen = true;
-                    bothLeft = true;
+                    return true;
                 } else {
-                    isLeftOpen = false;
-                    bothLeft = false;
+                    return false;
                 }
             } else {
-                bothLeft = false;
+                return false;
             }
         }
-        public void rightDoorCode(){
+        public boolean isRightOpen(){
             if(gearShifter == true && master_Unlock == true){
                 if(outside_Handle_Right == true || inside_Handle_Right == true || dash_Switch_Right == true){
-                    isRightOpen = true;
-                    bothRight = true;
+                    return true;
                 } else {
-                    isRightOpen = false;
-                    bothRight = false;
+                    return false;
                 }
             } else {
-               bothRight = false;
+               return false;
             }
         }
-        public void Doors(){
-            if(bothLeft == false && bothRight == false) {
-                System.out.println("Both doors closed");
-                flag = true;
-            }
-            if(flag == false){
-                if(isLeftOpen == true ){
-                    System.out.println("Left door opens");
-                } else if (isLeftOpen == false) {
-                    System.out.println("Left door closed");
-                } 
-                if(isRightOpen == true){
-                    System.out.println("Right door opens");
-                } else if (isRightOpen == false){
-                    System.out.println("Right door closed");
-                } 
-            }
-    } 
+        
+
 }
 public class Minivan{
     public static void main(String[]args){
+        boolean bothDoorFlag = false;
         Scanner in = new Scanner(System.in);
         System.out.print("Enter appropriate code for new door state: ");
         String newState = in.nextLine();
         DoorSystem doorSystem = new DoorSystem(newState);
-        doorSystem.Doors();
+        
+        if (doorSystem.isLeftOpen()){
+            System.out.println("Left door opens");
+            bothDoorFlag = true;
+        }
+
+        if(doorSystem.isRightOpen()){
+            System.out.println("Right door opens");
+            bothDoorFlag = true;
+        }
+
+        if(bothDoorFlag == false){
+            System.out.println("Both doors stay closed closed");
+        }
+
     }
 }
+
 
