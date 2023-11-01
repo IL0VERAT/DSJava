@@ -1,4 +1,4 @@
-import java.util.Scanner; //WATCH FOR CAMEL CASE BEFORE SUBMITTING!!!!!
+import java.util.Scanner; 
 class DoorSystem {
 
         enum GearShift { P, N, D, ONE, TWO, THREE, R }
@@ -13,8 +13,9 @@ class DoorSystem {
         boolean outside_Handle_Right;
         GearShift Gear;
         boolean gearShifter;
-        boolean isRightOpen;
+        boolean flag;
         boolean isLeftOpen;
+        boolean isRightOpen;
 
         //constructor
         public DoorSystem(String initState){
@@ -92,16 +93,16 @@ class DoorSystem {
             }
         
         
-        if(targetCode.charAt(8) == 'P') {
-            Gear = GearShift.P;
-            gearShifter = true;
-        } else {
-            gearShifter = false;
-        }
+            if(targetCode.charAt(8) == 'P') {
+                Gear = GearShift.P;
+                gearShifter = true;
+            } else {
+                gearShifter = false;
+            }
     }
 
         public void leftDoorCode(){
-            if(gearShifter == true && master_Unlock == true){
+            if(gearShifter == true && master_Unlock == false){
                 if(outside_Handle_Left == true || inside_Handle_Left == true || dash_Switch_Left == true){
                     isLeftOpen = true;
                 } else {
@@ -112,7 +113,7 @@ class DoorSystem {
             }
         }
         public void rightDoorCode(){
-            if(gearShifter == true && master_Unlock == true){
+            if(gearShifter == true && master_Unlock == false){
                 if(outside_Handle_Right == true || inside_Handle_Right == true || dash_Switch_Right == true){
                     isRightOpen = true;
                 } else {
@@ -123,26 +124,19 @@ class DoorSystem {
             }
         }
         public void Doors(){
-            if(isLeftOpen == true){
-                System.out.println("Left door opens");
-            } else {
-                System.out.println("Left door closed");
-            }
-
-            if(isRightOpen == true){
-                System.out.println("Right door opens");
-            } else {
-                System.out.println("Right door closed");
-            }
-
-            if(isLeftOpen == true && isRightOpen == true){
-                System.out.println("Both doors open");
-            } else if(isLeftOpen == false && isRightOpen == false){
-                System.out.println("Both doors closed");
-            }
-        }
-
-    }
+                if(isLeftOpen == false && isRightOpen == false) {
+                    System.out.println("Both doors closed");
+                } else if(isLeftOpen == true ){
+                        System.out.println("Left door opens");
+                    } else if (isLeftOpen == false) {
+                        System.out.println("Left door closed");
+                } else if(isRightOpen == true){
+                        System.out.println("Right door opens");
+                    } else if (isRightOpen == false){
+                        System.out.println("Right door closed");
+                    } 
+    } 
+}
 public class Minivan{
     public static void main(String[]args){
         Scanner in = new Scanner(System.in);
