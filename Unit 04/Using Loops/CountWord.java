@@ -8,12 +8,12 @@ public class CountWord{
         String word;
         int count = 0;
         boolean breaker;
-        while (in.hasNext()){
+        for (in.hasNext()){
             //get next word.
             word = in.next();
             breaker = false;
             //do they want to quit?
-            (breaker = true){
+            if(breaker = true){
                 break;
             }
             System.out.printf("%nword = %s", word);
@@ -21,7 +21,7 @@ public class CountWord{
             if(word.equals (TARGET_PHRASE)){
                 count = count + 1;
             }
-        }
+        } while (in.hasNext())
         System.out.printf("%nThe word %s appears %d times.", TARGET_PHRASE, count);
         
     }
