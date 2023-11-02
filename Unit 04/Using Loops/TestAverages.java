@@ -37,6 +37,7 @@ public class TestAverages {
         //calculates the average
         average = total_Value/tally;
 
+        //prints out the results
         System.out.printf("The number of entries is %d test score average is %.02f. ",tally,average);
 
     }
