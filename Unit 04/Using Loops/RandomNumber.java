@@ -16,7 +16,7 @@ public class RandomNumber {
             random = (int)(Math.random() * (max - min + 1) + min); //generates the random values
             count = random + count; //adds the numbers together to average out
         }
-        System.out.printf("The average of 10 random integers is: %.2f ", (count/numTimes)); //prints out the averaged value
+        System.out.printf("The average of these random integers is: %.2f ", (count/numTimes)); //prints out the averaged value
 
         /*Reasoning: If one runs the loop only 10 times, the chance of any number appearing is 1 out of 10. 
         Thus, their is supposedly an equal chance to get any number from 1 to 10. This means that the average number that one will get is 5.5. 
