@@ -1,4 +1,3 @@
-import java.util.Scanner;
 class Dice {
     int random;
     int max = 6;
@@ -60,12 +59,7 @@ class Dice {
 public class DiceRoll{
     public static void main(String[] args) {
         Dice dice = new Dice();
-        Scanner in = new Scanner(System.in);
-        System.out.print("How many times would you like to roll the die: ");
-        int numTimes = in.nextInt();
-
-        for(int i = 1; i <= numTimes; i++)
-           dice.Roll();
+        dice.Roll();
     }
 }
 
