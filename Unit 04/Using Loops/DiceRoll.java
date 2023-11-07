@@ -1,3 +1,4 @@
+import java.util.Scanner;
 class Dice {
     int random;
     int max = 6;
@@ -6,9 +7,7 @@ class Dice {
     
 
     public void Roll(){
-        while (breaker == false){
             random = (int)Math.floor(Math.random() * (max - min + 1) + min);
-            breaker = true;
             if(random == 1){
                 System.out.printf("-----%n" + 
                         "|   |%n" + 
@@ -52,14 +51,21 @@ class Dice {
                         "-----");
             }
             
-        }
     }
-        
 }
+        
 public class DiceRoll{
     public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
         Dice dice = new Dice();
-        dice.Roll();
+        System.out.print("How many times would you like to roll the die: ");
+        int input = in.nextInt();
+
+        for(int i = 0; i < input; i++){
+            dice.Roll();
+            System.out.println("");
+        }
     }
 }
+
 
