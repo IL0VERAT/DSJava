@@ -5,7 +5,7 @@ public class CalendarProject{
     LocalDate rightNow = LocalDate.now();
     int today = rightNow.getDayOfMonth();
     //citation: stolen from Mr. Eng
-    LocalDate date = rightNow.getDayOfMonth(today - 1);
+    LocalDate date = rightNow.minusDays(today - 1);
     int firstNumber;
     int rowNumber = 1;
     int colNumber = 1;
@@ -28,6 +28,7 @@ public class CalendarProject{
     else if(firstDay == DayOfWeek.SATURDAY){
         firstNumber = 5;
     }
+    System.out.print("Mon Tue Wed Thu Fri Sat Sun");
 
 
    
