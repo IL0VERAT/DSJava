@@ -36,20 +36,25 @@ public class CalendarProject{
         if(date.getDayOfMonth() == rightNow.getDayOfMonth()){
             System.out.print("*");
         }
+        //if not the current day, print a space
         else {
             System.out.print(" ");
         }
 
+        //if its Sunday, then start a new line
         if(dayNumber == 7){
             System.out.println();
         }
 
+        //increments the days 
         date = date.plusDays(1);
 
+        //resets values
         dayOfWeek = date.getDayOfWeek();
         dayNumber = dayOfWeek.getValue();
     }
     
+    //prints out a line at the end for formatting 
     System.out.println();
     }     
 }
