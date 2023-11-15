@@ -25,14 +25,14 @@ public class CalendarProject{
         System.out.print("    ");
     }
 
-    //determines what month it is 
+    //determines the month
     int currMonth = rightNow.getMonthValue();
  
-    //loop for the formatter. runs until the end of the current month 
+    //while the date is included as the current month, loop runs
     while(date.getMonthValue() == currMonth){
         //prints out the formatted days
         System.out.printf("%3d", date.getDayOfMonth());
-        //
+        //prints * if the day is the current day
         if(date.getDayOfMonth() == rightNow.getDayOfMonth()){
             System.out.print("*");
         }
