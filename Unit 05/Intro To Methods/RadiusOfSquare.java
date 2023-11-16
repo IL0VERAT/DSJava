@@ -1,12 +1,12 @@
 //Coder: Milo Linn-Boggs Date: 15 Nov. 2023
 import java.util.Scanner;
-public class RadiusOfSquare {
+class RadiusOfSquare {
     /**
      * 
      * @param x the radius of the square
      * @return the volume
      */
-    public static double radius(double x){
+    private static double radius(double x){
         //calculations for the volume of a sphere
         double volume = (4.0/3.0) * Math.PI * Math.pow(x, 3);
         //returns the result of the calculations
