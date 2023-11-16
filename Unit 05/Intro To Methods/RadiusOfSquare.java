@@ -5,7 +5,7 @@ public class RadiusOfSquare {
     //custom method to calculate the radius (takes double x as an argument)
     public static double radius(double x){
         //calculations for the volume of a sphere
-        double volume = (4.0/3.0) * Math.PI * (x * x * x);
+        double volume = (4.0/3.0) * Math.PI * Math.pow(x, 3);
         //returns the result of the calculations
         return volume;
     }
