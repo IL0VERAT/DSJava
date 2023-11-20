@@ -1,36 +1,28 @@
+import java.util.Scanner;
 public class CountVowel {
-    
-    public static void isVowel(String phrase){
-        boolean tester;
-        for (int i = 0; i <= phrase.length() - 1;i++){
-            //checks to see if i is the letter e
-            if(phrase.charAt(i) == 'e'){
-                //if true, then adds one to count
-               tester = true;
-            } 
-            if(phrase.charAt(i) == 'a'){
-                //if true, then adds one to count
-               tester = true;
-            } 
-            if(phrase.charAt(i) == 'i'){
-                //if true, then adds one to count
-               tester = true;
-            } 
-            if(phrase.charAt(i) == 'o'){
-                //if true, then adds one to count
-               tester = true;
-            } 
-            if(phrase.charAt(i) == 'u'){
-                //if true, then adds one to count
-               tester = true;
-            } 
+    static int count;
+    static String mover_phrase;
+    public static int isVowel(String mover_phrase){
+        for (int i = 0; i <= mover_phrase.length();i++){
+            char ch = mover_phrase.charAt(i);
+            if(ch == 'a'|| ch == 'e'|| ch == 'i' ||ch == 'o' ||ch == 'u'||ch == ' '){
+                count ++;
+            }
         }
-        tester = false; 
+        return count;
     }
-    public static int CountVowel(String phase){
-        if(tester == true)
+    public static int CountVowel(String phrase){
+        phrase = mover_phrase;
+        return count;
     }
     public static void main(String[] args) {
-        
+        Scanner in = new Scanner (System.in);
+        System.out.print("Enter a phrase: ");
+        String input_phrase = in.nextLine();
+
+        int answer = isVowel(input_phrase);
+        System.out.print(answer);
+
+
     }
 }
