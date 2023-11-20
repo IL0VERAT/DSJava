@@ -12,11 +12,17 @@ public class ComparingNums{
 
     }
     public static String whoIfFirst(String section1, String sectrion2){
-
+        
     }
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
+
         System.out.print("Enter a string of numbers: ");
-        String number = in.nextLine();
+        String number1 = in.nextLine();
+        System.out.println("Enter another string of numbers: ");
+        String number2 = in.nextLine();
+
+        number1 = leadingNumber(number1);
+
     }
 }
