@@ -8,7 +8,7 @@ public class PartA{
       String name = in.next(); //change the variable to a more informative name that is unique
       System.out.println("Hello, " + name);
       System.out.print("How old are you? ");
-      int age = in.nextInt(); //chnage the variable here as well. 
+      int age = in.nextInt(); //change the variable here as well. 
       age++;
       System.out.println("Next year, you will be " + age);
 
