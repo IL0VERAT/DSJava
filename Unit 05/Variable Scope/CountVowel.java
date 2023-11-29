@@ -1,18 +1,21 @@
 import java.util.Scanner;
 public class CountVowel {
-    static int count;
-    static String mover_phrase;
-    public static int isVowel(String mover_phrase){
-        for (int i = 0; i <= mover_phrase.length();i++){
-            char ch = mover_phrase.charAt(i);
-            if(ch == 'a'|| ch == 'e'|| ch == 'i' ||ch == 'o' ||ch == 'u'||ch == ' '){
-                count ++;
+    public static boolean isVowel(char c){
+        if (c == 'a'||c == 'e'||c == 'i'||c == 'o'||c == 'u'){
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public static int countVowel(String phrase){
+        int count = 0;
+        int l = phrase.length();
+
+        for (int i = 0; i < l; i++){
+            if (isVowel(phrase.toLowerCase().charAt(i))) {
+                count++;
             }
         }
-        return count;
-    }
-    public static int CountVowel(String phrase){
-        phrase = mover_phrase;
         return count;
     }
     public static void main(String[] args) {
@@ -20,9 +23,7 @@ public class CountVowel {
         System.out.print("Enter a phrase: ");
         String input_phrase = in.nextLine();
 
-        int answer = isVowel(input_phrase);
-        System.out.print(answer);
-
-
+        int answer = countVowel(input_phrase);
+        System.out.println("num of vowels = " + answer);
     }
 }
