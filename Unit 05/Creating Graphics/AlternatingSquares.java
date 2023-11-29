@@ -2,17 +2,37 @@ import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.*;
 
-public class GraphicsTemplate {
+public class AlternatingSquares {
+    public static Color flipColor(Color origColor){
+        if(origColor == Color.RED){
+            return Color.BLUE;
+        } else {
+            return Color.RED;
+        }
+    }
     /*
      * Change the following method to customize
      * what is drawn in the JFrame.
      */
     public static void draw(Graphics g) {
         // by default, this method draws a blue square.
-        g.setColor(Color.BLUE);
-        g.fillRect(0, 0, 100, 100);
-        g.setColor(Color.RED);
-        g.drawOval(49, 49, 100, 100);
+        Color c = Color.BLUE;
+
+        int plotX = 0;
+        int plotY = 0;
+        final int SQUARE_LENTH = 100;
+        for(int i = 0; i < 4; i++){
+            g.setColor(c);
+
+            plotX = i * SQUARE_LENTH;
+            plotY = 0;
+
+            g.fillRect(plotX, plotY, SQUARE_LENTH, SQUARE_LENTH);
+
+            c = flipColor(c);
+
+        }
+        
     }
 
     public static enum OS {
