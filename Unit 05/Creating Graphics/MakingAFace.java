@@ -2,17 +2,27 @@ import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.*;
 
-public class GraphicsTemplate {
+public class MakingAFace {
     /*
      * Change the following method to customize
      * what is drawn in the JFrame.
      */
-    public static void draw(Graphics g) {
-        // by default, this method draws a blue square.
-        g.setColor(Color.BLUE);
-        g.fillRect(0, 0, 100, 100);
-        g.setColor(Color.RED);
-        g.drawOval(49, 49, 100, 100);
+    public static void draw(Graphics g){ 
+
+        //sets the color to yellow 
+        g.setColor(Color.YELLOW);
+        g.fillOval(1,1,398,398);//creates yellow circle (filled)
+
+        //sets color to black
+        g.setColor(Color.BLACK);
+        g.drawOval(0, 0, 400, 400); //creates black circle (NOT filled)
+
+        //creates two black circles of the same proportions
+        g.fillOval(85,85,50,50); 
+        g.fillOval(265,85,50,50);
+
+        //creates black line
+        g.drawLine(55,300, 345,300);
     }
 
     public static enum OS {
