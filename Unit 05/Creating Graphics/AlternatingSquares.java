@@ -33,6 +33,7 @@ public class AlternatingSquares {
 
         }
         
+        
     }
 
     public static enum OS {
