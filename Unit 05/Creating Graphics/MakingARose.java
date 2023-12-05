@@ -7,24 +7,26 @@ public class MakingARose {
      * Change the following method to customize
      * what is drawn in the JFrame.
      */
+    //method used to create image
     public static void draw(Graphics g) {
-        final double STEPS = 1000.0;
-        final double SCALE = 150.0;
+        final double STEPS = 10000.0; //changable number of points for the image
+        final double SCALE = 150.0; //factor to enlarge the image so it is visible
 
-    for(int i = 0; i < STEPS; i++){
+    for(int i = 0; i < STEPS; i++){ //loops to program for as many STEPS
 
-        double findingTheta = ((2.0 * Math.PI)/STEPS)*i;
+        double findingTheta = ((2.0 * Math.PI)/STEPS)*i; //finds theta, a variable that will be used in future calculations
 
-        double r = Math.cos(2.0*findingTheta);
+        double r = Math.cos(2.0*findingTheta); //finds r, also another variable to be used later
 
-        double findingX = SCALE * r * Math.cos(findingTheta);
+        double findingX = SCALE * r * Math.cos(findingTheta); //finds X, which will eventually be used to plot X cords. in image 
 
-        double findingY = SCALE * r * Math.sin(findingTheta);
+        double findingY = SCALE * r * Math.sin(findingTheta); //finds Y, which will eventually be used to plot Y cords. in image 
 
-        int plotX = (int)findingX;
+        //casts the X and Y to integers to then plot them
+        int plotX = (int)findingX; 
         int plotY = (int)findingY;
 
-        g.fillRect(plotX + 199, plotY + 199, 1, 1);
+        g.fillRect(plotX + 199, plotY + 199, 1, 1); //actually creates point positions
         
         }
     }
