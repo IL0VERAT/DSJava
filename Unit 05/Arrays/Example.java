@@ -17,15 +17,15 @@ public class Example{
             }
         }
             //after all data collections, PRINT!(mark the largest)
+            int largestNumber = values[indexLargest];
             for(int i = 0; i < values.length; i++){
                 System.out.print(values[i]);
-                if(i == indexLargest){
+                if(values[i] == values[indexLargest]){
                     System.out.println(" <= largest");
                 } else {
                     System.out.println();
                 }
             }
-        
 
     }
 }
