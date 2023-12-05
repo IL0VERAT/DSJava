@@ -3,13 +3,14 @@ import java.awt.Graphics;
 import javax.swing.*;
 
 public class AlternatingSquares {
-    public static Color flipColor(Color origColor){
-        if(origColor == Color.RED){
+    public static Color flipColor(Color origColor) {
+        if (origColor == Color.RED) {
             return Color.BLUE;
         } else {
             return Color.RED;
         }
     }
+
     /*
      * Change the following method to customize
      * what is drawn in the JFrame.
@@ -21,19 +22,25 @@ public class AlternatingSquares {
         int plotX = 0;
         int plotY = 0;
         final int SQUARE_LENTH = 100;
-        for(int i = 0; i < 4; i++){
-            g.setColor(c);
+        for (int j = 0; j < 4; j++) {
+            if (j%2 == 0){
+                c = Color.BLUE;
+            }else{
+                c = Color.RED; 
+                }
+            for (int i = 0; i < 4; i++) {
+                g.setColor(c);
 
-            plotX = i * SQUARE_LENTH;
-            plotY = 0;
+                plotX = i * SQUARE_LENTH;
+                plotY = j * SQUARE_LENTH;
 
-            g.fillRect(plotX, plotY, SQUARE_LENTH, SQUARE_LENTH);
+                g.fillRect(plotX, plotY, SQUARE_LENTH, SQUARE_LENTH);
 
-            c = flipColor(c);
+                c = flipColor(c);
 
+            } 
         }
-        
-        
+
     }
 
     public static enum OS {
