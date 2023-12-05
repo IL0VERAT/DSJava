@@ -8,18 +8,22 @@ public class MakingARose {
      * what is drawn in the JFrame.
      */
     public static void draw(Graphics g) {
-        
     for(int i = 0; i < 1000; i++){
-        final double STEPS = 1000.00;
+        final double STEPS = 1000.0;
+        final double SCALE = 150.0;
         
         double findingTheta = (2.0 * Math.PI)/STEPS;
         
         double r = Math.cos(2.0*findingTheta);
 
-        double findingX = r * Math.cos(findingTheta);
+        double findingX = SCALE * r * Math.cos(findingTheta);
 
-        double findingY = r * Math.sin(findingTheta);
+        double findingY = SCALE * r * Math.sin(findingTheta);
 
+        int plotX = (int)findingX;
+        int plotY = (int)findingY;
+
+        g.fillRect(plotX + 150, plotY + 150, 1, 1);
         
         }
     }
