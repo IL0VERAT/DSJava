@@ -2,9 +2,11 @@ import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.*;
 
+
 public class AlternatingSquares {
+    //custom method to flip the colors
     public static Color flipColor(Color origColor) {
-        if (origColor == Color.RED) {
+        if (origColor == Color.RED) { //checks to see what color it is currently and flips it if needed
             return Color.BLUE;
         } else {
             return Color.RED;
@@ -16,25 +18,26 @@ public class AlternatingSquares {
      * what is drawn in the JFrame.
      */
     public static void draw(Graphics g) {
-        // by default, this method draws a blue square.
-        Color c = Color.BLUE;
+        // by default, this method draws a tile board.
+        
+        Color c = Color.BLUE;//sets the color to start as blue
 
-        int plotX = 0;
-        int plotY = 0;
-        final int SQUARE_LENTH = 100;
-        for (int j = 0; j < 4; j++) {
-            if (j%2 == 0){
+        int plotX = 0; //variable used to track X
+        int plotY = 0; //variable used to track Y
+        final int SQUARE_LENTH = 100; //final variable to track square length
+        for (int j = 0; j < 4; j++) {//loop that determines when to move down lines
+            if (j%2 == 0){ //flips color after lines
                 c = Color.BLUE;
             }else{
                 c = Color.RED; 
                 }
-            for (int i = 0; i < 4; i++) {
+            for (int i = 0; i < 4; i++) { //loop to flip colors in the current line and change positioning
                 g.setColor(c);
 
-                plotX = i * SQUARE_LENTH;
-                plotY = j * SQUARE_LENTH;
+                plotX = i * SQUARE_LENTH; //finds value of X
+                plotY = j * SQUARE_LENTH; //finds value of Y
 
-                g.fillRect(plotX, plotY, SQUARE_LENTH, SQUARE_LENTH);
+                g.fillRect(plotX, plotY, SQUARE_LENTH, SQUARE_LENTH); //actually plots out the square
 
                 c = flipColor(c);
 
