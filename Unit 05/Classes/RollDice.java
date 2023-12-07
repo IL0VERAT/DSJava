@@ -3,8 +3,8 @@ class Die{
     //member variables
     private int value; // the value of the die that's is facing up
     private int numTimes;
-    int max = 6; 
-    int min = 1;
+    private int max = 6; 
+    private int min = 1;
     private int randomVal;
 
     //constructor for setting initial amount
@@ -72,6 +72,7 @@ class Die{
                         "|o o|%n" + //
                         "|o o|%n" + //
                         "-----");
+            
             }
     }
 }
