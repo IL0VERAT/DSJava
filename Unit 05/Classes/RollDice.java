@@ -30,7 +30,6 @@ class Die{
     public void display(){
         System.out.println("The inital values was "+ value);
         value  = randomVal;
-    for(int i = 0; i < numTimes; i++){
         randomVal = (int)Math.floor(Math.random() * (max - min + 1) + min);
         if(randomVal == 1){  
                 System.out.printf("-----%n" + 
@@ -74,9 +73,9 @@ class Die{
                         "|o o|%n" + //
                         "-----");
             }
-        }
     }
 }
+
 public class RollDice{
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
