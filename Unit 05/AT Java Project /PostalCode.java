@@ -15,7 +15,12 @@ public class PostalCode{
         };
         return barTransformer;
     }
+
+    public static int getCheckDigit(int zipcode){
+       int workingNum = zipcode;
+       
+    }
     public static void main(String[]args){
-        System.out.print("Hello");
+
     }
 }
