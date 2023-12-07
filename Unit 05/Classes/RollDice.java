@@ -28,7 +28,7 @@ class Die{
         }
     }
     public void Roll(){
-         int value = (int)Math.floor(Math.random() * (max - min + 1) + min);
+        value = (int)Math.floor(Math.random() * (max - min + 1) + min);
 
     }
     public void display(){
@@ -85,11 +85,12 @@ public class RollDice{
         System.out.print("What should the inital value of the die be: ");
         int input = in.nextInt();
         Die die = new Die(input);
-        System.out.println("Heres the die with arguments");
+        System.out.printf("%nHeres the die with arguments%n");
         die.display();
         for(int i = 0; i < 3; i++){
         die.Roll();
-        System.out.println("Heres the rolled die.");
+        System.out.printf("%nHeres the rolled die.");
+        System.out.println("");
         die.display();
         System.out.println("");
         }
