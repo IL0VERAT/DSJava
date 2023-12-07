@@ -2,19 +2,19 @@ import java.util.Scanner;
 class Die{
     //member variables
     private int value; // the value of the die that's is facing up
-    private int numTimes;
-    private int max = 6; 
-    private int min = 1;
-    private int randomVal;
+    private int min = 1; 
+    private int max = 6;
 
     //constructor for setting initial amount
     public Die(int initialVal){
         //set value of die
         this.value = initialVal;
+
+        setValue(initialVal);
     }
 
     public Die(){
-        this.numTimes = 6; 
+        this.value = 1; 
     }
     //getter and setter method
     public int getValue(){
@@ -27,46 +27,47 @@ class Die{
         value = newValue;
         }
     }
+    public void Roll(){
+         int value = (int)Math.floor(Math.random() * (max - min + 1) + min);
+
+    }
     public void display(){
-        System.out.println("The inital values was "+ value);
-        value  = randomVal;
-        randomVal = (int)Math.floor(Math.random() * (max - min + 1) + min);
-        if(randomVal == 1){  
+        if(value == 1){  
                 System.out.printf("-----%n" + 
                         "|   |%n" + 
                         "| o |%n" + 
                         "|   |%n" + 
                         "-----");
             }
-            if(randomVal == 2){
+            if(value == 2){
                 System.out.printf("-----%n" + 
                         "|o  |%n" + 
                         "|   |%n" + 
                         "|  o|%n" + 
                         "-----");
             }
-            if(randomVal == 3){
+            if(value == 3){
                 System.out.printf("-----%n" + 
                         "|o  |%n" + 
                         "| o |%n" + 
                         "|  o|%n" + 
                         "-----");
             }
-            if(randomVal == 4){
+            if(value == 4){
                 System.out.printf("-----%n" + 
                         "|o o|%n" + 
                         "|   |%n" + 
                         "|o o|%n" + 
                         "-----");
             }
-            if(randomVal == 5){
+            if(value == 5){
                 System.out.printf("-----%n" + 
                         "|o o|%n" + 
                         "| o |%n" + 
                         "|o o|%n" + 
                         "-----");
             }
-            if(randomVal == 6){
+            if(value == 6){
                 System.out.printf("-----%n" + //
                         "|o o|%n" + //
                         "|o o|%n" + //
@@ -74,8 +75,9 @@ class Die{
                         "-----");
             
             }
+        }
     }
-}
+
 
 public class RollDice{
     public static void main(String[] args) {
@@ -83,6 +85,18 @@ public class RollDice{
         System.out.print("What should the inital value of the die be: ");
         int input = in.nextInt();
         Die die = new Die(input);
+        System.out.println("Heres the die with arguments");
         die.display();
+        for(int i = 0; i < 3; i++){
+        die.Roll();
+        System.out.println("Heres the rolled die.");
+        die.display();
+        System.out.println("");
+        }
+    
+        Die die2 = new Die();
+        System.out.println("");
+        System.out.println("Here's the die with no arguments.");
+        die2.display();
     }
 }
