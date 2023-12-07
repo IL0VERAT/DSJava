@@ -11,8 +11,13 @@ public class ComparingNums{
         return integerPartTruncate;
 
     }
-    public static String whoIfFirst(String section1, String sectrion2){
-        
+    public static String whoIfFirst(String section1, String section2){
+        String work1 = section1;
+        String work2 = section2;
+        int n1 = 0;
+        int n2 = 0;
+
+        String result; 
     }
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
