@@ -1,7 +1,8 @@
 import java.util.Scanner;
 public class PostalCode{
+    static String barTransformer;
     public static String getEncodedDigit(int d){
-        String barTransformer = switch(d) {
+        barTransformer = switch(d) {
             case 1 -> ":::||";
             case 2 -> "::|:|";
             case 3 -> "::||:";
@@ -35,20 +36,21 @@ public class PostalCode{
         if(answer < 4){
             sum = 10 - sum;
             checkDigit = Math.abs(answer - sum);
-
         } else {
             checkDigit = Math.abs(answer-sum);
         }
-        System.out.print(checkDigit);
         return answer;
-       
+    }
+    public static void printBarCode(int zipCode){
+        System.out.print(barTransformer);
     }
     public static void main(String[]args){
         PostalCode postalcode = new PostalCode();
         Scanner in = new Scanner (System.in);
         System.out.print("Enter a zipcode: ");
         int zip = in.nextInt();
-        PostalCode.getCheckDigit(zip);
+        PostalCode.getEncodedDigit(zip);
+        PostalCode.printBarCode(zip);
 
 
 
