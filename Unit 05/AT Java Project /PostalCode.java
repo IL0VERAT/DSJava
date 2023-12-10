@@ -1,8 +1,11 @@
 import java.util.Scanner;
 public class PostalCode{
     static String barTransformer;
+    static String builder;
+    static String temp;
     public static String getEncodedDigit(int d){
-        barTransformer = switch(d) {
+        for(int j = 10000; j > 0; j = j/10){
+        barTransformer = switch(d%j) {
             case 1 -> ":::||";
             case 2 -> "::|:|";
             case 3 -> "::||:";
@@ -13,9 +16,14 @@ public class PostalCode{
             case 8 -> "|::|:";
             case 9 -> "|:|::";
             case 0 -> "||:::";
-            default -> "XXXXX";
-        };
-        return barTransformer;
+
+            default -> "ERROR";
+            };
+            String temp = barTransformer;
+            builder = barTransformer + temp;
+            
+        }
+        return builder;
     }
 
     public static int getCheckDigit(int zipcode){
@@ -42,7 +50,7 @@ public class PostalCode{
         return answer;
     }
     public static void printBarCode(int zipCode){
-        System.out.print(barTransformer);
+        System.out.print(builder);
     }
     public static void main(String[]args){
         PostalCode postalcode = new PostalCode();
@@ -51,8 +59,6 @@ public class PostalCode{
         int zip = in.nextInt();
         PostalCode.getEncodedDigit(zip);
         PostalCode.printBarCode(zip);
-
-
 
     }
 }
