@@ -1,11 +1,14 @@
 import java.util.Scanner;
 public class PostalCode{
     static String barTransformer;
-    static String builder;
-    static String temp;
     public static String getEncodedDigit(int d){
-        for(int j = 10000; j > 0; j = j/10){
-        barTransformer = switch(d%j) {
+        int ones = d%10;
+        int tens = d%100 - ones;
+        int hundreds = d%1000 - tens - ones;
+        int thousands = d%10000 - hundreds-tens-ones;
+        int ten_thousands = d%100000 - thousands-hundreds-tens-ones;
+        int[]zipArray = {ten_thousands,thousands,hundreds,tens,ones};
+        barTransformer = switch(d) {
             case 1 -> ":::||";
             case 2 -> "::|:|";
             case 3 -> "::||:";
@@ -18,12 +21,8 @@ public class PostalCode{
             case 0 -> "||:::";
 
             default -> "ERROR";
-            };
-            String temp = barTransformer;
-            builder = barTransformer + temp;
-            
-        }
-        return builder;
+            };        
+        return barTransformer;
     }
 
     public static int getCheckDigit(int zipcode){
@@ -50,7 +49,7 @@ public class PostalCode{
         return answer;
     }
     public static void printBarCode(int zipCode){
-        System.out.print(builder);
+        System.out.print(barTransformer);
     }
     public static void main(String[]args){
         PostalCode postalcode = new PostalCode();
