@@ -17,8 +17,11 @@ public class PostalCode{
     }
 
     public static int getCheckDigit(int zipcode){
-       int workingNum = zipcode;
-       
+        int sum,digit,number = 0;
+        int workingNum = zipcode;
+        while(workingNum > 0){
+            
+        }
     }
     public static void main(String[]args){
 
