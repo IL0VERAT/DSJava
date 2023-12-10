@@ -37,7 +37,7 @@ public class PostalCode{
             checkDigit = Math.abs(answer - sum);
 
         } else {
-            checkDigit = answer-sum;
+            checkDigit = Math.abs(answer-sum);
         }
         System.out.print(checkDigit);
         return answer;
