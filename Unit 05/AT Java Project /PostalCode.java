@@ -26,12 +26,19 @@ public class PostalCode{
             sum = sum + digit;
             workingNum = workingNum/10;
         }
+
         int a = (sum / 10) * 10; 
         int b = a + 10;
         int answer = (sum - a > b - sum)? b : a;
         
-        int checkDigit = Math.abs(answer - sum);
+        int checkDigit; 
+        if(answer < 4){
+            sum = 10 - sum;
+            checkDigit = Math.abs(answer - sum);
 
+        } else {
+            checkDigit = answer-sum;
+        }
         System.out.print(checkDigit);
         return answer;
        
