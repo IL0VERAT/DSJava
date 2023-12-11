@@ -13,10 +13,19 @@ public class ComparingNums2 {
         return truncator;
     }
     public static void whoIsFirst(String section1, String section2){
-        ComparingNums2.leadingNumber(section1);
-        ComparingNums2.truncateSection(section1);
-        ComparingNums2.leadingNumber(section2);
+        int work1 = ComparingNums2.leadingNumber(section1);
+        int work2 = ComparingNums2.leadingNumber(section2);
         ComparingNums2.truncateSection(section2);
+
+        if(work1 > work2){
+            System.out.print(section1 +" is the bigger number");
+        } else if(work2 > work1){
+            System.out.print(section2 +" is the bigger number");
+        } else {
+            
+        }
+
+    
     }
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
