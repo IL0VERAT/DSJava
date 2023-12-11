@@ -13,17 +13,28 @@ public class ComparingNums2 {
         return truncator;
     }
     public static void whoIsFirst(String section1, String section2){
-        int work1 = ComparingNums2.leadingNumber(section1);
-        int work2 = ComparingNums2.leadingNumber(section2);
-        ComparingNums2.truncateSection(section2);
+        int leadWork1 = ComparingNums2.leadingNumber(section1);
+        int leadWork2 = ComparingNums2.leadingNumber(section2);
+        String truncateWork1 = ComparingNums2.truncateSection(section1);
+        String truncateWork2 = ComparingNums2.truncateSection(section2);
+        boolean breaker = true;
 
-        if(work1 > work2){
-            System.out.print(section1 +" is the bigger number");
-        } else if(work2 > work1){
-            System.out.print(section2 +" is the bigger number");
-        } else {
-            
+    while(breaker == true){
+        if(leadWork1 == leadWork2){
+            System.out.print("They are the same.");
+            breaker = false;
         }
+        if(leadWork1 > leadWork2){
+            System.out.print(section1 +" is the bigger number.");
+            breaker = false;
+        } else if(leadWork2 > leadWork1){
+            System.out.print(section2 +" is the bigger number.");
+            breaker = false;
+        } else {
+            leadWork1 = ComparingNums2.leadingNumber(truncateWork1);
+            leadWork2 = ComparingNums2.leadingNumber(truncateWork2);
+        }
+    }
 
     
     }
@@ -34,5 +45,7 @@ public class ComparingNums2 {
         String section1 = in.nextLine();
         System.out.print("Enter another  number: ");
         String section2 = in.nextLine();
+
+        ComparingNums2.whoIsFirst(section1, section2);
     }
 }
