@@ -20,10 +20,6 @@ public class ComparingNums2 {
         boolean breaker = true;
 
     while(breaker == true){
-        if(leadWork1 == leadWork2){
-            System.out.print("They are the same.");
-            breaker = false;
-        }
         if(leadWork1 > leadWork2){
             System.out.print(section1 +" is the bigger number.");
             breaker = false;
