@@ -1,6 +1,9 @@
+//Coder: Milo Linn-Boggs Date: 12 Dec. 2023
 import java.util.Scanner;
 public class ComparingNums2 {
     public static String truncator;
+
+    //method to isolate the leading number of a string of numbers
     public static int leadingNumber(String section){
         int i;
         int n = 0;
@@ -13,6 +16,8 @@ public class ComparingNums2 {
         }
         return n;
     }
+
+    //method to isolate the section of the number string after the leading number
     public static String truncateSection(String section){
         int i = section.indexOf(".");
         if(i >= 0){
@@ -22,19 +27,19 @@ public class ComparingNums2 {
         }
         return truncator;
     }
+
+    //determines which number is smaller; 
     public static void whoIsFirst(String section1, String section2){
-        int i;
         String truncateWork1 = section1;
         String truncateWork2 = section2;
-        boolean breaker = true;
 
-    while(breaker == true){
+    while(true){
         if(truncateWork1.length() == 0){
-            System.out.print(section2 + "is bigger");
-            breaker = false;
+            System.out.print(section1 + " is the smaller number.");
+            break;
         } else if(truncateWork2.length() == 0){
-            System.out.print(section1 + "is bigger");
-            breaker = false;
+            System.out.print(section2 + " is the smaller number.");
+            break;
         }
     
         int leadWork1 = ComparingNums2.leadingNumber(truncateWork1);
@@ -43,24 +48,27 @@ public class ComparingNums2 {
         truncateWork2 = ComparingNums2.truncateSection(truncateWork2);
 
         if(leadWork1 > leadWork2){
-            System.out.print(section1 +" is the bigger number.");
-            breaker = false;
+            System.out.print(section2 +" is the smaller number.");
+            break;
         } else if(leadWork2 > leadWork1){
-            System.out.print(section2 +" is the bigger number.");
-            breaker = false;
+            System.out.print(section1 +" is the smaller number.");
+            break;
         } 
     }
 
     
     }
+    //main method
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         
-        System.out.print("Enter a number: ");
+        //asks user to input two numbers
+        System.out.print("Enter a number: "); 
         String section1 = in.nextLine();
         System.out.print("Enter another  number: ");
         String section2 = in.nextLine();
 
+        //uses user input and sends it to function to determine which number is bigger
         ComparingNums2.whoIsFirst(section1, section2);
     }
 }
