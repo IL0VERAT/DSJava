@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Arrays;
 public class NumericalOrder {
     public static void main(String[] args) {
     Scanner in  = new Scanner(System.in);
@@ -36,7 +37,10 @@ public class NumericalOrder {
             System.out.print(values[i]);
             System.out.print("*");
         }
+        int[] copyed = Arrays.copyOf(values, values.length);
+        Arrays.sort(copyed);
     }
+
 
 }
 }
