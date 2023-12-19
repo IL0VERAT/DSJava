@@ -45,7 +45,7 @@ public class SearchComparison {
     }
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        final int numRandomNumbers = 10000000; //eventually switch to user input
+        final int numRandomNumbers = 10000000;
         int max = numRandomNumbers;
         int min = 1;
         int[]randArray = new int[numRandomNumbers];
