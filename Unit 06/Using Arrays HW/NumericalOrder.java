@@ -34,11 +34,10 @@ public class NumericalOrder {
     if(doLoop == false){
         for(int i = 0; i < fillRate; i++){
             System.out.print(values[i]);
-            System.out.print("*");
+            System.out.print("*"); //make sure to create * at end
         }
-            Arrays.sort(values);   
-        for(int j = fillRate - 1; j >= 0; j--){
-            System.out.print("TEST " + j);
+        Arrays.sort(values);   
+        for(int j = values.length - 1; j > 9; j--){
             System.out.print(values[j] + ",");
     }
     }
