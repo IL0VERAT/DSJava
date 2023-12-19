@@ -16,6 +16,8 @@ public class SearchNum {
 
         if(in.hasNext("q")|| in.hasNext("Q")){
             doLoop = false;
+            //skip over the q
+            in.next();
 
         } else if (in.hasNextDouble()) {
             //check if theres space in array
@@ -36,12 +38,12 @@ public class SearchNum {
     if (doLoop == false){
         System.out.print("What number would you like to search for? ");
         userNumSearch = in.nextInt();
-        for(int i = 0; i > fillRate; i++){
+        for(int i = 0; i < fillRate; i++){
             if(values[i] == userNumSearch){
                 numCounter++;
             }
        }
-       System.out.print(numCounter);
+       System.out.print("The number you searched for appeared " + numCounter + " times.");
     }
 }
 }
