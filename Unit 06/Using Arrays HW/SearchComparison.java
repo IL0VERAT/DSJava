@@ -6,29 +6,41 @@ public class SearchComparison {
         int pos = 0;
         boolean found = false;
         long start = System.currentTimeMillis(); 
+        long end; 
         while (pos < array.length && !found) {
             if (array[pos] == searchedValue) {
-                System.out.print("The number " + searchedValue + " was found in the array.");
+                end =  System.currentTimeMillis() - start;
+                System.out.println("LINEAR: The number " + searchedValue + " was found in the array.");
+                System.out.println(end);
                 found = true;
             } else {
                 pos++;
             }
         }
+        if(found == false){
+            System.out.println("Number not found in random array.");
+        }
     }
 
     public static void binarySearch(int[] array, int tgtVal){
         Arrays.sort(array);
+        long startBinary = System.currentTimeMillis(); 
+        long endBinary; 
         int index = Arrays.binarySearch(array, tgtVal);
         if (index >= 0) {
-            System.out.println("The number " + tgtVal + " was found in the array.");
+            endBinary = System.currentTimeMillis() - startBinary;
+            System.out.println("BINARY: The number " + tgtVal + " was found in the array.");
+            System.out.println(endBinary);
+        } else {
+            System.out.println("Number not found in random array.");
         }
 
     }
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        int max = 10000;
+        final int numRandomNumbers = 10000000; //eventually switch to user input
+        int max = numRandomNumbers;
         int min = 1;
-        final int numRandomNumbers = 10000; //eventually switch to user input
         int[]randArray = new int[numRandomNumbers];
 
         System.out.print("Enter a variable to search for: ");
