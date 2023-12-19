@@ -27,7 +27,6 @@ public class NumericalOrder {
         } else {
             //user put in erroneous input
             System.out.print("INVALID INPUT: ONLY INTEGER VALUES OR Q TO QUIT");
-
             //skip over non double value
             in.next();
         }
@@ -37,9 +36,13 @@ public class NumericalOrder {
             System.out.print(values[i]);
             System.out.print("*");
         }
-        int[] copyed = Arrays.copyOf(values, values.length);
-        Arrays.sort(copyed);
+            Arrays.sort(values);   
+        for(int j = fillRate - 1; j >= 0; j--){
+            System.out.print("TEST " + j);
+            System.out.print(values[j] + ",");
     }
+    }
+    
 
 
 }
