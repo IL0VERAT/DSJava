@@ -32,14 +32,18 @@ public class NumericalOrder {
         }
     }
     if(doLoop == false){
+        System.out.print("*");
         for(int i = 0; i < fillRate; i++){
-            System.out.print(values[i]);
-            System.out.print("*"); //make sure to create * at end
+            System.out.print(values[i] + "*");
         }
-        Arrays.sort(values);   
-        for(int j = values.length - 1; j > 9; j--){
-            System.out.print(values[j] + ",");
-    }
+        Arrays.sort(values, 0, fillRate);  
+        System.out.println(""); 
+        for(int j = fillRate; j > 0; j--){
+            System.out.print(values[j - 1]);
+            if(j > 1){
+                System.out.print(",");
+            }
+        }
     }
     
 
