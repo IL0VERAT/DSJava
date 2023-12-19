@@ -2,16 +2,19 @@ import java.util.Scanner;
 import java.util.Arrays;
 public class SearchComparison {
     public static void linearSearch(int[] array, int tgtVal){
+        System.out.println("");
+        System.out.println("LINEAR SEARCH: ");
         int searchedValue = tgtVal;
         int pos = 0;
         boolean found = false;
-        long start = System.currentTimeMillis(); 
-        long end; 
+        long startLinear = System.currentTimeMillis(); 
+        long endLinear; 
         while (pos < array.length && !found) {
             if (array[pos] == searchedValue) {
-                end =  System.currentTimeMillis() - start;
-                System.out.println("LINEAR: The number " + searchedValue + " was found in the array.");
-                System.out.println(end);
+                endLinear =  System.currentTimeMillis() - startLinear;
+                System.out.println("The number " + searchedValue + " was found in the array.");
+                System.out.println("Time to find number: " + endLinear);
+                System.out.println("");
                 found = true;
             } else {
                 pos++;
@@ -19,10 +22,12 @@ public class SearchComparison {
         }
         if(found == false){
             System.out.println("Number not found in random array.");
+            System.out.println("");
         }
     }
 
     public static void binarySearch(int[] array, int tgtVal){
+        System.out.println("BINARY SEARCH: ");
         Arrays.sort(array);
         long startBinary = System.currentTimeMillis(); 
         long endBinary; 
@@ -30,9 +35,11 @@ public class SearchComparison {
         if (index >= 0) {
             endBinary = System.currentTimeMillis() - startBinary;
             System.out.println("BINARY: The number " + tgtVal + " was found in the array.");
-            System.out.println(endBinary);
+            System.out.println("Time to find number: " + endBinary);
+            System.out.println("");
         } else {
             System.out.println("Number not found in random array.");
+            System.out.println("");
         }
 
     }
