@@ -2,7 +2,7 @@ import java.util.Scanner;
 public class ScoreDrop {
     static double least = 0;
 
-    public static void dropper(double testArrays){
+    public static void dropper(double[] testArrays){
         
     }
 
