@@ -36,7 +36,7 @@ public class ScoreDrop {
 
             //eliminates the lowest score if user inputs y or Y
             if(in.hasNext("y")||in.hasNext("Y")){
-
+                ScoreDrop.dropper(testValues);
             }
 
             //assigns the user input to the corresponding place in the array
@@ -50,6 +50,8 @@ public class ScoreDrop {
             }
             break;
         }
-        ScoreDrop.dropper(testValues);
+        for (int i = 0; i < currentSize; i++) {
+            System.out.println(testValues[i]);
+            }
     }
 }
