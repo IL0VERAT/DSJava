@@ -39,7 +39,10 @@ public class ScoreDrop {
             
             //stops program if user inputs q or Q
             if(in.hasNext("q")||in.hasNext("Q")){
-                break;
+                for (int j = 0; j < currentSize; j++) {
+            System.out.println(testValues[j]);
+            }
+            break;
             }
 
             //eliminates the lowest score if user inputs y or Y
@@ -54,8 +57,6 @@ public class ScoreDrop {
             }
             break;
         }
-        for (int i = 0; i < currentSize; i++) {
-            System.out.println(testValues[i]);
-            }
+
     }
 }
