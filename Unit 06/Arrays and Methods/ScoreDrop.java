@@ -7,15 +7,17 @@ public class ScoreDrop {
         double searchedValue = least;
         int pos = 0;
         boolean found = false;
+        
         while (pos < testArrays.length && !found) {
             if (testArrays[pos] == searchedValue) {
+                testArrays[pos] = testArrays[currentSize - 1];
+                currentSize--;
                 found = true;
             } else {
                 pos++;
             }
         }
-        testArrays[pos] = testArrays[currentSize - 1];
-        currentSize--;
+
         for (int i = 0; i < currentSize; i++) {
             System.out.println(testArrays[i]);
             }
