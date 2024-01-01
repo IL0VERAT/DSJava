@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.util.Arrays;
 public class ScoreDrop {
     static double least = 0;
     static int currentSize = 0;
@@ -17,7 +16,9 @@ public class ScoreDrop {
         }
         testArrays[pos] = testArrays[currentSize - 1];
         currentSize--;
-        System.out.println(Arrays.toString(testArrays));
+        for (int i = 0; i < currentSize; i++) {
+            System.out.println(testArrays[i]);
+            }
     }
 
     public static void main(String[] args) {
@@ -27,7 +28,12 @@ public class ScoreDrop {
         for(int i = 0; i < testValues.length; i++){
 
             //asks the user for test scores
-            System.out.print("Enter a test score (enter q to quit or y to drop the lowest test score)");
+            System.out.print("Enter a test score (enter q to quit or y to drop the lowest test score): ");
+            
+            //checks to see what the smallest test score is
+            if(testValues[i] < least){
+                least = testValues[i];
+            } 
             
             //stops program if user inputs q or Q
             if(in.hasNext("q")||in.hasNext("Q")){
@@ -36,17 +42,13 @@ public class ScoreDrop {
 
             //eliminates the lowest score if user inputs y or Y
             if(in.hasNext("y")||in.hasNext("Y")){
+                in.next();
                 ScoreDrop.dropper(testValues);
             }
 
             //assigns the user input to the corresponding place in the array
             testValues[i] = in.nextDouble();
             currentSize++;
-
-            //checks to see what the smallest test score is
-            if(testValues[i] < least){
-                least = testValues[i];
-            } 
             }
             break;
         }
