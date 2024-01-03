@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class ScoreDrop {
-    static double least = 1000;
+    static double least = Double.POSITIVE_INFINITY ;
     static int currentSize = 0;
 
     public static void dropper(double[] testArrays) {
