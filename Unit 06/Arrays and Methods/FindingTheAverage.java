@@ -1,11 +1,14 @@
+import java.util.Arrays;
 import java.util.Scanner;
 public class FindingTheAverage {
     public static void findAverage (int currentSize, double[] valueArray){
-        int sum = 0;
+        double[] copyValue = Arrays.copyOf(valueArray, valueArray.length);
+        double sum = 0;
         for(int i = 0; i < currentSize; i++){
-            sum += valueArray[i];
+            sum += copyValue[i];
         }
-        System.out.println(sum/currentSize);
+        double total = sum/currentSize;
+        System.out.printf("%nThe average of the inputted numbers is %.2f.", total);
     }
     public static void main(String[] args) {
         Scanner in = new Scanner (System.in);
@@ -13,11 +16,12 @@ public class FindingTheAverage {
         int currentSize = 0;
         double [] values = new double [numValues];
         for(int i = 0; i < numValues; i++){
-            System.out.print("Enter a random double values or q to quit.");
+            System.out.print("Enter a random double values or q to quit: ");
 
             if(in.hasNext("q")||in.hasNext("Q")){
                 in.next();
                 FindingTheAverage.findAverage(currentSize, values);
+                break;
             } else { 
                 values[i] = in.nextDouble();
                 currentSize++;
