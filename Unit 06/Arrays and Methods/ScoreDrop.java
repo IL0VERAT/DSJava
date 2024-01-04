@@ -2,8 +2,7 @@
 import java.util.Scanner;
 public class ScoreDrop {
     static double least = Double.POSITIVE_INFINITY ;
-    static int currentSize = 0;
-
+    
     //method to drop the lowest test score
     public static void dropper(double[] testArrays, int currentSize) {
         double searchedValue = least;
@@ -32,6 +31,7 @@ public class ScoreDrop {
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
+        int currentSize = 0;
         double[] testValues = new double[25];
         while (true) {
             for (int i = 0; i < testValues.length; i++) {
