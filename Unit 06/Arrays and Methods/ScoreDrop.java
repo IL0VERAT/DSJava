@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 public class ScoreDrop {
     static double least = Double.POSITIVE_INFINITY ;
     static int currentSize = 0;
@@ -9,7 +8,7 @@ public class ScoreDrop {
         int pos = 0;
         boolean found = false;
 
-        // KEEP ORDER - DO BEFORE SUBMISSION!!!
+
         while (pos < testArrays.length && !found) {
             if (testArrays[pos] == searchedValue) {
                 testArrays[pos] = testArrays[currentSize - 1];
@@ -48,7 +47,6 @@ public class ScoreDrop {
                 currentSize++;
 
                 // checks to see what the smallest test score is
-                //SET FLAG 
                 if (testValues[i] < least) {
                     least = testValues[i];
                 }
@@ -59,6 +57,8 @@ public class ScoreDrop {
         String yesNo = in.next();
         if (yesNo.equals("y") || yesNo.equals("Y")) {
             ScoreDrop.dropper(testValues);
+        } else {
+            System.out.print("");
         }
 
     }

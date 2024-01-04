@@ -1,9 +1,11 @@
 import java.util.Scanner;
 public class FindingTheAverage {
     public static void findAverage (int currentSize, double[] valueArray){
+        int sum = 0;
         for(int i = 0; i < currentSize; i++){
-            value[]
+            sum += valueArray[i];
         }
+        System.out.println(sum);
     }
     public static void main(String[] args) {
         Scanner in = new Scanner (System.in);
@@ -19,13 +21,10 @@ public class FindingTheAverage {
             } else {
                 values[i] = in.nextDouble();
                 currentSize++;
-            }  
+            } 
+            break; 
         }
-
-        System.out.println("The program will now average the inputted values and print the result.");
-
-        FindingTheAverage.findAverage(currentSize, values);
-
     }
+
 }
 }
