@@ -1,4 +1,7 @@
+//Coder: Milo Linn-Boggs Date: 8 Jan. 2024
 public class PartB {
+
+    //method to print out arrays with commas
     public static void print(int[][] chart){
         for (int row = 0; row < chart.length; row++) {
             for (int col = 0; col < chart[0].length; col++) {
@@ -13,6 +16,7 @@ public class PartB {
 
     }
     public static void main(String[] args) {
+        //first array is initialized and sent through the custom method
         int arrayOne[][] = {
             {8, 6, 7},
             {5, 3, 0}
@@ -20,6 +24,7 @@ public class PartB {
         System.out.println("First Array: ");
         PartB.print(arrayOne);
 
+         //second array is initialized and sent through the custom method
         int arrayTwo[][] = {
             {0, 7, 6, 5},
             {2, 2, 0, 1},
