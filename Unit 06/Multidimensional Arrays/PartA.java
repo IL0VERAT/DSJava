@@ -1,22 +1,18 @@
-public class PartA{
-    public static void main(String[] args) {
+//Commenter: Milo Linn-Boggs Date: 8 Jan. 2024
    
-    int[][]arrayOne = {
+    /*int[][]arrayOne = {
         {0, 0, 0},
         {0, 0, 0},
         {0, 0, 0},
         {0, 0, 0}
-    };
+    };*/
 
-    int[][]arrayTwo = {
+    /*int[][]arrayTwo = {
         {0, 0, 0, 0, 0},
         {0, 0, 0, 0, 0}
-    };
+    };*/
 
-    int[][]arrayThree = {
+    /*int[][]arrayThree = {
         {8, 6, 7},
         {5, 3, 0}
-    };
-
-    }
-}
+    };*/
