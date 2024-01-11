@@ -30,7 +30,7 @@ public class TempTracker {
                 break;
             } else {
                 Integer val = in.nextInt();
-                if(temps.size() < 1){
+                if (temps.size() < 1) {
                     least = val;
                 } else if (val < least) {
                     least = val;
