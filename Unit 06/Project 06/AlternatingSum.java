@@ -1,4 +1,4 @@
-//Coder: Milo Linn-Boggs Date: 16 Jan. 2023
+//Coder: Milo Linn-Boggs Date: 16 Jan. 2024
 import java.util.Scanner;
 import java.util.ArrayList;
 public class AlternatingSum {
