@@ -1,4 +1,4 @@
-//Coder: Milo Linn-Boggs Date: 11 Jan. 2023
+//Coder: Milo Linn-Boggs Date: 11 Jan. 2024
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -19,7 +19,6 @@ public class AddName {
                 names.add(in.nextLine());
             }
         }
-        
         //prints out the names in order
         System.out.println("NAMES: ");
         for(int i = 0; i < names.size(); i++){
