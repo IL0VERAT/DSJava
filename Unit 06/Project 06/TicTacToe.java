@@ -92,11 +92,11 @@ public class TicTacToe{
         Scanner in = new Scanner (System.in);
         int board[][] = new int [3][3];
         int turn = 0;
-        boolean breaker = false;
         TicTacToe.drawer(board);
-        while(breaker == false){
+        while(true){
             if(turn%2 == 0){
                 System.out.println("Player One's Turn (X). Please insert the coordinates of your point(row, column): ");
+                
                 //INSERT CHECK CODE TO ENSURE PROPERLY INPUTTED
                 //INPUT THE REFERENCE TO THE METHODS TO CHECK IF ANYONE ONE, IF THEY DID OR ITS A TIE, THEN BREAK
 
@@ -107,7 +107,7 @@ public class TicTacToe{
                 //INPUT THE REFERENCE TO THE METHODS TO CHECK IF ANYONE ONE, IF THEY DID OR ITS A TIE, THEN BREAK
             }
             turn++;
-            breaker = true;
+            cleaner();
         }
     }
 }
