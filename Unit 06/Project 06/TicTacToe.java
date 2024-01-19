@@ -1,6 +1,7 @@
 import java.util.Scanner;
 public class TicTacToe{
-    public static void drawer(int board[][]){
+    public static char board[][] = {{' ', ' ', ' '}, {' ', ' ', ' '}, {' ', ' ', ' '}};
+    public static void drawer(char board[][]){ //fill it with blanks or *
      System.out.println("|---|---|---|");
      System.out.println("| "+board[0][0]+" | "+board[0][1]+" | "+board[0][2]+" |");
      System.out.println("|-----------|");             
@@ -13,7 +14,8 @@ public class TicTacToe{
         System.out.print("\033[H\033[2J");  
         System.out.flush();
     }
-    public static void boardChecker(int board[][]){
+    public static void boardChecker(char board[][]){
+        //backup - check each row and column eqaul the same thing. Use & standments and loops
         int toprowX = 0;
         int toprowO = 0;
         int secondrowX = 0;
@@ -87,13 +89,38 @@ public class TicTacToe{
         } else {
             System.out.println("It's a tie!");
         }
+
+    }
+    public boolean placer(int row, int col, char key){
+        if(row < 0 || row > 2){
+            System.out.println("ERROR: Row input out of range");
+            return false;
+        } 
+
+        if(col < 0 || col > 2){
+            System.out.println("ERROR: Column input out of range");
+            return false;
+        }
+
+        if(board[row][col] == ' '){
+            board[row][col] = key;
+            return true;
+        }
+
+        return false;
     }
     public static void main(String[] args) {
         Scanner in = new Scanner (System.in);
-        int board[][] = new int [3][3];
         int turn = 0;
+        int row = 0;
         TicTacToe.drawer(board);
         while(true){
+            //clean screen and show board
+            //also include q to quit
+            //make sure to include a check boolean to see if successful move 
+            //make sure to keep track or playerrs and only toggle if successful move (at end)
+            //keep track of count to see if winner
+            //toggle players last
             if(turn%2 == 0){
                 System.out.println("Player One's Turn (X). Please insert the coordinates of your point(row, column): ");
                 
@@ -108,6 +135,7 @@ public class TicTacToe{
             }
             turn++;
             cleaner();
+            break; //double check 
         }
     }
 }
