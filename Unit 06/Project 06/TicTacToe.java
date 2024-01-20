@@ -20,9 +20,45 @@ public class TicTacToe {
     }
 
     public static void boardChecker(char board[][]) {
-        // backup - check each row and column eqaul the same thing. Use & standments and
-        // loops
-        
+        if (board[0][0] == 'X' && board[0][1] == 'X' && board[0][2] == 'X') {
+            System.out.println("Player One wins!");
+        } else if (board[1][0] == 'X' && board[1][1] == 'X' && board[1][2] == 'X') {
+            System.out.println("Player One wins!");
+        } else if (board[2][0] == 'X' && board[2][1] == 'X' && board[2][2] == 'X') {
+            System.out.println("Player One wins!");
+        } else if (board[0][0] == 'X' && board[1][0] == 'X' && board[2][0] == 'X') {
+            System.out.println("Player One wins!");
+        } else if (board[0][1] == 'X' && board[1][1] == 'X' && board[2][1] == 'X') {
+            System.out.println("Player One wins!");
+        } else if (board[0][2] == 'X' && board[1][2] == 'X' && board[2][2] == 'X') {
+            System.out.println("Player One wins!");
+        } else if (board[0][0] == 'X' && board[1][1] == 'X' && board[2][2] == 'X') {
+            System.out.println("Player One wins!");
+        } else if (board[2][0] == 'X' && board[1][1] == 'X' && board[0][2] == 'X') {
+            System.out.println("Player One wins!");
+        } else if(turn == 8) {
+            System.out.println("The games a tie!");
+        }
+
+        if (board[0][0] == 'O' && board[0][1] == 'O' && board[0][2] == 'O') {
+            System.out.println("Player Two wins!");
+        } else if (board[1][0] == 'O' && board[1][1] == 'O' && board[1][2] == 'O') {
+            System.out.println("Player Two wins!");
+        } else if (board[2][0] == 'O' && board[2][1] == 'O' && board[2][2] == 'O') {
+            System.out.println("Player Two wins!");
+        } else if (board[0][0] == 'O' && board[1][0] == 'O' && board[2][0] == 'O') {
+            System.out.println("Player Two wins!");
+        } else if (board[0][1] == 'O' && board[1][1] == 'O' && board[2][1] == 'O') {
+            System.out.println("Player Two wins!");
+        } else if (board[0][2] == 'O' && board[1][2] == 'O' && board[2][2] == 'O') {
+            System.out.println("Player Two wins!");
+        } else if (board[0][0] == 'O' && board[1][1] == 'O' && board[2][2] == 'O') {
+            System.out.println("Player Two wins!");
+        } else if (board[2][0] == 'O' && board[1][1] == 'O' && board[0][2] == 'O') {
+            System.out.println("Player Two wins!");
+        } else if(turn == 8) {
+            System.out.println("The games a tie!");
+        }
 
     }
 
@@ -73,26 +109,23 @@ public class TicTacToe {
                 row = in.nextInt();
                 key = ('X');
                 TicTacToe.placer(row, col, key);
-
-                if (turn % 2 == 1) {
-                    cleaner();
-                    TicTacToe.drawer(board);
-                    System.out.println(
-                            "Player Two's Turn (O). Please insert the coordinates of your point(row, column) or q to quit: ");
-                    if (in.hasNext("q") || in.hasNext("Q")) {
-                        in.next();
-                        System.out.println("Thanks for playing!");
-                        break;
-                    } 
-                    col = in.nextInt();
-                    row = in.nextInt();
-                    key = ('O');
-                    TicTacToe.placer(row, col, key);
-                        // INSERT CHECK CODE TO ENSURE PROPERLY INPUTTED
-                        // INPUT THE REFERENCE TO THE METHODS TO CHECK IF ANYONE ONE, IF THEY DID OR ITS
-                        // A TIE, THEN BREAK
-                    }
-                }
             }
+            if (turn % 2 == 1) {
+                cleaner();
+                TicTacToe.drawer(board);
+                System.out.println(
+                        "Player Two's Turn (O). Please insert the coordinates of your point(row, column) or q to quit: ");
+                if (in.hasNext("q") || in.hasNext("Q")) {
+                    in.next();
+                    System.out.println("Thanks for playing!");
+                    break;
+                }
+                col = in.nextInt();
+                row = in.nextInt();
+                key = ('O');
+                TicTacToe.placer(row, col, key);
+            }
+
         }
     }
+}
