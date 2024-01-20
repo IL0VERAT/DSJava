@@ -112,15 +112,17 @@ public class TicTacToe{
     public static void main(String[] args) {
         Scanner in = new Scanner (System.in);
         int turn = 0;
-        int row = 0;
-        TicTacToe.drawer(board);
+        int row;
+        int col;
+        char key;
         while(true){
-            //clean screen and show board
-            //also include q to quit
+            TicTacToe.drawer(board);
             //make sure to include a check boolean to see if successful move 
             //make sure to keep track or playerrs and only toggle if successful move (at end)
-            //keep track of count to see if winner
-            //toggle players last
+            if(turn == 8){
+                System.out.println("No more possible moves.");
+                break;
+            }
             if(turn%2 == 0){
                 System.out.println("Player One's Turn (X). Please insert the coordinates of your point(row, column) or q to quit: ");
                 if (in.hasNext("q") || in.hasNext("Q")) {
@@ -142,8 +144,8 @@ public class TicTacToe{
                 //INSERT CHECK CODE TO ENSURE PROPERLY INPUTTED
                 //INPUT THE REFERENCE TO THE METHODS TO CHECK IF ANYONE ONE, IF THEY DID OR ITS A TIE, THEN BREAK
             }
-            turn++;
             cleaner();
+            turn++;
             break; //double check 
         }
     }
