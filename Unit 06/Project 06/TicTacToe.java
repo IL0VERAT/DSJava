@@ -56,10 +56,13 @@ public class TicTacToe {
             System.out.println("Player Two wins!");
         } else if (board[2][0] == 'O' && board[1][1] == 'O' && board[0][2] == 'O') {
             System.out.println("Player Two wins!");
-        } else if(turn == 8) {
-            System.out.println("The games a tie!");
+        } else {
+
         }
 
+        if(turn == 8) {
+            System.out.println("The games a tie!");
+        }
     }
 
     public static boolean placer(int row, int col, char key) {
@@ -125,7 +128,7 @@ public class TicTacToe {
                 key = ('O');
                 TicTacToe.placer(row, col, key);
             }
-
+            boardChecker(board);
         }
     }
 }
