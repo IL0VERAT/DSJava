@@ -1,7 +1,7 @@
 import java.util.Scanner;
 public class TicTacToe{
     public static char board[][] = {{' ', ' ', ' '}, {' ', ' ', ' '}, {' ', ' ', ' '}};
-    public static void drawer(char board[][]){ //fill it with blanks or *
+    public static void drawer(char board[][]){ 
      System.out.println("|---|---|---|");
      System.out.println("| "+board[0][0]+" | "+board[0][1]+" | "+board[0][2]+" |");
      System.out.println("|-----------|");             
@@ -122,14 +122,23 @@ public class TicTacToe{
             //keep track of count to see if winner
             //toggle players last
             if(turn%2 == 0){
-                System.out.println("Player One's Turn (X). Please insert the coordinates of your point(row, column): ");
-                
+                System.out.println("Player One's Turn (X). Please insert the coordinates of your point(row, column) or q to quit: ");
+                if (in.hasNext("q") || in.hasNext("Q")) {
+                    in.next();
+                    System.out.println("Thanks for playing!");
+                    break;
+                } else {
                 //INSERT CHECK CODE TO ENSURE PROPERLY INPUTTED
                 //INPUT THE REFERENCE TO THE METHODS TO CHECK IF ANYONE ONE, IF THEY DID OR ITS A TIE, THEN BREAK
 
             }
             if(turn%2 == 1){
-                System.out.println("Player Two's Turn (O). Please insert the coordinates of your point(row, column): ");
+                System.out.println("Player Two's Turn (O). Please insert the coordinates of your point(row, column) or q to quit: ");
+                if (in.hasNext("q") || in.hasNext("Q")) {
+                    in.next();
+                    System.out.println("Thanks for playing!");
+                    break;
+                } else {
                 //INSERT CHECK CODE TO ENSURE PROPERLY INPUTTED
                 //INPUT THE REFERENCE TO THE METHODS TO CHECK IF ANYONE ONE, IF THEY DID OR ITS A TIE, THEN BREAK
             }
@@ -139,3 +148,5 @@ public class TicTacToe{
         }
     }
 }
+    }
+}    
