@@ -4,6 +4,7 @@ public class TicTacToe {
     public static char board[][] = { { ' ', ' ', ' ' }, { ' ', ' ', ' ' }, { ' ', ' ', ' ' } };
     public static int turn = 0;
     public static boolean checker = false;
+    public static boolean breaker = false;
 
     public static void drawer(char board[][]) {
         System.out.println("|---|---|---|");
@@ -23,43 +24,58 @@ public class TicTacToe {
     public static void boardChecker(char board[][]) {
         if (board[0][0] == 'X' && board[0][1] == 'X' && board[0][2] == 'X') {
             System.out.println("Player One wins!");
+            breaker = false;
         } else if (board[1][0] == 'X' && board[1][1] == 'X' && board[1][2] == 'X') {
             System.out.println("Player One wins!");
+            breaker = false;
         } else if (board[2][0] == 'X' && board[2][1] == 'X' && board[2][2] == 'X') {
             System.out.println("Player One wins!");
+            breaker = false;
         } else if (board[0][0] == 'X' && board[1][0] == 'X' && board[2][0] == 'X') {
             System.out.println("Player One wins!");
+            breaker = false;
         } else if (board[0][1] == 'X' && board[1][1] == 'X' && board[2][1] == 'X') {
             System.out.println("Player One wins!");
+            breaker = false;
         } else if (board[0][2] == 'X' && board[1][2] == 'X' && board[2][2] == 'X') {
             System.out.println("Player One wins!");
+            breaker = false;
         } else if (board[0][0] == 'X' && board[1][1] == 'X' && board[2][2] == 'X') {
             System.out.println("Player One wins!");
+            breaker = false;
         } else if (board[2][0] == 'X' && board[1][1] == 'X' && board[0][2] == 'X') {
             System.out.println("Player One wins!");
+            breaker = false;
         } else if(turn == 8) {
             System.out.println("The games a tie!");
+            breaker = false;
         }
 
         if (board[0][0] == 'O' && board[0][1] == 'O' && board[0][2] == 'O') {
             System.out.println("Player Two wins!");
+            breaker = false;
         } else if (board[1][0] == 'O' && board[1][1] == 'O' && board[1][2] == 'O') {
             System.out.println("Player Two wins!");
+            breaker = false;
         } else if (board[2][0] == 'O' && board[2][1] == 'O' && board[2][2] == 'O') {
             System.out.println("Player Two wins!");
+            breaker = false;
         } else if (board[0][0] == 'O' && board[1][0] == 'O' && board[2][0] == 'O') {
             System.out.println("Player Two wins!");
+            breaker = false;
         } else if (board[0][1] == 'O' && board[1][1] == 'O' && board[2][1] == 'O') {
             System.out.println("Player Two wins!");
+            breaker = false;
         } else if (board[0][2] == 'O' && board[1][2] == 'O' && board[2][2] == 'O') {
             System.out.println("Player Two wins!");
+            breaker = false;
         } else if (board[0][0] == 'O' && board[1][1] == 'O' && board[2][2] == 'O') {
             System.out.println("Player Two wins!");
+            breaker = false;
         } else if (board[2][0] == 'O' && board[1][1] == 'O' && board[0][2] == 'O') {
             System.out.println("Player Two wins!");
-        } else {
-
-        }
+            breaker = false;
+        } 
 
         if(turn == 8) {
             System.out.println("The games a tie!");
@@ -67,6 +83,7 @@ public class TicTacToe {
     }
 
     public static boolean placer(int row, int col, char key) {
+        //add code to throw error message if spot already filled
         if (row < 0 || row > 2) {
             System.out.println("ERROR: Row input out of range");
             checker = true;
@@ -92,22 +109,22 @@ public class TicTacToe {
         int row;
         int col;
         char key;
-        while (true) {
+        while (breaker == false) {
             // make sure to include a check boolean to see if successful move
             // make sure to keep track or playerrs and only toggle if successful move (at
             // end)
             TicTacToe.drawer(board);
             if (turn == 8) {
                 System.out.println("No more possible moves. It's a tie.");
-                break;
+                breaker = true;
             }
             if (turn % 2 == 0) {
                 System.out.println(
-                        "Player One's Turn (X). Please insert the coordinates of your point(row column) or q to quit: ");
+                        "Player One's Turn (X). Please insert the coordinates of your point(column row) or q to quit: ");
                 if (in.hasNext("q") || in.hasNext("Q")) {
                     in.next();
                     System.out.println("Thanks for playing!");
-                    break;
+                    breaker = true;
                 }
                 col = in.nextInt();
                 row = in.nextInt();
@@ -120,7 +137,7 @@ public class TicTacToe {
                 if (in.hasNext("q") || in.hasNext("Q")) {
                     in.next();
                     System.out.println("Thanks for playing!");
-                    break;
+                    breaker = true;
                 }
                 col = in.nextInt();
                 row = in.nextInt();
