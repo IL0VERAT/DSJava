@@ -78,7 +78,6 @@ public class TicTacToe {
 
         if (board[row][col] == ' ') {
             board[row][col] = key;
-            turn++;
             return true;
         }
 
@@ -95,11 +94,10 @@ public class TicTacToe {
             // make sure to keep track or playerrs and only toggle if successful move (at
             // end)
             if (turn == 8) {
-                System.out.println("No more possible moves.");
+                System.out.println("No more possible moves. It's a tie.");
                 break;
             }
             if (turn % 2 == 0) {
-                cleaner();
                 TicTacToe.drawer(board);
                 System.out.println(
                         "Player One's Turn (X). Please insert the coordinates of your point(row column) or q to quit: ");
@@ -114,7 +112,6 @@ public class TicTacToe {
                 TicTacToe.placer(row, col, key);
             }
             if (turn % 2 == 1) {
-                cleaner();
                 TicTacToe.drawer(board);
                 System.out.println(
                         "Player Two's Turn (O). Please insert the coordinates of your point(row, column) or q to quit: ");
@@ -128,7 +125,9 @@ public class TicTacToe {
                 key = ('O');
                 TicTacToe.placer(row, col, key);
             }
+            turn++;
             boardChecker(board);
+            cleaner();
         }
     }
 }
