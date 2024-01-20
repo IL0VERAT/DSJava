@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class TicTacToe {
     public static char board[][] = { { ' ', ' ', ' ' }, { ' ', ' ', ' ' }, { ' ', ' ', ' ' } };
     public static int turn = 0;
+    public static boolean checker = false;
 
     public static void drawer(char board[][]) {
         System.out.println("|---|---|---|");
@@ -68,11 +69,13 @@ public class TicTacToe {
     public static boolean placer(int row, int col, char key) {
         if (row < 0 || row > 2) {
             System.out.println("ERROR: Row input out of range");
+            checker = true;
             return false;
         }
 
         if (col < 0 || col > 2) {
             System.out.println("ERROR: Column input out of range");
+            checker = true;
             return false;
         }
 
@@ -93,12 +96,12 @@ public class TicTacToe {
             // make sure to include a check boolean to see if successful move
             // make sure to keep track or playerrs and only toggle if successful move (at
             // end)
+            TicTacToe.drawer(board);
             if (turn == 8) {
                 System.out.println("No more possible moves. It's a tie.");
                 break;
             }
             if (turn % 2 == 0) {
-                TicTacToe.drawer(board);
                 System.out.println(
                         "Player One's Turn (X). Please insert the coordinates of your point(row column) or q to quit: ");
                 if (in.hasNext("q") || in.hasNext("Q")) {
@@ -112,7 +115,6 @@ public class TicTacToe {
                 TicTacToe.placer(row, col, key);
             }
             if (turn % 2 == 1) {
-                TicTacToe.drawer(board);
                 System.out.println(
                         "Player Two's Turn (O). Please insert the coordinates of your point(row, column) or q to quit: ");
                 if (in.hasNext("q") || in.hasNext("Q")) {
@@ -125,7 +127,9 @@ public class TicTacToe {
                 key = ('O');
                 TicTacToe.placer(row, col, key);
             }
-            turn++;
+            if(checker==false){
+                turn++;
+            }
             boardChecker(board);
             cleaner();
         }
