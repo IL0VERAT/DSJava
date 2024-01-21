@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class TicTacToe {
@@ -22,68 +23,25 @@ public class TicTacToe {
     }
 
     public static void boardChecker(char board[][]) {
-        if (board[0][0] == 'X' && board[0][1] == 'X' && board[0][2] == 'X') {
-            System.out.println("Player One wins!");
-            breaker = false;
-        } else if (board[1][0] == 'X' && board[1][1] == 'X' && board[1][2] == 'X') {
-            System.out.println("Player One wins!");
-            breaker = false;
-        } else if (board[2][0] == 'X' && board[2][1] == 'X' && board[2][2] == 'X') {
-            System.out.println("Player One wins!");
-            breaker = false;
-        } else if (board[0][0] == 'X' && board[1][0] == 'X' && board[2][0] == 'X') {
-            System.out.println("Player One wins!");
-            breaker = false;
-        } else if (board[0][1] == 'X' && board[1][1] == 'X' && board[2][1] == 'X') {
-            System.out.println("Player One wins!");
-            breaker = false;
-        } else if (board[0][2] == 'X' && board[1][2] == 'X' && board[2][2] == 'X') {
-            System.out.println("Player One wins!");
-            breaker = false;
-        } else if (board[0][0] == 'X' && board[1][1] == 'X' && board[2][2] == 'X') {
-            System.out.println("Player One wins!");
-            breaker = false;
-        } else if (board[2][0] == 'X' && board[1][1] == 'X' && board[0][2] == 'X') {
-            System.out.println("Player One wins!");
-            breaker = false;
-        } else if(turn == 8) {
-            System.out.println("The games a tie!");
-            breaker = false;
+        char[][] boardCopy = Arrays.copyOf(board, board.length);
+        for (int row = 0; row < boardCopy.length; row++) {
+            for (int col = 0; col < boardCopy[0].length; col++) {
+                if(boardCopy[row][col]=='X'){
+                    boardCopy[row][col] = 1;
+                } else if(boardCopy[row][col] == 'O'){
+                    boardCopy[row][col] = 0;
+                } else {
+                }
+
+            }
         }
 
-        if (board[0][0] == 'O' && board[0][1] == 'O' && board[0][2] == 'O') {
-            System.out.println("Player Two wins!");
-            breaker = false;
-        } else if (board[1][0] == 'O' && board[1][1] == 'O' && board[1][2] == 'O') {
-            System.out.println("Player Two wins!");
-            breaker = false;
-        } else if (board[2][0] == 'O' && board[2][1] == 'O' && board[2][2] == 'O') {
-            System.out.println("Player Two wins!");
-            breaker = false;
-        } else if (board[0][0] == 'O' && board[1][0] == 'O' && board[2][0] == 'O') {
-            System.out.println("Player Two wins!");
-            breaker = false;
-        } else if (board[0][1] == 'O' && board[1][1] == 'O' && board[2][1] == 'O') {
-            System.out.println("Player Two wins!");
-            breaker = false;
-        } else if (board[0][2] == 'O' && board[1][2] == 'O' && board[2][2] == 'O') {
-            System.out.println("Player Two wins!");
-            breaker = false;
-        } else if (board[0][0] == 'O' && board[1][1] == 'O' && board[2][2] == 'O') {
-            System.out.println("Player Two wins!");
-            breaker = false;
-        } else if (board[2][0] == 'O' && board[1][1] == 'O' && board[0][2] == 'O') {
-            System.out.println("Player Two wins!");
-            breaker = false;
-        } 
+        
 
-        if(turn == 8) {
-            System.out.println("The games a tie!");
-        }
     }
 
     public static boolean placer(int row, int col, char key) {
-        //add code to throw error message if spot already filled
+        // add code to throw error message if spot already filled
         if (row < 0 || row > 2) {
             System.out.println("ERROR: Row input out of range");
             checker = true;
@@ -144,7 +102,7 @@ public class TicTacToe {
                 key = ('O');
                 TicTacToe.placer(row, col, key);
             }
-            if(checker==false){
+            if (checker == false) {
                 turn++;
             }
             boardChecker(board);
