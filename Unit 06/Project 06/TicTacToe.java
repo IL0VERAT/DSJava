@@ -94,6 +94,15 @@ public class TicTacToe {
             return false;
         }
 
+        if(board[row][col] == 'X'){
+            checker = true;
+            return false;
+        }
+        if(board[row][col] == 'O'){
+            checker = true;
+            return false;
+        }
+
         if (board[row][col] == ' ') {
             board[row][col] = key;
             checker = false;
