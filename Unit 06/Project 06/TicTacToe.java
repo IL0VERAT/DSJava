@@ -1,11 +1,13 @@
+//Coder: Milo Linn-Boggs Date: 21 Jan. 2023
 import java.util.Scanner;
-
 public class TicTacToe {
+    //creates the board and several static variables
     public static char board[][] = { { ' ', ' ', ' ' }, { ' ', ' ', ' ' }, { ' ', ' ', ' ' } };
     public static int turn = 0;
     public static boolean checker = false;
     public static boolean breaker = false;
 
+    //method to draw the board
     public static void drawer(char board[][]) {
         System.out.println("|---|---|---|");
         System.out.println("| " + board[0][0] + " | " + board[0][1] + " | " + board[0][2] + " |");
@@ -16,11 +18,13 @@ public class TicTacToe {
         System.out.println("|---|---|---|");
     }
 
+    //method to clean the screen
     public static void cleaner() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
 
+    //method to check for a winner
     public static void boardChecker(char board[][]) {
         if (board[0][0] == 'X' && board[0][1] == 'X' && board[0][2] == 'X') {
             System.out.println("Player One wins!");
@@ -82,6 +86,7 @@ public class TicTacToe {
         }
     }
 
+    //method to check if the input is valid
     public static boolean placer(int row, int col, char key) {
         //add code to throw error message if spot already
         if (row < 0 || row > 2) {
@@ -117,6 +122,7 @@ public class TicTacToe {
         int row;
         int col;
         char key;
+        //main body loop
         while (breaker == false) {
             cleaner();
             TicTacToe.drawer(board);
