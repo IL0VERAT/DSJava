@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class TicTacToe {
@@ -23,39 +22,81 @@ public class TicTacToe {
     }
 
     public static void boardChecker(char board[][]) {
-        char[][] boardCopy = Arrays.copyOf(board, board.length);
-        for (int row = 0; row < boardCopy.length; row++) {
-            for (int col = 0; col < boardCopy[0].length; col++) {
-                if(boardCopy[row][col]=='X'){
-                    boardCopy[row][col] = 1;
-                } else if(boardCopy[row][col] == 'O'){
-                    boardCopy[row][col] = 0;
-                } else {
-                }
-
-            }
+        if (board[0][0] == 'X' && board[0][1] == 'X' && board[0][2] == 'X') {
+            System.out.println("Player One wins!");
+            breaker = true;
+        } else if (board[1][0] == 'X' && board[1][1] == 'X' && board[1][2] == 'X') {
+            System.out.println("Player One wins!");
+            breaker = true;
+        } else if (board[2][0] == 'X' && board[2][1] == 'X' && board[2][2] == 'X') {
+            System.out.println("Player One wins!");
+            breaker = true;
+        } else if (board[0][0] == 'X' && board[1][0] == 'X' && board[2][0] == 'X') {
+            System.out.println("Player One wins!");
+            breaker = true;
+        } else if (board[0][1] == 'X' && board[1][1] == 'X' && board[2][1] == 'X') {
+            System.out.println("Player One wins!");
+            breaker = true;
+        } else if (board[0][2] == 'X' && board[1][2] == 'X' && board[2][2] == 'X') {
+            System.out.println("Player One wins!");
+            breaker = true;
+        } else if (board[0][0] == 'X' && board[1][1] == 'X' && board[2][2] == 'X') {
+            System.out.println("Player One wins!");
+            breaker = true;
+        } else if (board[2][0] == 'X' && board[1][1] == 'X' && board[0][2] == 'X') {
+            System.out.println("Player One wins!");
+            breaker = true;
+        } else if(turn == 8) {
+            System.out.println("The games a tie!");
+            breaker = true;
         }
 
-        
+        if (board[0][0] == 'O' && board[0][1] == 'O' && board[0][2] == 'O') {
+            System.out.println("Player Two wins!");
+            breaker = true;
+        } else if (board[1][0] == 'O' && board[1][1] == 'O' && board[1][2] == 'O') {
+            System.out.println("Player Two wins!");
+            breaker = true;
+        } else if (board[2][0] == 'O' && board[2][1] == 'O' && board[2][2] == 'O') {
+            System.out.println("Player Two wins!");
+            breaker = true;
+        } else if (board[0][0] == 'O' && board[1][0] == 'O' && board[2][0] == 'O') {
+            System.out.println("Player Two wins!");
+            breaker = true;
+        } else if (board[0][1] == 'O' && board[1][1] == 'O' && board[2][1] == 'O') {
+            System.out.println("Player Two wins!");
+            breaker = true;
+        } else if (board[0][2] == 'O' && board[1][2] == 'O' && board[2][2] == 'O') {
+            System.out.println("Player Two wins!");
+            breaker = true;
+        } else if (board[0][0] == 'O' && board[1][1] == 'O' && board[2][2] == 'O') {
+            System.out.println("Player Two wins!");
+            breaker = true;
+        } else if (board[2][0] == 'O' && board[1][1] == 'O' && board[0][2] == 'O') {
+            System.out.println("Player Two wins!");
+            breaker = true;
+        } 
 
+        if(turn == 8) {
+            System.out.println("The games a tie!");
+        }
     }
 
     public static boolean placer(int row, int col, char key) {
-        // add code to throw error message if spot already filled
+        //add code to throw error message if spot already
         if (row < 0 || row > 2) {
-            System.out.println("ERROR: Row input out of range");
             checker = true;
             return false;
         }
 
         if (col < 0 || col > 2) {
-            System.out.println("ERROR: Column input out of range");
             checker = true;
             return false;
         }
 
         if (board[row][col] == ' ') {
             board[row][col] = key;
+            checker = false;
             return true;
         }
 
@@ -68,10 +109,11 @@ public class TicTacToe {
         int col;
         char key;
         while (breaker == false) {
-            // make sure to include a check boolean to see if successful move
-            // make sure to keep track or playerrs and only toggle if successful move (at
-            // end)
+            cleaner();
             TicTacToe.drawer(board);
+            if(checker == true){
+                System.out.println("Previous move was invalid. Please try again.");
+            }
             if (turn == 8) {
                 System.out.println("No more possible moves. It's a tie.");
                 breaker = true;
@@ -102,11 +144,23 @@ public class TicTacToe {
                 key = ('O');
                 TicTacToe.placer(row, col, key);
             }
-            if (checker == false) {
+            if(checker==false){
                 turn++;
             }
             boardChecker(board);
-            cleaner();
         }
     }
 }
+
+/*char[][] boardCopy = Arrays.copyOf(board, board.length);
+        for (int row = 0; row < boardCopy.length; row++) {
+            for (int col = 0; col < boardCopy[0].length; col++) {
+                if(boardCopy[row][col]=='X'){
+                    boardCopy[row][col] = 1;
+                } else if(boardCopy[row][col] == 'O'){
+                    boardCopy[row][col] = 0;
+                } else {
+                }
+
+            }
+        } */
