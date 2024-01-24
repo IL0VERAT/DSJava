@@ -12,9 +12,10 @@ public class PartB {
         PrintWriter out = new PrintWriter(outputFile);
 
         while (in.hasNext()) {
-            double score = in.nextDouble();
-            out.printf("%6.2f%n", score);
+            double scores = in.nextDouble();
+            out.printf("%6.2f%n", scores);
         }
+        out.println("----------------");
         in.close();
         out.close();
     }
