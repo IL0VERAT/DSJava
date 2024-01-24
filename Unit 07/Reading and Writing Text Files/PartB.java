@@ -1,3 +1,4 @@
+//Coder: Milo Linn-Boggs Date: 23 Jan. 2023
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -9,14 +10,15 @@ public class PartB {
         Scanner in = new Scanner(inputFile);
         File outputFile = new File("quizzesMod.txt");
         PrintWriter out = new PrintWriter(outputFile);
-        double counter = 0;
+        int counter = -1;
         double total = 0;
         double scores = 0;
 
+        //reads in values from txt file and inputs into other txt file
         while (in.hasNext()) {
             counter++;
             scores = in.nextDouble();
-            out.printf("Quiz %03f:%7.2f%n", counter, scores);
+            out.printf("Quiz %03d:%7.2f%n", counter, scores);
             total += scores;
         }
         //prints out the average of the test scores
