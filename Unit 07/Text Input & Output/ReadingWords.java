@@ -6,7 +6,7 @@ public class ReadingWords {
    public static void main(String[] args) throws FileNotFoundException {
        File inputFile = new File("poem.txt");
        Scanner in = new Scanner(inputFile);
-       in.useDelimiter("[,.\\s]+");
+       in.useDelimiter("[,.\\s\\t\\n]+");
        int count = 0;
        while (in.hasNext()) {
            String word = in.next();
