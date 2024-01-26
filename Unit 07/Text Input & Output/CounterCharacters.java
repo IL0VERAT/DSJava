@@ -9,16 +9,20 @@ public static void main(String[] args) throws FileNotFoundException {
     in.useDelimiter("");
     int count = 0;
     int digitCounter = 0;
+    int letter = 0;
     while (in.hasNext()) {
         char c = in.next().charAt(0);
         System.out.println(c);
         count++;
-        //== true not needed
         if(Character.isDigit(c)){
             digitCounter = digitCounter + 1;
         }
+        if(Character.isLetter(c)){
+            letter = letter + 1;
+        }
     }
-    System.out.printf("count = %d%n", count);
-    System.out.printf("digitCounter = %d%n", digitCounter);
+    System.out.printf("Count = %d%n", count);
+    System.out.printf("Letters = %d%n", letter);
+    System.out.printf("Digits = %d%n", digitCounter);
 }
 }
