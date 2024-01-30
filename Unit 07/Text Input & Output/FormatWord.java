@@ -10,11 +10,16 @@ public static void main(String[] args) throws FileNotFoundException {
     System.out.println("---------------------------------------");
     System.out.println(" ID  |    Name     |     Balance ");
     System.out.println("---------------------------------------");
-    int count = 0;
     while (in.hasNext()) {
-        String word = in.next();
-        System.out.print(word);
-        count++;
+        // read in id
+        int id = in.nextInt();
+        System.out.printf("%06d | ",id);
+        // read in name
+        String name = in.next();
+        System.out.printf("%s | ",name);
+        // read in balance;
+        double balance = in.nextDouble();
+        System.out.println("");
     }
     in.close();
 }

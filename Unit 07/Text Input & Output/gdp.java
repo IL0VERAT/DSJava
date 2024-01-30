@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
-
+//ASSUME NUMBER NEXT TO NAME -  has to be scanning in the type it expects
 public class gdp {
     public static void main(String[] args) throws FileNotFoundException {
     File inputFile = new File("Top5GDP.txt"); //can use full name here
