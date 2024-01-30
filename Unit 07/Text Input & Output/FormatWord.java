@@ -16,6 +16,7 @@ public static void main(String[] args) throws FileNotFoundException {
         System.out.print(word);
         count++;
     }
+    in.close();
 }
 }
 
