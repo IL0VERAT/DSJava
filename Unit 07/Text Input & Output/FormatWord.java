@@ -8,7 +8,7 @@ public static void main(String[] args) throws FileNotFoundException {
     Scanner in = new Scanner(inputFile);
     in.useDelimiter("[,\\n\\t\\s]+");
     System.out.println("---------------------------------------");
-    System.out.println(" ID  |    Name     |     Balance ");
+    System.out.println("   ID  |    Name     |     Balance ");
     System.out.println("---------------------------------------");
     while (in.hasNext()) {
         // read in id
@@ -16,9 +16,10 @@ public static void main(String[] args) throws FileNotFoundException {
         System.out.printf("%06d | ",id);
         // read in name
         String name = in.next();
-        System.out.printf("%s | ",name);
+        System.out.printf("%11s | ",name);
         // read in balance;
         double balance = in.nextDouble();
+        System.out.printf("$%15.2f",balance);
         System.out.println("");
     }
     in.close();

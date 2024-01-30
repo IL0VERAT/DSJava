@@ -8,7 +8,7 @@ import java.io.FileNotFoundException;
 line, then prints the total # of characters, total # of letters, and the total # of digits*/
 public class CounterCharacters {
     public static void main(String[] args) throws FileNotFoundException {
-        File inputFile = new File(" characters.txt");
+        File inputFile = new File("LittleLamb.txt");
         Scanner in = new Scanner(inputFile);
         in.useDelimiter("");
         int count = 0;
@@ -18,7 +18,7 @@ public class CounterCharacters {
 
             // prints out the characters
             char c = in.next().charAt(0);
-            System.out.println(c);
+            System.out.print(c);
 
             // updates the total count
             count++;
