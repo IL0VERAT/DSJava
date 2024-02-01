@@ -1,4 +1,3 @@
-
 //Coder: Milo Linn-Boggs Date: 1 Feb. 2024
 import java.util.Scanner;
 import java.io.File;
