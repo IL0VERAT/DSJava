@@ -10,19 +10,24 @@ public class Sales {
         // process file line by line
         // loop where there is still a next line in the file.
         while (in.hasNextLine()) {
+            double cost;
             String line = in.nextLine();
 
             Scanner lineScanner = new Scanner(line);
-            lineScanner.useDelimiter("[,\\n]+");
+            lineScanner.useDelimiter("[,\\n\\s]+");
 
             String name = lineScanner.next().trim();
             String nextWord = lineScanner.next().trim();
             nextWord = nextWord.replaceAll(",", "");
-            double cost = Double.valueOf(nextWord);
-            nextWord = lineScanner.next().trim();
-
+            nextWord = nextWord.trim();
+            if(lineScanner.hasNextDouble()){
+            String amount = lineScanner.next().trim();
+                cost = Double.valueOf(amount);
+            } else {
+                cost = 0;
+            }
             // prints formatted output
-            System.out.printf("%-16s | %,-5.2f%% | %-20s%n", name, nextWord, cost );
+            System.out.printf("%-16s | %-10s | $%10.2f%n", name, nextWord, cost );
         }
     }
 }
