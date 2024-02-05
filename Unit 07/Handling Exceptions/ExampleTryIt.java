@@ -2,7 +2,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 public class ExampleTryIt{
-public static void main(String[] args) throws FileNotFoundException {
+public static void main(String[] args) {//don't need to throw exception
     Scanner inKeyboard = new Scanner(System.in);
     boolean fileOpened = false;
     String name = "ryIt.txt";
