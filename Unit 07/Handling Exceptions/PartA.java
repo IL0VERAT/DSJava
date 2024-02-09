@@ -1,12 +1,13 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-public class ExampleTryIt{
-public static void main(String[] args) {//don't need to throw exception
+public class PartA{
+public static void main(String[] args) throws FileNotFoundException {
     Scanner inKeyboard = new Scanner(System.in);
+    System.out.println("Enter a file name or # to quit: ");
     boolean fileOpened = false;
-    String name = "TryIt.txt";
-    while (fileOpened == false) {
+    String name = inKeyboard.next();
+    while (fileOpened == false && !name.trim().equals("#")) {
         try {
             File inputFile = new File(name);
             Scanner in = new Scanner(inputFile);
@@ -17,12 +18,11 @@ public static void main(String[] args) {//don't need to throw exception
             in.close();
             fileOpened = true;
         } catch (FileNotFoundException exception) {
-            System.err.println("Error: unable to find your stupid file.");
-            System.err.println(exception.getMessage());
-            return;
+            System.out.println("Error: unable to find the file named \"" + name + "\".");
+            System.out.print("Enter the correct name of the file to open: ");
+            name = inKeyboard.nextLine();
         }
     }
+    System.out.println("Goodbye!");
 }
-
-    
 }
