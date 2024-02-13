@@ -21,7 +21,7 @@ public static void main(String[] args) throws FileNotFoundException {
             }
             in.close();
             fileOpened = true;
-            //catchs a FileNotFound Exception
+            //catchs a FileNotFound Exception and asks the user to re-enter the file name
         } catch (FileNotFoundException exception) {
             System.out.println("Error: unable to find the file named \"" + name + "\".");
             System.out.print("Enter the correct name of the file to open: ");
