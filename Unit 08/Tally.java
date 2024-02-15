@@ -8,10 +8,10 @@ class Counter{
 
     //Declare method to increase the count on device by 1
     public void count(){
-        if(count == 9999){
-            count = 0;
+        if(count < 9999){
+            count++;
         } else {
-        count++;
+        count = 0;
         }
     }
 
@@ -24,6 +24,14 @@ class Counter{
 public class Tally{
     public static void main(String[] args) {
         System.out.println("This is a tally counter");
+
+        //implicite constructor
         Counter myCounter = new Counter(); //counter of counter type using new operator and counter instructor
+
+        for(int i = 1; i < 10001; i++){
+            myCounter.count();
+            System.out.println(myCounter.getValue());
+        }
+
     }
 }
