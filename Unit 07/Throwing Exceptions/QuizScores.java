@@ -18,7 +18,6 @@ public class QuizScores {
             int test = getGrade(in);
             System.out.println("You got a quiz score of " + test);
         } catch (Exception e) {
-            System.err.println("An error occured!");
             System.out.println(e.getMessage());
         }
 
