@@ -2,19 +2,25 @@ import java.util.Scanner;
 
 public class QuizScores {
     public static int getGrade(Scanner in) {
-        try {
-            int score = Integer.valueOf(in.nextInt());
+        System.out.print("Enter a test score: ");
+        int score = in.nextInt();
+        if(score >= 0 && score <=100){
             return score;
-        } catch (ArithmeticException e) {
-            System.out.println(e.getMessage());
-            throw e;
+        } else {
+            throw new ArithmeticException("Invalid Input!");
         }
+
     }
+
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        System.out.print("Enter a test score: ");
-        getGrade(in);
+        try {
+            int test = getGrade(in);
+            System.out.println("You got a quiz score of " + test);
+        } catch (Exception e) {
+            System.err.println("An error occured!");
+            System.out.println(e.getMessage());
+        }
 
-        
     }
 }

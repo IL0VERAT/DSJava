@@ -1,7 +1,7 @@
 import java.util.Scanner;
 public class Throw{
     public static int getAge (Scanner in){
-        System.out.print("Tell me your age: ");
+        System.out.print("Enter a score: ");
         int age = in.nextInt();
         if(age <= 0){
             throw new IllegalArgumentException("Age must be greater than zero!");
