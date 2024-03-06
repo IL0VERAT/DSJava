@@ -1,20 +1,18 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 class CashRegister {
+    //member variables
     private ArrayList<Double> items;
-    /*
-     * Constructor.
-     */
+    private double cost;
+
+    //constructor
     public CashRegister() {
-        // put implementation here.
+        cost = 0;
     }
  
- 
-    /*
-     * Add the price of an item to the register's total.
-     */
+    //adds 1 item to the the 
     public void addItem(double price) {
-        // put implementation here.
+        
     }
  
  
