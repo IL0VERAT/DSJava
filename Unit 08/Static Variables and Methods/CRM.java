@@ -3,12 +3,21 @@ class customer{
     private int count;
     private String name;
     private int region;
-    
+    private int serial_number;
+
     public customer(String new_name, int new_region){
         name = new_name;
         region = new_region;
         total = 0;
         count = 0;
+
+        //assign serial number.
+        last_serial_used++;
+        serial_number = last_serial_used;
+    }
+
+    public int getSerial(){
+        return serial_number;
     }
 
     public double getTotal(){
@@ -50,6 +59,10 @@ class customer{
         return rate * total;
     }
 
+    //static variable
+    public static int last_serial_used = 0;
+
+    //static method
     public static double getTaxRate(int region){
         return switch(region){
             case 1 -> 0;
