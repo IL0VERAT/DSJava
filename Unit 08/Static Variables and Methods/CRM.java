@@ -75,6 +75,7 @@ class customer{
 }
 public class CRM{
     public static void main(String[] args) {
+        customer.last_serial_used = 100;
         customer c1 = new customer("Harvest Market", 4);
         customer c2 = new customer("Wegman's", 4);
 
@@ -83,7 +84,7 @@ public class CRM{
 
         c2.addSaleAmount(2000);
         
-        System.out.printf("%-16s: $%6.2f (%03d) Taxes: $%6.2f %n", c1.getName(), c1.getTotal(), c1.getCount(), c1.getTotalTax());
+        System.out.printf("%-16s (Ser #%06d): $%6.2f (%03d) Taxes: $%6.2f %n", c1.getName(),c1.getSerial(), c1.getTotal(), c1.getCount(), c1.getTotalTax());
         System.out.printf("%-16s: $%6.2f (%03d)%n", c2.getName(), c2.getTotal(), c2.getCount());
     }
 }
