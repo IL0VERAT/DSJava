@@ -1,34 +1,45 @@
 package mower;
 import mower.Yard;
+
 public class Mower {
     private int x;
     private int y;
-    private enum DIRECTION{UP, DOWN, LEFT, RIGHT};
+
+    public enum DIRECTION {
+        UP, DOWN, LEFT, RIGHT
+    };
+
     private DIRECTION facing;
 
-    public Mower (int X, int Y, DIRECTION dir){
-        DIRECTION facing = dir;
-        int x = X;
-        int y = Y;
-    }Mower() {int x = 0; int y = 0; DIRECTION facing = DIRECTION.UP;}
+    public Mower(int X, int Y, DIRECTION dir) {
+        facing = dir;
+        x = X;
+        y = Y;
+    }
 
-    public DIRECTION getDirection(){
+    Mower() {
+        int x = 0;
+        int y = 0;
+        DIRECTION facing = DIRECTION.UP;
+    }
+
+    public DIRECTION getDirection() {
         return facing;
     }
 
-    public void setDirection(DIRECTION dir){
+    public void setDirection(DIRECTION dir) {
         facing = dir;
     }
 
-    public int getX(){
+    public int getX() {
         return x;
     }
 
-    public int getY(){
+    public int getY() {
         return y;
     }
 
-    public void setPos(int X, int Y){
+    public void setPos(int X, int Y) {
         x = X;
         y = Y;
     }
@@ -50,12 +61,14 @@ public class Mower {
     }
 
     public void turnRight(){
-    facing = switch (facing) {
-        case UP -> DIRECTION.RIGHT;
-        case RIGHT -> DIRECTION.DOWN;
-        case DOWN -> DIRECTION.LEFT;
-        case LEFT -> DIRECTION.UP;
-    };
+        facing = switch (facing) {
+            case UP -> DIRECTION.RIGHT;
+            case RIGHT -> DIRECTION.DOWN;
+            case DOWN -> DIRECTION.LEFT;
+            case LEFT -> DIRECTION.UP;
+        };
+    }
+
 
     public void turnLeft(){
         facing = switch (facing) {
@@ -66,14 +79,18 @@ public class Mower {
         };
     }
 
-    public void drive(){
+    public void mover(){
         switch(facing){
-            case UP -> y+=1;
-            case DOWN -> y-=1;
-            case LEFT -> x +=1;
-            case RIGHT -> x-=1;
+            case UP -> y-=1;
+            case DOWN -> y+=1;
+            case LEFT -> x -=1;
+            case RIGHT -> x+=1;
         };
     }
+
+    public void checkGrass(){
+        if()
+    }
+    //check for grass infront of you
 }
     
-}

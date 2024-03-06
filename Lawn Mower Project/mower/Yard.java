@@ -4,6 +4,8 @@ I would like to acknowledge Alex Moore for helping out with portions of this cod
  */ 
 package mower;
 
+import mower.Mower.DIRECTION;
+
 public class Yard {
      
     //code to create the virtual yard based off user input
@@ -37,6 +39,30 @@ public class Yard {
             System.out.println();
         }
     }
+
+    public void printYard(Mower mower){
+        for(int i = 0; i < yard.length; i++){
+            for(int j = 0; j < yard[i].length; j++){
+                //if mower there - prints mower -> else print the yard
+                if(mower.getX() == i && mower.getY() == j){
+                    if (mower.getDirection() == DIRECTION.UP) {
+                        System.out.print("^");
+                    } else if(mower.getDirection() == DIRECTION.RIGHT){
+                        System.out.print(">");
+                    } else if(mower.getDirection() == DIRECTION.LEFT){
+                        System.out.print("<");
+                    } else {
+                        System.out.print("V");
+                    } 
+                }
+                else {
+                    System.out.print(yard[i][j]);
+                }
+            }
+            System.out.println();
+        }
+    }
+
 
     //returns the height of the yard
     public int yardHeight(){

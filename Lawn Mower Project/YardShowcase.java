@@ -1,6 +1,9 @@
 //Coder: Milo Linn-Boggs Date: 24 Feb. 2024
 import java.util.Scanner;
 import mower.Yard;
+import mower.Mower;
+import mower.Mower.DIRECTION;
+
 public class YardShowcase {
     public static void main(String[] args) {
 
@@ -12,6 +15,7 @@ public class YardShowcase {
 
         //prints out the new yard
         Yard yard = new Yard(x, y);
-        yard.printYard();
+        Mower mower = new Mower(2, 1, DIRECTION.RIGHT);
+        yard.printYard(mower);
     }
 }
