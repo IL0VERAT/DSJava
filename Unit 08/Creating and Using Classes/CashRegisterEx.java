@@ -1,6 +1,6 @@
+//Coder: Milo Linn-Boggs Date: 7 Mar. 2024
 import java.util.ArrayList;
 import java.util.Scanner;
-
 class CashRegister {
     // member variables
     private ArrayList<Double> items = new ArrayList<>();
@@ -23,8 +23,12 @@ class CashRegister {
      * Remove the most recently added item from the current sale.
      */
     public void removeItem() {
-        items.remove(counter);
-        counter--;
+        if (counter > 0) {
+            items.remove(counter - 1);
+            counter--;
+        } else {
+            System.out.println("ERROR: Number does not exist!");
+        }
     }
 
     /*
@@ -56,15 +60,17 @@ class CashRegister {
 public class CashRegisterEx {
     public static void main(String[] args) {
         CashRegister cashRegister = new CashRegister();
-        Scanner in = new Scanner (System.in);
+        Scanner in = new Scanner(System.in);
         String input;
         boolean flag = true;
 
-        while(flag == true){
-            System.out.print("Enter a price, or t to show total, c to clear, d to delete most recent input, or q to quit:  ");
+        while (flag == true) {
+            System.out.print(
+                    "Enter a price, or t to show total, c to clear, d to delete most recent input, or q to quit:  ");
             input = in.next();
-            switch(input.charAt(0)){
-                case 't' -> System.out.println("Total = " + cashRegister.getTotal() + " Count = " + cashRegister.getCount());
+            switch (input.charAt(0)) {
+                case 't' ->
+                    System.out.println("Total = " + cashRegister.getTotal() + " Count = " + cashRegister.getCount());
                 case 'c' -> cashRegister.clear();
                 case 'd' -> cashRegister.removeItem();
                 case 'q' -> flag = false;
