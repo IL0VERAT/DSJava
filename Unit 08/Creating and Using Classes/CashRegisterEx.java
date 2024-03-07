@@ -3,31 +3,24 @@ import java.util.ArrayList;
 import java.util.Scanner;
 class CashRegister {
     // member variables
-    private ArrayList<Double> items = new ArrayList<>();
-    private double cost;
-    private int counter;
+    private ArrayList<Double> items;
 
     // constructor
     public CashRegister() {
-        counter = 0;
-        cost = 0;
+        items = new ArrayList<>();
     }
 
     // adds 1 item to the the
     public void addItem(double price) {
         items.add(price);
-        counter++;
     }
 
     /*
      * Remove the most recently added item from the current sale.
      */
     public void removeItem() {
-        if (counter > 0) {
-            items.remove(counter - 1);
-            counter--;
-        } else {
-            System.out.println("ERROR: Number does not exist!");
+        if (items.size() > 0){
+            items.remove(items.size() - 1);
         }
     }
 
@@ -35,17 +28,18 @@ class CashRegister {
      * Return the current total sales amount.
      */
     public double getTotal() {
-        for (int i = 0; i < items.size(); i++) {
-            cost += items.get(i);
+        double value = 0;
+        for(int i = 0; i < items.size(); i++){
+            value += items.get(i);
         }
-        return cost;
+        return value;
     }
 
     /*
      * Return the total count of items in the current sale.
      */
     public int getCount() {
-        return counter;
+        return items.size();
     }
 
     /*
@@ -53,7 +47,6 @@ class CashRegister {
      */
     public void clear() {
         items.clear();
-        counter = 0;
     }
 }
 
