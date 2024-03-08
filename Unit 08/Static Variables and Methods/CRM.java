@@ -65,16 +65,18 @@ class customer{
     //static method
     public static double getTaxRate(int region){
         return switch(region){
-            case 1 -> 0;
-            case 2 -> 0.0550;
-            case 3 -> 0.0600;
-            case 4 -> 0.0625;
-            default -> 0;
+            case 1 -> 0; //NH
+            case 2 -> 0.0550; //ME
+            case 3 -> 0.0600; //VT
+            case 4 -> 0.0625; //MA
+            default -> 0; //should throw an error instead
         };
     }
 }
 public class CRM{
     public static void main(String[] args) {
+
+        //in real life we would use a file to save, and read from, the serial number value from last use -> persistance 
         customer.last_serial_used = 100;
         customer c1 = new customer("Harvest Market", 4);
         customer c2 = new customer("Wegman's", 4);

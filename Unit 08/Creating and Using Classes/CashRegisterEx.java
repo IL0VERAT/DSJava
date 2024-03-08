@@ -1,6 +1,8 @@
+
 //Coder: Milo Linn-Boggs Date: 7 Mar. 2024
 import java.util.ArrayList;
 import java.util.Scanner;
+
 class CashRegister {
     // member variables
     private ArrayList<Double> items;
@@ -19,7 +21,7 @@ class CashRegister {
      * Remove the most recently added item from the current sale.
      */
     public void removeItem() {
-        if (items.size() > 0){
+        if (items.size() > 0) {
             items.remove(items.size() - 1);
         }
     }
@@ -29,7 +31,7 @@ class CashRegister {
      */
     public double getTotal() {
         double value = 0;
-        for(int i = 0; i < items.size(); i++){
+        for (int i = 0; i < items.size(); i++) {
             value += items.get(i);
         }
         return value;

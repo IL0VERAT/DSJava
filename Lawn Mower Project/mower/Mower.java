@@ -87,10 +87,5 @@ public class Mower {
             case RIGHT -> x+=1;
         };
     }
-
-    public void checkGrass(){
-        if()
-    }
-    //check for grass infront of you
 }
     
