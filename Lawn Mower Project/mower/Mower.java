@@ -2,8 +2,8 @@ package mower;
 import mower.Yard;
 
 public class Mower {
-    private int x;
-    private int y;
+    private int col;//x
+    private int row;//y
 
     public enum DIRECTION {
         UP, DOWN, LEFT, RIGHT
@@ -13,13 +13,12 @@ public class Mower {
 
     public Mower(int X, int Y, DIRECTION dir) {
         facing = dir;
-        x = X;
-        y = Y;
+        col = X;
+        row = Y;
     }
-
     Mower() {
-        int x = 0;
-        int y = 0;
+        int col = 0;
+        int row = 0;
         DIRECTION facing = DIRECTION.UP;
     }
 
@@ -31,32 +30,41 @@ public class Mower {
         facing = dir;
     }
 
-    public int getX() {
-        return x;
+    public int getCol() {
+        return col;
     }
 
-    public int getY() {
-        return y;
+    public int getRow() {
+        return row;
     }
 
     public void setPos(int X, int Y) {
-        x = X;
-        y = Y;
+        col = X;
+        row = Y;
     }
 
-    public char withinYard(Yard yard){
+     //checks if the unit is a wall. If not, then it turns character into space 
+     public void mow(Yard yard){
+        int x = this.getCol();
+        int y = this.getRow();
+        if (yard.getYardCell(x, y) == '+') {
+            yard.setYardCell(x, y, ' ');
+        }
+    }
+
+    public char checkGrass(Yard yard){
         char within;
-        int withinY = switch (facing){
-            case UP -> y+1;
-            case DOWN -> y-1;
-            default -> y;
+        int withinRow = switch (facing){
+            case UP -> row-1;
+            case DOWN -> row+1;
+            default -> row;
         };
-        int withinX = switch (facing){
-            case RIGHT -> x-1;
-            case LEFT -> x+1;
-            default -> x;
+        int withinCol = switch (facing){
+            case RIGHT -> col+1;
+            case LEFT -> col-1;
+            default -> col;
         };
-        within = yard.position(withinX, withinY);
+        within = yard.getYardCell(withinCol, withinRow);
         return within;
     }
 
@@ -81,10 +89,10 @@ public class Mower {
 
     public void mover(){
         switch(facing){
-            case UP -> y-=1;
-            case DOWN -> y+=1;
-            case LEFT -> x -=1;
-            case RIGHT -> x+=1;
+            case UP -> row-=1;
+            case DOWN -> row+=1;
+            case LEFT -> row-=1;
+            case RIGHT -> row+=1;
         };
     }
 }

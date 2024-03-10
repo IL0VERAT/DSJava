@@ -44,7 +44,7 @@ public class Yard {
         for(int i = 0; i < yard.length; i++){
             for(int j = 0; j < yard[i].length; j++){
                 //if mower there - prints mower -> else print the yard
-                if(mower.getX() == i && mower.getY() == j){
+                if(mower.getCol() == i && mower.getRow() == j){
                     if (mower.getDirection() == DIRECTION.UP) {
                         System.out.print("^");
                     } else if(mower.getDirection() == DIRECTION.RIGHT){
@@ -81,8 +81,12 @@ public class Yard {
         }
     }
 
-    //returns the position of the mower
-    public char position(int x, int y){
+    //returns the status of the status of cell
+    public char getYardCell(int x, int y){
         return yard[x][y];
+    }
+
+    public void setYardCell(int x, int y, char new_character){
+        yard[x][y] = new_character;
     }
 }
