@@ -24,11 +24,11 @@ public class YardShowcase {
         //asks the user for yard dimensions
         Scanner in  = new Scanner(System.in);
         System.out.println("Enter the dimensions for a new yard: ");
-        int x = in.nextInt();
-        int y = in.nextInt();
+        int row = in.nextInt();
+        int col = in.nextInt();
 
         //prints out the new yard
-        Yard yard = new Yard(x, y);
+        Yard yard = new Yard(row, col);
         Mower mower = new Mower(1, 1, DIRECTION.RIGHT);
         yard.printYard(mower);
 
