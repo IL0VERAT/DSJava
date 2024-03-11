@@ -6,11 +6,13 @@ import mower.Mower.DIRECTION;
 
 public class YardShowcase {
 
+    //clears the screen
     public static void clearScreen() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
 
+    //delays the lawn mower
     public static void delay(long mseconds) {
         try {
             Thread.sleep(mseconds);
