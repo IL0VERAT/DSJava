@@ -17,32 +17,32 @@ public class YardShowcase {
         } catch (InterruptedException e) {
             System.err.println("InterruptedException received!");
         }
-    } 
+    }
 
     public static void main(String[] args) {
 
-        //asks the user for yard dimensions
-        Scanner in  = new Scanner(System.in);
+        // asks the user for yard dimensions
+        Scanner in = new Scanner(System.in);
         System.out.println("Enter the dimensions for a new yard: ");
-        int row = in.nextInt();
-        int col = in.nextInt();
+        int rows = in.nextInt();
+        int cols = in.nextInt();
 
-        //prints out the new yard
-        Yard yard = new Yard(row, col);
+        // prints out the new yard
+        Yard yard = new Yard(rows, cols);
         Mower mower = new Mower(1, 1, DIRECTION.RIGHT);
         yard.printYard(mower);
 
-        while(true){
-            //mow the spot beneth the lawn mower
+        while (true) {
+            // mow the spot beneth the lawn mower
             mower.mow(yard);
             clearScreen();
             yard.printYard(mower);
             delay(1000);
 
-            //check in front of you -> if grass then move forward
-            if(mower.checkGrass(yard) == '+'){
+            // check in front of you -> if grass then move forward
+            if (mower.checkGrass(yard) == '+') {
                 mower.mover();
-            }else{
+            } else {
                 break;
             }
         }

@@ -86,3 +86,4 @@ public class Yard {
         yard[x][y] = new_character;
     }
 }
+

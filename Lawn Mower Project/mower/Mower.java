@@ -40,9 +40,9 @@ public class Mower {
         return row;
     }
 
-    public void setPos(int new_row, int new_col) { 
+    public void setPos(int new_row, int new_col) {
         row = new_row;
-        col = new_col;
+        row = new_col;
     }
 
     // checks if the unit is a wall. If not, then it turns character into space
