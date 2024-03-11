@@ -18,7 +18,7 @@ class customer{
 
     public customer(String name){
         //calls this.customer from the top one --> this. is implicit parameter
-        this(new_name, 1);
+        this(name, 1);
     }
 
     public int getSerial(){
