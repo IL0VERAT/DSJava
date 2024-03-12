@@ -7,10 +7,10 @@ public class PartA {
         //asks user to input a double value
         System.out.print("Enter a random double value: ");
 
-        //multiples the value by PI
+        //multiples the value by PI --> constant static value
         double user_value_pi = in.nextDouble() * Math.PI;
 
-        //rounds the new value
+        //rounds the new value --> static method
         double user_value_round = Math.round(user_value_pi);
 
         //prints out response
