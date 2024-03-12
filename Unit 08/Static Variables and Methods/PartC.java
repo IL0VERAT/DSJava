@@ -92,4 +92,6 @@ public class PartC {
 }*/
 
 //This code prints out 150.0 then, on the next line, 150.0
-//Because both c1 and c2 point to the same space in memory, what ever you do to one variable will effect the other
+/*Because both c1 and c2 point to the same space in memory, what ever you do to one variable will effect the other.
+ * In other words, c1 and c2 refer to the same object
+*/

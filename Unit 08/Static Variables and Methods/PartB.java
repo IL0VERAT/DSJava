@@ -17,5 +17,5 @@
     }
  } */
 
- //The output of this program would be 0|0 because method or constructor parameters are given priority to class attributes
+ //The output of this program would be 0|0 because the instance variable 'values' is not initialized and therefore points to nothing. 
  //The program can be fixed by adding this. before the first usage of value in the setValue method, like so: this.value
