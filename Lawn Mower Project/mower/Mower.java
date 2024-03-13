@@ -28,6 +28,20 @@ public class Mower {
         DIRECTION facing = DIRECTION.UP;
     }
 
+    public void randomizeDirection(Yard yard){
+        int max = 4; 
+        int min = 1; 
+        int random = (int)(Math.random() * (max - min + 1) + min);
+        facing = switch(random){
+            case 1 -> DIRECTION.UP;
+            case 2 -> DIRECTION.RIGHT;
+            case 3 -> DIRECTION.DOWN;
+            case 4 -> DIRECTION.LEFT;
+            default -> DIRECTION.UP;
+        };
+        
+    }
+
     //gets the direction of lawn mower
     public DIRECTION getDirection() {
         return facing;
