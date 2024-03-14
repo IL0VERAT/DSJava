@@ -1,7 +1,7 @@
 package Zoo;
 
 public class Mammal {
-    private String name;
+    protected String name; //protected allows child classes to access this variable --> but should ideally be kept private
     private double weight;
 
     /*
