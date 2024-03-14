@@ -45,7 +45,7 @@ public class YardShowcase {
             if (mower.checkGrass(yard) == '+') {
                 mower.mover();
             } else {
-                break;
+                mower.updateMower(yard);
             }
         }
     }
