@@ -16,7 +16,7 @@ public class Bovine extends Mammal { // a child of the Mammal class --> takes al
     }
 
     public void printName(){
-        System.out.println(this.getName()); // to print the private variable Name --> or change Name to public
+        System.out.println(this.getName()); // to print the private variable Name 
     }
 }
     

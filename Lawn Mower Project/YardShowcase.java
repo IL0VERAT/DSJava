@@ -32,21 +32,23 @@ public class YardShowcase {
         // prints out the new yard
         Yard yard = new Yard(rows, cols);
         Mower mower = new Mower(1, 1, DIRECTION.RIGHT);
+
+        mower.randomizeDirection(yard);
         yard.printYard(mower);
 
-        while (true) {
-            // mow the spot beneth the lawn mower
-            mower.mow(yard);
-            clearScreen();
-            yard.printYard(mower);
-            delay(1000);
+        // while (true) {
+        //     // mow the spot beneth the lawn mower
+        //     mower.mow(yard);
+        //     clearScreen();
+        //     yard.printYard(mower);
+        //     delay(1000);
 
-            // check in front of you -> if grass then move forward
-            if (mower.checkGrass(yard) == '+') {
-                mower.mover();
-            } else {
-                mower.updateMower(yard);
-            }
-        }
+        //     // check in front of you -> if grass then move forward
+        //     if (mower.checkGrass(yard) == '+') {
+        //         mower.mover();
+        //     } else {
+        //         mower.updateMower(yard);
+        //     }
+        // }
     }
 }

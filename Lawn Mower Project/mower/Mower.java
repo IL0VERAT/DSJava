@@ -34,30 +34,33 @@ public class Mower {
     public void randomizeDirection(Yard yard) {
         int max = 4;
         int min = 1;
-        int randomDir = (int) (Math.random() * (max - min + 1) + min);
+        int randomDir = (int) (Math.random() * 4);
         facing = switch (randomDir) {
-            case 1 -> DIRECTION.UP;
-            case 2 -> DIRECTION.RIGHT;
-            case 3 -> DIRECTION.DOWN;
-            case 4 -> DIRECTION.LEFT;
+            case 0 -> DIRECTION.UP;
+            case 1 -> DIRECTION.RIGHT;
+            case 2 -> DIRECTION.DOWN;
+            case 3 -> DIRECTION.LEFT;
             default -> DIRECTION.UP;
         };
 
-        int randomSpot = (int) (Math.random() * (max - min + 1) + min);
+        int randomSpot = (int) (Math.random() * 4);
         new_col = switch (randomSpot) {
-            case 1 -> 0;
-            case 2 -> 0;
+            case 0 -> 1;
+            case 1 -> yard.yardWidth();
+            case 2 -> 1;
             case 3 -> yard.yardWidth();
-            case 4 -> yard.yardWidth();
-            default -> 0;
+            default -> 1;
         };
         new_row = switch (randomSpot) {
-            case 1 -> 0;
-            case 2 -> 0;
+            case 0 -> 1;
+            case 1 -> yard.yardHeight();
+            case 2 -> 1;
             case 3 -> yard.yardHeight();
-            case 4 -> yard.yardHeight();
-            default -> 0;
+            default -> 1;
         };
+        this.setDirection(facing);
+        this.col = new_col;
+        this.row = new_row;
     }
 
     // gets the direction of lawn mower
