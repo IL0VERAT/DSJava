@@ -41,12 +41,7 @@ public class YardShowcase {
             yard.printYard(mower);
             delay(1000);
 
-            // check in front of you -> if grass then move forward
-            if (mower.checkGrass(yard) == '+') {
-                mower.mover();
-            } else {
-                mower.updateMower(yard);
-            }
+           mower.updateMower(yard);
         }
     }
 }

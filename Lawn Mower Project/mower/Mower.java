@@ -145,7 +145,7 @@ public class Mower {
     public boolean updateMower(Yard yard) {
         while (true) {
             if (within == '+'){
-                return true;
+                mover();
             } else if (within == ' ' || within == 'R'){
                 turnRight();
             } else {
