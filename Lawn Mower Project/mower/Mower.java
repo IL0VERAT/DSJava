@@ -146,14 +146,15 @@ public class Mower {
     }
 
     public boolean updateMower(Yard yard) {
-        while (true) {
-            if (within == '+'){
-                mover();
-            } else if (within == ' ' || within == 'R'){
-                turnRight();
-            } else {
-                return false;
-            }
+        if (within == '+') {
+            return true;
+        } else if (within == ' ' || within == 'R') {
+            turnRight();
+        } else {
+            return false;
         }
+        return false;
+
+        //ccuel
     }
 }
