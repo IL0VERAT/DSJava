@@ -32,8 +32,6 @@ public class Mower {
     }
 
     public void randomizeDirection(Yard yard) {
-        int max = 4;
-        int min = 1;
         int randomDir = (int) (Math.random() * 4);
         facing = switch (randomDir) {
             case 0 -> DIRECTION.UP;
@@ -141,10 +139,10 @@ public class Mower {
             case DOWN -> row += 1;
             case LEFT -> col -= 1;
             case RIGHT -> col += 1;
-        }
-        ;
+        };
     }
 
+    //updates mower status
     public boolean updateMower(Yard yard) {
         if (within == '+') {
             return true;
@@ -155,6 +153,5 @@ public class Mower {
         }
         return false;
 
-        //ccuel
     }
 }

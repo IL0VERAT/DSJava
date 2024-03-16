@@ -38,7 +38,6 @@ public class YardShowcase {
         yard.printYard(mower);
 
         while (true) {
-           if(mower.updateMower(yard) == true){
             mower.mow(yard);
             clearScreen();
             yard.printYard(mower);
@@ -53,4 +52,4 @@ public class YardShowcase {
         }
     }
 }
-}
+
