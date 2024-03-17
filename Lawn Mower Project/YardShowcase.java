@@ -41,13 +41,33 @@ public class YardShowcase {
             mower.mow(yard);
             clearScreen();
             yard.printYard(mower);
-            delay(1000);
+            delay(500);
 
             // check in front of you -> if grass then move forward
             if (mower.checkGrass(yard) == '+') {
                 mower.mover();
             } else {
-                mower.updateMower(yard);
+                // turn to the right of original direction.
+                mower.turnRight();
+                if (mower.checkGrass(yard) == '+') {
+                    // there is grass in front.
+                    // move forward
+                    mower.mover();
+                } else {
+                    // no grass to the right.
+                    // turn to the left of the original direction.
+                    mower.turnLeft();
+                    mower.turnLeft();
+
+                    if (mower.checkGrass(yard) == '+') {
+                        // there is still some grass left to mow
+                        mower.mover();
+                    } else {
+                        // no more grass left.
+                        // exit loop.
+                        break;
+                    }
+                }
             }
         }
     }
