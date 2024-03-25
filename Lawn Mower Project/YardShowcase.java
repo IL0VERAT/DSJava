@@ -63,8 +63,6 @@ public class YardShowcase {
                         // there is still some grass left to mow
                         mower.mover();
                     } else {
-                        // no more grass left.
-                        // exit loop.
                         break;
                     }
                 }
