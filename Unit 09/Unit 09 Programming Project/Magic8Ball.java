@@ -1,8 +1,7 @@
-public class Magic8Ball{
-    private static String result;
-    public static void answer(){
+public class Magic8Ball {
+    public static String shake() {
         int randomNum = (int) (Math.random() * 20);
-        result = switch(randomNum){
+        String result = switch (randomNum) {
             case 0 -> "It is certain";
             case 1 -> "It is decidely so";
             case 2 -> "Without a doubt";
@@ -24,8 +23,7 @@ public class Magic8Ball{
             case 18 -> "Outlook not so good";
             case 19 -> "Very doubtful";
             default -> "It is certain";
-            
         };
-
+        return result;
     }
 }
