@@ -6,14 +6,17 @@ public class Magic8BallShowcase {
         Magic8Ball magic8Ball = new Magic8Ball();
         Scanner in = new Scanner(System.in);
 
-        while (true) {
-            System.out.print("Ask a yes or no question or type q to quit: ");
+        while(true){
+            System.out.println("Ask a yes or no question or type q to quit: ");
             
             if (in.hasNext("q") || in.hasNext("Q")) {
                 break;
             } else {
                 Magic8Ball.shake();
+                System.out.println("");
+                in.nextLine();
             }
-        } 
+        }
+
     }
 }

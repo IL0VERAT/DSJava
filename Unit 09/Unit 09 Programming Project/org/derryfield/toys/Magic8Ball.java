@@ -4,7 +4,7 @@ public class Magic8Ball {
     private static String result;
 
     public Magic8Ball() {
-
+        
     }
 
     public static void shake() {
