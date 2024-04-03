@@ -7,12 +7,11 @@ public class Ride {
         System.out.printf("Speed = %02d%n", b.getSpeed());
 
         GearedBicycle gb = new GearedBicycle();
-        System.out.printf("Geared Speed = %02d%n", gb.getSpeed());
+        b.display();
 
         gb.shiftUp();
         gb.pedal();
         gb.pedal();
-        System.out.printf("Geared Speed = %02d%n", gb.getSpeed());
-        System.out.printf("Current Gear = %02d%n", gb.getGear());
+        gb.display();
     }
 }

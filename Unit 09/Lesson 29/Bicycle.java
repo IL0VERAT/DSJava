@@ -2,6 +2,10 @@ public class Bicycle {
     private int speed; //
     private final int MAX_SPEED = 30;
 
+    public Bicycle(){
+        speed = 0;
+    }
+
     public int getSpeed() {
         return speed;
     }
@@ -22,5 +26,8 @@ public class Bicycle {
         if (speed < 0) {
             speed = 0;
         }
+    }
+    public void display(){
+        System.out.printf("The speed is %02d MPH%n", getSpeed());
     }
 }

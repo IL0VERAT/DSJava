@@ -39,4 +39,8 @@ public class GearedBicycle extends Bicycle {
         }
         this.setSpeed(newSpeed);
     }
+    public void display(){
+        System.out.printf(" Gear = %02d%n ", gear);
+        super.display();
+    }
 }
