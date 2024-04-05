@@ -8,6 +8,8 @@ public class Ride {
         b.pedal();
         b.pedal();
         b.display();
+        b.brake();
+        b.display();
         System.out.println("");
 
         //example of geared bicycle class with overridden breaking method 
