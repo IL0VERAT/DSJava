@@ -48,12 +48,10 @@ public class Application extends JFrame{
        OS os = checkOS();
        switch (os) {
            case WIN:
-                System.out.println("I'm a PC.");
                border_width = 7;
                bar_height = 30;
                break;
            case MAC:
-               System.out.println("I'm a mac");
                border_width = 0;
                bar_height = 28;
                break;
