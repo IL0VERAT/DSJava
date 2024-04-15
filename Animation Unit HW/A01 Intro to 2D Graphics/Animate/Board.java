@@ -25,7 +25,7 @@ public class Board extends JPanel {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(Color.MAGENTA);
-        
+
         int x_t = B_WIDTH/2;
         int y_t = B_HEIGHT/2;
         x_t = x_t - SIDE_LENGTH/2;
@@ -41,7 +41,7 @@ public class Board extends JPanel {
 
         g2d.fill(transformedShape);
         g2d.setColor(Color.BLUE);
-        g2d.drawString("Hello, World!", 50,50);
+        g2d.drawString("Hello, World!", 25,25);
     }
 }
 
