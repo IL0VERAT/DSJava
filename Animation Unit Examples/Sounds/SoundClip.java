@@ -2,7 +2,6 @@ package sound;
 
 import java.io.File;
 import java.io.IOException;
-
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -44,11 +43,34 @@ public class SoundClip {
     }
 
     public void play() {
-        // implement method here.
+        if (clip != null) {
+            // if the clip is running, stop it before playing it again.
+            if (clip.isRunning()) {
+                clip.stop();
+                try {
+                    // sleep for a moment to give line time to stop playback.
+                    Thread.sleep(10);
+                } catch (InterruptedException e) {
+                    System.err.println(e.getMessage());
+                }
+            }
+ 
+            // start at the beginning of the clip
+            clip.setFramePosition(0);
+            clip.start();
+        } 
     }
 
     public void play(boolean wait) {
-        // implement method here.
+        play();
+       if (clip != null && wait) {
+           long msec = clip.getMicrosecondLength() / 1000;
+           try {
+               Thread.sleep(msec);
+           } catch (InterruptedException e) {
+               System.err.println(e.getMessage());
+           }
+       }
     }
 
     public void close() {
