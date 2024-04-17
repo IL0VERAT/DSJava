@@ -74,6 +74,9 @@ public class SoundClip {
     }
 
     public void close() {
-        // implement method here.
+       if(clip != null){
+        clip.stop();
+        clip.close();
+       }
     }
 }
