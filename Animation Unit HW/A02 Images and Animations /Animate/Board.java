@@ -16,7 +16,6 @@ import javax.swing.JPanel;
 public class Board extends JPanel {
     private final int B_WIDTH = 620;
     private final int B_HEIGHT = 620;
-    private final int SIDE_LENGTH = 150;
     private BufferedImage img;
 
     // constructor
@@ -39,13 +38,13 @@ public class Board extends JPanel {
         AffineTransform affineTransform = new AffineTransform();
         int x_t = 0, y_t = 0;
         int x_scaled = 0, y_scaled = 0;
-        double scale = 0.5;
+        double scale = 0.25;
         if(img != null){
             x_t = this.getWidth() / 2;
             x_scaled = (int) ((img.getWidth() * scale) / 2.0);
             y_t = this.getHeight() / 2;
             y_scaled = (int) ((img.getHeight() * scale) / 2.0);
-            affineTransform.translate(x_t - x_scaled, y_t - y_scaled);
+            affineTransform.translate(x_t + x_scaled, y_t + y_scaled);
             affineTransform.scale(scale, scale);
             g2d.drawImage(img, affineTransform, null);
         } else {
