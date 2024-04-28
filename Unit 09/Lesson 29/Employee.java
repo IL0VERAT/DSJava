@@ -30,4 +30,9 @@ public class Employee {
         // Employees only get an annual salary.
         return getSalary();
     }
+
+    public void displayInfo() {
+        System.out.println(name + ":");
+        System.out.printf("  Salary = $%,.2f%n", salary);
+    }
 }
