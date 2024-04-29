@@ -39,9 +39,24 @@ public class Employee31 {
     //overide toString() method
     public String toString(){
         String val = this.getClass().getName() 
-        + "[name = ]" + this.name 
+        + "[name = " + this.name 
         + ", salary = " + this.salary + "]";
         return val;
 
+    }
+
+    //overide equals() method
+    public boolean equals(Object obj){
+        if(obj.getClass() != this.getClass()){
+            return false;
+        } else {
+            //cast the other object into Employee31 type
+            Employee31 otherEmployee = (Employee31)obj;
+            if(name.equals(otherEmployee.getName()) && Double.compare(salary, otherEmployee.getSalary()) == 0){
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 }
