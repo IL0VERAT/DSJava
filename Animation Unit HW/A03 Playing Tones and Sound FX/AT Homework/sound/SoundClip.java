@@ -14,6 +14,9 @@ public class SoundClip {
     private AudioInputStream audioIn;
     private Clip clip; // makes raw data easy to use
 
+    //add a private boolan called loop
+    //get and set methods 
+
     public SoundClip(String path) {
         filePath = path;
         clip = null;
@@ -57,6 +60,7 @@ public class SoundClip {
  
             // start at the beginning of the clip
             clip.setFramePosition(0);
+            //where to loop or start
             clip.start();
         } 
     }
