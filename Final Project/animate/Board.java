@@ -9,18 +9,24 @@ import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.geom.AffineTransform;
 
 //private member variables
-public class Board extends JPanel implements KeyListener{
-    private final int B_WIDTH = 1600;
-    private final int B_HEIGHT = 900;
+public class Board extends JPanel implements KeyListener,MouseListener{
+    private final int B_WIDTH = 160;
+    private final int B_HEIGHT = 90;
     private final int B_FLOOR = B_HEIGHT - 25;
+    //private SoundClip sc;
 
     // constructor
     public Board() {
         setBackground(Color.CYAN);
         setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));
+
+        //sc = new SoundClip("media/blop.wav");
+        //sc.open();
 
         //needs to be able to get focus of user interface
         this.setFocusable(true);
@@ -31,6 +37,7 @@ public class Board extends JPanel implements KeyListener{
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             System.out.println("Spacebar was pressed.");
+            //sc.play();
         } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             System.out.println("Left arrow was pressed.");
         } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
@@ -60,5 +67,20 @@ public class Board extends JPanel implements KeyListener{
         Shape transformedShape = affineTransform.createTransformedShape(rect);
         g2d.setColor(Color.GREEN);
         g2d.fill(transformedShape);
+    }
+
+    public void mouseClicked(MouseEvent e) {
+    }
+
+    public void mousePressed(MouseEvent e) {
+    }
+
+    public void mouseReleased(MouseEvent e) {
+    }
+
+    public void mouseEntered(MouseEvent e) {
+    }
+
+    public void mouseExited(MouseEvent e) {
     }
 }
