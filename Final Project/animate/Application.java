@@ -54,7 +54,6 @@ public class Application extends JFrame{
            case MAC:
                border_width = 0;
                bar_height = 28;
-               System.out.println("I am a Mac");
                break;
            case LINUX:
                break;
