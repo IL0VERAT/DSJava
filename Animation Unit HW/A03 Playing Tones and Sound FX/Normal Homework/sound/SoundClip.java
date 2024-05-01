@@ -79,9 +79,4 @@ public class SoundClip {
         clip.close();
        }
     }
-
-    public boolean getLoop() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getLoop'");
-    }
 }
