@@ -15,8 +15,8 @@ import java.awt.geom.AffineTransform;
 
 //private member variables
 public class Board extends JPanel implements KeyListener,MouseListener{
-    private final int B_WIDTH = 1600;
-    private final int B_HEIGHT = 900;
+    private final int B_WIDTH = 1366;
+    private final int B_HEIGHT = 768;
     private final int B_FLOOR = B_HEIGHT - 25;
     //private SoundClip sc;
 

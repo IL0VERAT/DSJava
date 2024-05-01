@@ -58,7 +58,7 @@ public class Application extends JFrame {
 
         int application_height = (int) board.getPreferredSize().getHeight() + bar_height + border_width;
         int application_width = (int) board.getPreferredSize().getWidth() + 2 * border_width;
-        this.setSize(application_height, application_width);
+        this.setSize(application_width,application_height);
 
         // specify where to place our window
         // (is it relative to another window?).
