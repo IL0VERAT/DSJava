@@ -35,13 +35,6 @@ public class Application extends JFrame{
         Board board = new Board();
         this.add(board);
 
-        // tell Java what you want our window to do
-        // when the window is closed by the user, program actually closes
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        // specify where to place our window
-        // (is it relative to another window?).
-        this.setLocationRelativeTo(null);
        //will need to account for border and bar dimensions
        int border_width = 0;
        int bar_height = 0;
@@ -64,6 +57,14 @@ public class Application extends JFrame{
        int application_height = (int) board.getPreferredSize().getHeight() + bar_height + border_width;
        int application_width = (int) board.getPreferredSize().getWidth() + 2 * border_width;
        this.setSize(application_height,application_width);
+
+       // tell Java what you want our window to do
+        // when the window is closed by the user, program actually closes
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // specify where to place our window
+        // (is it relative to another window?).
+        this.setLocationRelativeTo(null);
     }
 
 }

@@ -13,6 +13,8 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+import sound.SoundClip;
+
 //private member variable
 public class Board extends JPanel {
     private final int B_WIDTH = 720;
@@ -26,6 +28,8 @@ public class Board extends JPanel {
     private int ySpeed = 2;
     private int angle = 0;
     private BufferedImage img;
+    private SoundClip sitar;
+    private SoundClip ow;
 
     // constructor
     public Board() {
@@ -45,6 +49,16 @@ public class Board extends JPanel {
             System.err.println(fileNotException.getMessage());
         }
 
+        //open sound file
+        sitar = new SoundClip("Media/sitar.wav");
+        sitar.open();
+        sitar.setLoop(true);
+        sitar.play();
+
+        //open ow sound
+        ow = new SoundClip("Media/ow.wav");
+        ow.open();
+
         //randomly assigns the speed
         xSpeed = (int) (Math.random() * 5 + 1);
         ySpeed = (int) (Math.random() * 5 + 1);
@@ -54,11 +68,13 @@ public class Board extends JPanel {
     private class ScheduledUpdate extends TimerTask {
         public void run() {
             x += xSpeed;
-            if (x > B_WIDTH ||x < B_WIDTH) {
+            if (x > B_WIDTH ||x < 0) {
+                ow.play();
                 xSpeed = -xSpeed;
             }
             y += ySpeed;
-            if (y > B_HEIGHT || y > B_HEIGHT) {
+            if (y > B_HEIGHT || y < 0) {
+                ow.play();
                 ySpeed = -ySpeed;
             }
             angle += 5; //in degrees

@@ -15,8 +15,8 @@ import java.awt.geom.AffineTransform;
 
 //private member variables
 public class Board extends JPanel implements KeyListener,MouseListener{
-    private final int B_WIDTH = 160;
-    private final int B_HEIGHT = 90;
+    private final int B_WIDTH = 1600;
+    private final int B_HEIGHT = 900;
     private final int B_FLOOR = B_HEIGHT - 25;
     //private SoundClip sc;
 
@@ -61,7 +61,7 @@ public class Board extends JPanel implements KeyListener,MouseListener{
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
         AffineTransform affineTransform = new AffineTransform();
-        g2d.drawLine(0, B_FLOOR, B_WIDTH, B_FLOOR);
+        g2d.drawLine(0, B_FLOOR, B_WIDTH-1, B_FLOOR);
 
         Rectangle rect = new Rectangle(0,(B_FLOOR+1), B_WIDTH, (B_FLOOR+1));
         Shape transformedShape = affineTransform.createTransformedShape(rect);

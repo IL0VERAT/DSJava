@@ -1,5 +1,4 @@
 import Animations.Application;
-import sound.SoundClip;
 
 import java.awt.EventQueue;
 
@@ -10,13 +9,6 @@ public class DemoApp {
             Application myApp = new Application("Wild Ride");
             myApp.setVisible(true);
         });
-
-        SoundClip sitar = new SoundClip("Media/sitar.wav");
-        while(sitar.getLoop() == true){
-        sitar.open();
-        sitar.play();
-        sitar.play(true);
-        }
     }
 }
     

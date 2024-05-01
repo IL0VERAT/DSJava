@@ -13,19 +13,25 @@ public class SoundClip {
     private File audioFile;
     private AudioInputStream audioIn;
     private Clip clip; // makes raw data easy to use
-    private boolean loop = true;
+    private boolean loop = false;
 
     public boolean getLoop(){
         return loop;
     }
 
     public void setLoop(boolean loop){
-        loop = this.loop;
+        this.loop = loop;
     }
 
     public SoundClip(String path) {
         filePath = path;
         clip = null;
+    }
+
+    public void stop(){
+        if(clip != null){
+            clip.stop();
+        }
     }
 
     public void open() {
@@ -67,7 +73,11 @@ public class SoundClip {
             // start at the beginning of the clip
             clip.setFramePosition(0);
             //where to loop or start
-            clip.start();
+            if(loop){
+                clip.loop(clip.LOOP_CONTINUOUSLY);
+            } else {
+                clip.start();
+            }
         } 
     }
 
