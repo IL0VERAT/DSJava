@@ -13,9 +13,15 @@ public class SoundClip {
     private File audioFile;
     private AudioInputStream audioIn;
     private Clip clip; // makes raw data easy to use
+    private boolean loop = true;
 
-    //add a private boolan called loop
-    //get and set methods 
+    public boolean getLoop(){
+        return loop;
+    }
+
+    public void setLoop(boolean loop){
+        loop = this.loop;
+    }
 
     public SoundClip(String path) {
         filePath = path;
