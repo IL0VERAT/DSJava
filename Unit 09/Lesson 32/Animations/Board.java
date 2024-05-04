@@ -21,11 +21,19 @@ public class Board extends JPanel implements KeyListener,MouseListener{
     private final int DIAMETER = 20;
     private SoundClip blip;
     private SoundClip blop;
+    private int x = 0;
+    private int y = 0;
+    private AffineTransform af;
 
     // constructor
     public Board() {
         setBackground(Color.CYAN);
         setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));
+
+        af = new AffineTransform();
+
+        x = 0;
+        y = B_HEIGHT / 2;
 
         blip = new SoundClip("Media/blip.wav");
         blip.open();
@@ -56,18 +64,17 @@ public class Board extends JPanel implements KeyListener,MouseListener{
 
     public void keyReleased(KeyEvent e) {
     }
+
     public void keyTyped(KeyEvent e) {  
     }
 
-
+    //paints the photo onto window
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
-        AffineTransform affineTransform = new AffineTransform();
-        //affineTransform.translate(x - DIAMETER/2, y - DIAMETER/2);
 
-        Ellipse2D circle = new Ellipse2D.Double(B_WIDTH/2, B_HEIGHT/2, DIAMETER, DIAMETER);
-        Shape transformedShape = affineTransform.createTransformedShape(circle);
+        Ellipse2D circle = new Ellipse2D.Double(B_WIDTH/2, B_HEIGHT/2, DIAMETER,DIAMETER);
+        Shape transformedShape = af.createTransformedShape(circle);
         g2d.setColor(Color.MAGENTA);
         g2d.fill(transformedShape);
     }
@@ -76,6 +83,9 @@ public class Board extends JPanel implements KeyListener,MouseListener{
     }
 
     public void mousePressed(MouseEvent e) {
+        af.translate(e.getX(),e.getY());
+        g2d.fill
+        blip.play();
     }
 
     public void mouseReleased(MouseEvent e) {
