@@ -6,13 +6,11 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JPanel;
 import sound.SoundClip;
-import java.awt.Shape;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Ellipse2D;
+
 
 //private member variables
 public class Board extends JPanel implements KeyListener,MouseListener{
@@ -23,16 +21,13 @@ public class Board extends JPanel implements KeyListener,MouseListener{
     private SoundClip blop;
     private int x = 0;
     private int y = 0;
-    private AffineTransform af;
 
     // constructor
     public Board() {
         setBackground(Color.CYAN);
         setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));
 
-        af = new AffineTransform();
-
-        x = 0;
+        x = B_WIDTH/2;
         y = B_HEIGHT / 2;
 
         blip = new SoundClip("Media/blip.wav");
@@ -45,11 +40,19 @@ public class Board extends JPanel implements KeyListener,MouseListener{
         this.setFocusable(true);
         //register ourselves as a keylistener object
         this.addKeyListener(this);
+        //register ourselves as a mouselistener object
+        this.addMouseListener(this);
     }
 
     public void keyPressed(KeyEvent e) {
+
+        //reacts to keyboard or mouse presses
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             System.out.println("Spacebar was pressed.");
+            x = B_WIDTH/2;
+            y = B_HEIGHT/2;
+            repaint();
+            blop.play();
         } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             System.out.println("Left arrow was pressed.");
         } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
@@ -68,23 +71,24 @@ public class Board extends JPanel implements KeyListener,MouseListener{
     public void keyTyped(KeyEvent e) {  
     }
 
-    //paints the photo onto window
+    //paints the circle onto window
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
 
-        Ellipse2D circle = new Ellipse2D.Double(B_WIDTH/2, B_HEIGHT/2, DIAMETER,DIAMETER);
-        Shape transformedShape = af.createTransformedShape(circle);
         g2d.setColor(Color.MAGENTA);
-        g2d.fill(transformedShape);
+        g2d.fillOval(x - DIAMETER/2, y - DIAMETER/2, DIAMETER, DIAMETER);
     }
 
     public void mouseClicked(MouseEvent e) {
     }
 
+    //moves circle to point mouse pressed
     public void mousePressed(MouseEvent e) {
-        af.translate(e.getX(),e.getY());
-        g2d.fill
+        System.out.println("Hi");
+        x = e.getX();
+        y = e.getY();
+        repaint();
         blip.play();
     }
 
