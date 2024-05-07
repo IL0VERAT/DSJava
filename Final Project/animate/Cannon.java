@@ -2,6 +2,11 @@ package animate;
 
 import java.io.File;
 import javax.imageio.ImageIO;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
 public class Cannon {
@@ -36,16 +41,6 @@ public class Cannon {
         this.rotation = rotation;
     }
 
-    //may need to split up later if logic errors --> put negative in with affineTransform
-    public double rotationMachine(double rotation){
-        if(rotation >= 90.0 || rotation <= 0){
-            //do something here?
-        } else {
-            rotation = rotation + ROTATION_NUM;
-            //will need to control with key presses whether + or -. 
-        }
-        return rotation;
-    }
 
     public void fireCannon(){
         cannonSound.play();
@@ -61,6 +56,38 @@ public class Cannon {
 
 
     
-    //make draw method --< takes graphics 2d object --> in board function --> have graphics function that 
+    public void draw(Graphics2D g2d){
+        int x_pivot = 15;
+        int y_pivot = img.getHeight()/2;
+        AffineTransform affineTransform = new AffineTransform();
+        if(img != null){
+            //moves photo
+            affineTransform.translate(x- x_pivot, y-y_pivot);
+            affineTransform.rotate(Math.toRadians(rotation),x_pivot,y_pivot);
+            g2d.drawImage(img, affineTransform, null);
+            g2d.setColor(Color.BLACK);
+            System.out.print("X is " + x);
+            System.out.println("Y is" + y);
+            g2d.fillOval((int)(x- 5),(int)(y - 5), 10, 10);
+        } else {
+            g2d.setColor(Color.BLUE);
+            g2d.drawString("Unable to load image!", 25, 25);
+        }
+    }
+
+
+    public void rotationLeft(double change){
+        rotation += change;
+        if(rotation > 0){
+            rotation = 0;
+        }
+    }
+
+    public void rotationRight(double change){
+         rotation -= change;
+        if(rotation < -90){
+            rotation = -90;
+        }
+    }
 
 }
