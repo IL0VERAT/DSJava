@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import java.awt.Rectangle;
 import java.awt.Shape;
@@ -12,12 +14,15 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.AffineTransform;
+import java.awt.image.BufferedImage;
+import java.io.File;
 
 //private member variables
 public class Board extends JPanel implements KeyListener,MouseListener{
     private final int B_WIDTH = 1366;
     private final int B_HEIGHT = 768;
     private final int B_FLOOR = B_HEIGHT - 25;
+    private BufferedImage img;
     //private SoundClip sc;
 
     // constructor
@@ -32,6 +37,14 @@ public class Board extends JPanel implements KeyListener,MouseListener{
         this.setFocusable(true);
         //register ourselves as a keylistener object
         this.addKeyListener(this);
+
+        //imports image
+        try {
+            File imageFile = new File("media/sm_cannon.png");
+            img = ImageIO.read(imageFile);
+        } catch (Exception fileNotException){
+            System.err.println(fileNotException.getMessage());
+        }
     }
 
     public void keyPressed(KeyEvent e) {
@@ -67,6 +80,17 @@ public class Board extends JPanel implements KeyListener,MouseListener{
         Shape transformedShape = affineTransform.createTransformedShape(rect);
         g2d.setColor(Color.GREEN);
         g2d.fill(transformedShape);
+
+        double scale = 0.5;
+        if(img != null){
+            //moves photo
+            affineTransform.translate(getWidth()/2, getHeight()/2);
+            affineTransform.scale(scale, scale);
+            g2d.drawImage(img, affineTransform, null);
+        } else {
+            g2d.setColor(Color.BLUE);
+            g2d.drawString("Unable to load image!", 25, 25);
+        }
     }
 
     public void mouseClicked(MouseEvent e) {

@@ -12,6 +12,7 @@ public class Cannon {
     private double y;
     private double rotation;   
     private final double ROTATION_NUM = 1; 
+    private int muzzleVelocity = 37; //may need to change
 
     //constructor
     public Cannon(double x, double y, double rotation){
@@ -49,6 +50,15 @@ public class Cannon {
     public void fireCannon(){
         cannonSound.play();
     }
+
+    public int getMuzzleVelocity(){
+        return muzzleVelocity;
+    }
+
+    public void setMuzzleVelocity(int muzzleVelocity){
+        this.muzzleVelocity = muzzleVelocity;
+    }
+
 
     
     //make draw method --< takes graphics 2d object --> in board function --> have graphics function that 
