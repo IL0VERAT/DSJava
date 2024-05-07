@@ -5,6 +5,7 @@ import javax.imageio.ImageIO;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Polygon;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
@@ -85,6 +86,7 @@ public class Cannon {
             g2d.drawImage(img, affineTransform, null);
             g2d.setColor(Color.BLACK);
             g2d.fillOval((int)(x- 5),(int)(y - 5), 10, 10);
+            g2d.fillPolygon(4,5,2);
         } else {
             g2d.setColor(Color.BLUE);
             g2d.drawString("Unable to load image!", 25, 25);
