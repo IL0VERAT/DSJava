@@ -4,7 +4,6 @@ import java.io.File;
 import javax.imageio.ImageIO;
 
 import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
@@ -16,7 +15,6 @@ public class Cannon {
     private double x;
     private double y;
     private double rotation;   
-    private final double ROTATION_NUM = 1; 
     private int muzzleVelocity = 37; //may need to change
 
     //constructor
@@ -41,6 +39,26 @@ public class Cannon {
         this.rotation = rotation;
     }
 
+    public void setX(double x){
+        this.x = x;
+    }
+    public double getX(){
+        return x;
+    }
+
+    public void setY(double y){
+        this.y = y;
+    }
+    public double getY(){
+        return y;
+    }
+
+    public void setRotation(double rotation){
+        this.rotation = rotation;
+    }
+    public double getRotation(){
+        return rotation;
+    }
 
     public void fireCannon(){
         cannonSound.play();
@@ -66,8 +84,6 @@ public class Cannon {
             affineTransform.rotate(Math.toRadians(rotation),x_pivot,y_pivot);
             g2d.drawImage(img, affineTransform, null);
             g2d.setColor(Color.BLACK);
-            System.out.print("X is " + x);
-            System.out.println("Y is" + y);
             g2d.fillOval((int)(x- 5),(int)(y - 5), 10, 10);
         } else {
             g2d.setColor(Color.BLUE);
@@ -77,16 +93,20 @@ public class Cannon {
 
 
     public void rotationLeft(double change){
-        rotation += change;
-        if(rotation > 0){
-            rotation = 0;
+        if((rotation -= change) < -90){
+            rotation = -90;
+        } else {
+            rotation -= change;
+            wheelSound.play();
         }
     }
 
     public void rotationRight(double change){
-         rotation -= change;
-        if(rotation < -90){
-            rotation = -90;
+        if((rotation += change) > 0){
+            rotation = 0;
+        } else{
+            rotation += change;
+            wheelSound.play();
         }
     }
 

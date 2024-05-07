@@ -34,14 +34,12 @@ public class Board extends JPanel implements KeyListener,MouseListener{
 
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            System.out.println("Spacebar was pressed.");
+            cannon.fireCannon();
         } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            System.out.println("Left arrow was pressed.");
-            cannon.rotationLeft(5.0);
+            cannon.rotationLeft(1.0);
             repaint();
         } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            System.out.println("Right arrow was pressed.");
-            cannon.rotationRight(5.0);
+            cannon.rotationRight(1.0);
             repaint();
         } else if (e.getKeyCode() == KeyEvent.VK_UP) {
             System.out.println("Up arrow was pressed.");
