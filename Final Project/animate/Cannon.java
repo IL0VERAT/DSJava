@@ -5,7 +5,6 @@ import javax.imageio.ImageIO;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.Polygon;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
@@ -40,6 +39,7 @@ public class Cannon {
         this.rotation = rotation;
     }
 
+    //get and set methods for variables
     public void setX(double x){
         this.x = x;
     }
@@ -61,10 +61,12 @@ public class Cannon {
         return rotation;
     }
 
+    //fires the cannon
     public void fireCannon(){
         cannonSound.play();
     }
 
+    //get and set muzzle velocities
     public int getMuzzleVelocity(){
         return muzzleVelocity;
     }
@@ -74,26 +76,29 @@ public class Cannon {
     }
 
 
-    
+    //draws the cannot 
     public void draw(Graphics2D g2d){
         int x_pivot = 15;
         int y_pivot = img.getHeight()/2;
         AffineTransform affineTransform = new AffineTransform();
         if(img != null){
-            //moves photo
+            //rotates the cannon
             affineTransform.translate(x- x_pivot, y-y_pivot);
             affineTransform.rotate(Math.toRadians(rotation),x_pivot,y_pivot);
             g2d.drawImage(img, affineTransform, null);
             g2d.setColor(Color.BLACK);
-            g2d.fillOval((int)(x- 5),(int)(y - 5), 10, 10);
-            g2d.fillPolygon(4,5,2);
+            g2d.drawPolygon(new int[]{(int)x,(int)15, (int)105},new int[]{(int)y-5, 743, 743},3);
+            g2d.setColor(Color.PINK);
+            g2d.fillPolygon(new int[]{(int)x,(int)15, (int)105},new int[]{(int)y-5, 743, 743},3);
+            g2d.setColor(Color.BLACK);
+            g2d.fillOval((int)(x-5),(int)(y-5), 10, 10);
         } else {
             g2d.setColor(Color.BLUE);
             g2d.drawString("Unable to load image!", 25, 25);
         }
     }
 
-
+    //ensures cannon does not over rotate
     public void rotationLeft(double change){
         if((rotation -= change) < -90){
             rotation = -90;
