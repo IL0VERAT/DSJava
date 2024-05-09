@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Animal {
+public class Animal implements Measurable{
     private String name;
     private double weight;
 
@@ -31,14 +31,8 @@ public class Animal {
         return s;
     }
 
-    public static double calcAvg(ArrayList<Animal> list) {
-        double sum = 0;
-        if (list.size() == 0) {
-            return 0;
-        }
-        for (Animal animal : list) {
-            sum = sum + animal.getWeight();
-        }
-        return sum / list.size();
+    public double getMeasure() {
+    
+        return weight;
     }
 }

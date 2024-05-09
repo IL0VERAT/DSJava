@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class BankAccount {
+public class BankAccount implements Measurable {
     private int id;
     private double balance;
 
@@ -31,17 +31,8 @@ public class BankAccount {
         return s;
     }
 
-    public static double calcAvg(ArrayList<BankAccount> list) {
-        double sum = 0;
-        if (list.size() == 0) {
-            return 0;
-        }
-
-        for (BankAccount account : list) {
-            sum = sum + account.getBalance();
-        }
-
-        return sum / list.size();
+    public double getMeasure() {
+        return balance;
     }
 
 }
