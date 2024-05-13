@@ -2,6 +2,9 @@ package animate;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.io.File;
+
+import javax.imageio.ImageIO;
 
 public class CannonBall {
     public enum STATE {
@@ -9,70 +12,82 @@ public class CannonBall {
         FLYING,
         EXPLODING
     }
+    private double x;
+    private double y;
+    private double vx;
+    private double vy;
+    private double ax;
+    private double ay;
+    private STATE currentState;
+    private BufferedImage img;
+
 
     public CannonBall(double ax, double ay, double ground) {
        
     }
 
     private BufferedImage loadImage(String path) {
-        // loads a buffered image (for the flame animation).
+        try {
+            File imageFile = new File("media/sm_cannon.png");
+            img = ImageIO.read(imageFile);
+        } catch (Exception fileNotException) {
+            System.err.println(fileNotException.getMessage());
+        }
     }
 
-    /*
-     * The draw method is called by the Board object
-     * and is used to paint the current location and state of the ball.
-     * If the ball is flying through the air, the ball is drawn as a red
-     * filled in circle. If the ball is in the exploded state, a flame image is
-     * drawn. If the ball is idle, then the ball is not drawn at all
-     * (since we assume the ball is hidden inside the cannon).
-     */
     public void draw(Graphics2D g2d) {
     }
 
-    /*
-     * The updateBall() method uses the constant acceleration equations
-     * to update the velocity and position of the ball each timer interval.
-     * note that when calculating the new velocity, the acceleration term is divided
-     * by the
-     * time scale in case the user wants to slow down the animation.
-     * Similarly, when calculating the new position, the velocity term is divided by
-     * the time scale
-     * in case the user wants to slow down the animation.
-     */
     public void updateBall() {
     }
 
     /*
+        How to calculate x position
+      vx = vx+ax;
+      x = x + vx;
+        How to calculate the y position
+      vy = vy + ay;
+      y = y + vy;
+
+       check if y position is below floor --> then change the state 
+
      * If the ball is not flying through the air, the launch() method
      * will change the state to FLYING and start the ball moving from position (x,y)
      * with the inital velocity of (vx, vy).
      */
     public void launch(double x, double y, double vx, double vy) {
+        //called by cannon --> the cannon uses the trig. 
     }
 
     /*
      * Get/set methods for the private member variables.
      */
     public STATE getState() {
-        return getState();
+        return currentState;
     }
 
     public double getX() {
+        return x;
     }
 
     public double getY() {
+        return y;
     }
 
     public double getVX() {
+        return vx;
     }
 
     public double getVY() {
+        return vy;
     }
 
     public double getAX() {
+        return ax;
     }
 
     public double getAY() {
+        return ay;
     }
 
     public double getTimeScale() {
@@ -82,24 +97,31 @@ public class CannonBall {
     }
 
     public void setState(STATE newState) {
+        currentState = newState;
     }
 
     public void setX(double x) {
+        this.x = x;
     }
 
     public void setY(double y) {
+        this.y = y;
     }
 
     public void setVX(double vx) {
+        this.vx = vx;
     }
 
     public void setVY(double vy) {
+        this.vy = vy;
     }
 
     public void setAX(double ax) {
+        this.ax = ax;
     }
 
     public void setAY(double ay) {
+        this.ay = ay;
     }
 
     public void setTimeScale(double timeScale) {
