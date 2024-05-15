@@ -26,6 +26,7 @@ public class CannonBall {
        
     }
 
+    /* 
     private BufferedImage loadImage(String path) {
         try {
             File imageFile = new File("media/sm_cannon.png");
@@ -34,6 +35,7 @@ public class CannonBall {
             System.err.println(fileNotException.getMessage());
         }
     }
+    */
 
     public void draw(Graphics2D g2d) {
     }
@@ -56,7 +58,7 @@ public class CannonBall {
      * with the inital velocity of (vx, vy).
      */
     public void launch(double x, double y, double vx, double vy) {
-        //called by cannon --> the cannon uses the trig. 
+        //called by cannon --> the cannon uses the trig.
     }
 
     /*
