@@ -16,7 +16,7 @@ public class Cannon {
     private double x;
     private double y;
     private double rotation;   
-    private int muzzleVelocity = 34; 
+    private int muzzleVelocity = 33; 
     private final int HYPOT = 100;
     private int x_pivot;
     private int y_pivot;
@@ -112,7 +112,7 @@ public class Cannon {
         double x = getX() + x0;
         double y = getY() - y0;
         ball.launch(x, y, vx0, vy0);
-        System.out.println(x +", "+y+ ", "+vy0+", "+vx0);
+        //System.out.println(x +", "+y+ ", "+vy0+", "+vx0);
         this.fireCannon();
     }
 

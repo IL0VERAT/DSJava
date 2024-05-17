@@ -50,14 +50,13 @@ public class CannonBall {
 
     public void updateBall() {
         if(currentState == STATE.FLYING){
-            System.out.print("TEST!");
             vx = vx+ax;
             x = x + vx;
             vy = vy + ay;
             y = y + vy;
             if((y + 5) > ground){
                 currentState = STATE.EXPLODING;
-                
+                //play boom sound
             }
         }
     }
