@@ -20,7 +20,7 @@ public class CannonBall {
     private double ay;  //y -acell. 
     private STATE currentState;
     private double ground;
-   // private BufferedImage img;
+   //private BufferedImage img;
 
 
     public CannonBall(double ax, double ay, double ground) {
@@ -50,12 +50,14 @@ public class CannonBall {
 
     public void updateBall() {
         if(currentState == STATE.FLYING){
+            System.out.print("TEST!");
             vx = vx+ax;
             x = x + vx;
             vy = vy + ay;
             y = y + vy;
             if((y + 5) > ground){
                 currentState = STATE.EXPLODING;
+                
             }
         }
     }

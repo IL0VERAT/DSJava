@@ -12,12 +12,17 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.AffineTransform;
+import java.util.Timer;
+import java.util.TimerTask;
 
 //private member variables
 public class Board extends JPanel implements KeyListener,MouseListener{
     private final int B_WIDTH = 1366;
     private final int B_HEIGHT = 768;
     private final int B_FLOOR = B_HEIGHT - 25;
+    private final int INITAL_DELAY = 0;
+    private final int PERIOD_DELAY = 20;
+    private Timer timer;
     private Cannon cannon;
     private CannonBall ball;
 
@@ -26,16 +31,26 @@ public class Board extends JPanel implements KeyListener,MouseListener{
         setBackground(Color.CYAN);
         setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));
         cannon = new Cannon(60, B_HEIGHT-60, -45);
+        ball = new CannonBall(0, 1, B_FLOOR);
 
         //needs to be able to get focus of user interface
         this.setFocusable(true);
         //register ourselves as a keylistener object
         this.addKeyListener(this);
+
+        timer = new Timer();
+        timer.scheduleAtFixedRate(new ScheduledUpdate(), INITAL_DELAY, PERIOD_DELAY);
     }
 
+    private class ScheduledUpdate extends TimerTask {
+        public void run() {
+           ball.updateBall();
+           repaint();
+        }
+    }
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            cannon.fireCannon();
+            cannon.fireCannon(ball);
         } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             cannon.rotationLeft(1.0);
             repaint();
@@ -69,6 +84,7 @@ public class Board extends JPanel implements KeyListener,MouseListener{
         g2d.setColor(Color.GREEN);
         g2d.fill(transformedShape);
         cannon.draw(g2d);
+        ball.draw(g2d);
     }
 
     public void mouseClicked(MouseEvent e) {

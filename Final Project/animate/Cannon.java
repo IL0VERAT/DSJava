@@ -16,7 +16,7 @@ public class Cannon {
     private double x;
     private double y;
     private double rotation;   
-    private int muzzleVelocity = 37; 
+    private int muzzleVelocity = 34; 
     private final int HYPOT = 100;
     private int x_pivot;
     private int y_pivot;
@@ -108,8 +108,11 @@ public class Cannon {
         double x0 = (HYPOT * Math.cos(Math.toRadians(Math.abs(rotation))));
         double y0 = (HYPOT * Math.sin(Math.toRadians(Math.abs(rotation))));
         double vx0 = (muzzleVelocity * Math.cos(Math.toRadians(Math.abs(rotation))));
-        double vy0 = (muzzleVelocity * Math.sin(Math.toRadians(Math.abs(rotation))));
-        ball.launch(x_pivot+x0, y_pivot - y0, vx0, vy0);
+        double vy0 = -(muzzleVelocity * Math.sin(Math.toRadians(Math.abs(rotation))));
+        double x = getX() + x0;
+        double y = getY() - y0;
+        ball.launch(x, y, vx0, vy0);
+        System.out.println(x +", "+y+ ", "+vy0+", "+vx0);
         this.fireCannon();
     }
 
