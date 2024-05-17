@@ -18,6 +18,8 @@ public class Cannon {
     private double rotation;   
     private int muzzleVelocity = 37; 
     private final int HYPOT = 100;
+    private int x_pivot;
+    private int y_pivot;
 
     //constructor
     public Cannon(double x, double y, double rotation){
@@ -76,8 +78,8 @@ public class Cannon {
 
     //draws the cannot 
     public void draw(Graphics2D g2d){
-        int x_pivot = 15;
-        int y_pivot = img.getHeight()/2;
+        x_pivot = 15;
+        y_pivot = img.getHeight()/2;
         AffineTransform affineTransform = new AffineTransform();
         if(img != null){
             //rotates the cannon
@@ -90,7 +92,6 @@ public class Cannon {
             g2d.fillPolygon(new int[]{(int)x,(int)15, (int)105},new int[]{(int)y-5, 743, 743},3);
             g2d.setColor(Color.BLACK);
             g2d.fillOval((int)(x-5),(int)(y-5), 10, 10);
-            
 
         } else {
             g2d.setColor(Color.BLUE);
@@ -101,6 +102,15 @@ public class Cannon {
     //fires the cannon
     public void fireCannon(){
         cannonSound.play();
+    }
+
+    public void fireCannon(CannonBall ball){
+        double x0 = (HYPOT * Math.cos(Math.toRadians(Math.abs(rotation))));
+        double y0 = (HYPOT * Math.sin(Math.toRadians(Math.abs(rotation))));
+        double vx0 = (muzzleVelocity * Math.cos(Math.toRadians(Math.abs(rotation))));
+        double vy0 = (muzzleVelocity * Math.sin(Math.toRadians(Math.abs(rotation))));
+        ball.launch(x_pivot+x0, y_pivot - y0, vx0, vy0);
+        this.fireCannon();
     }
 
     //ensures cannon does not over rotate

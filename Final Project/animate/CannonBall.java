@@ -12,18 +12,21 @@ public class CannonBall {
         FLYING,
         EXPLODING
     }
-    private double x;
-    private double y;
-    private double vx;
-    private double vy;
-    private double ax;
-    private double ay;
+    private double x; //position of center of ball
+    private double y; //position of center of ball
+    private double vx; //x-velocity
+    private double vy; //v-velocity
+    private double ax; //x -accel.
+    private double ay;  //y -acell. 
     private STATE currentState;
-    private BufferedImage img;
+    private double ground;
+   // private BufferedImage img;
 
 
     public CannonBall(double ax, double ay, double ground) {
-       
+       this.ax = ax;
+       this.ay = ay;
+       this.ground = ground;
     }
 
     /* 
@@ -41,34 +44,32 @@ public class CannonBall {
         if(currentState == STATE.FLYING){
             g2d.fillOval((int)x-5,(int)y-5,10,10);
         } else if (currentState == STATE.EXPLODING) {
-            //include code to show flames and flames moving
+            //have to translate image to x,y using affine
         }
     }
 
     public void updateBall() {
+        if(currentState == STATE.FLYING){
+            vx = vx+ax;
+            x = x + vx;
+            vy = vy + ay;
+            y = y + vy;
+            if((y + 5) > ground){
+                currentState = STATE.EXPLODING;
+            }
+        }
     }
 
-    /*
-        How to calculate x position
-      vx = vx+ax;
-      x = x + vx;
-        How to calculate the y position
-      vy = vy + ay;
-      y = y + vy;
-
-       check if y position is below floor --> then change the state 
-
-     * If the ball is not flying through the air, the launch() method
-     * will change the state to FLYING and start the ball moving from position (x,y)
-     * with the inital velocity of (vx, vy).
-     */
     public void launch(double x, double y, double vx, double vy) {
-        //called by cannon --> the cannon uses the trig.
+        if(currentState != STATE.FLYING){
+            this.x = x;
+            this.y = y;
+            this.vy = vy;
+            this.vx = vx;
+            currentState = STATE.FLYING;
+        }
     }
 
-    /*
-     * Get/set methods for the private member variables.
-     */
     public STATE getState() {
         return currentState;
     }
@@ -100,8 +101,9 @@ public class CannonBall {
     //public double getTimeScale() {
     //}
 
-    //public double getGround() {
-    //}
+    public double getGround() {
+        return ground;
+    }
 
     public void setState(STATE newState) {
         currentState = newState;
@@ -138,6 +140,7 @@ public class CannonBall {
     }
 
     public void setGround(double ground) {
+        this.ground = ground;
     }
 
 }

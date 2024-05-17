@@ -19,6 +19,7 @@ public class Board extends JPanel implements KeyListener,MouseListener{
     private final int B_HEIGHT = 768;
     private final int B_FLOOR = B_HEIGHT - 25;
     private Cannon cannon;
+    private CannonBall ball;
 
     // constructor
     public Board() {
