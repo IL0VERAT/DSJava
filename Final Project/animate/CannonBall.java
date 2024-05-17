@@ -29,7 +29,7 @@ public class CannonBall {
     /* 
     private BufferedImage loadImage(String path) {
         try {
-            File imageFile = new File("media/sm_cannon.png");
+            File imageFile = new File("media/flame01.png");
             img = ImageIO.read(imageFile);
         } catch (Exception fileNotException) {
             System.err.println(fileNotException.getMessage());
@@ -38,6 +38,11 @@ public class CannonBall {
     */
 
     public void draw(Graphics2D g2d) {
+        if(currentState == STATE.FLYING){
+            g2d.fillOval((int)x-5,(int)y-5,10,10);
+        } else if (currentState == STATE.EXPLODING) {
+            //include code to show flames and flames moving
+        }
     }
 
     public void updateBall() {
@@ -92,11 +97,11 @@ public class CannonBall {
         return ay;
     }
 
-    public double getTimeScale() {
-    }
+    //public double getTimeScale() {
+    //}
 
-    public double getGround() {
-    }
+    //public double getGround() {
+    //}
 
     public void setState(STATE newState) {
         currentState = newState;

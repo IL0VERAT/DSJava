@@ -11,11 +11,13 @@ import java.awt.image.BufferedImage;
 public class Cannon {
     private SoundClip cannonSound;
     private SoundClip wheelSound;
+    private CannonBall ball;
     private BufferedImage img;
     private double x;
     private double y;
     private double rotation;   
-    private int muzzleVelocity = 37; //may need to change
+    private int muzzleVelocity = 37; 
+    private final int HYPOT = 100;
 
     //constructor
     public Cannon(double x, double y, double rotation){
@@ -24,6 +26,7 @@ public class Cannon {
         cannonSound.open();
         wheelSound = new SoundClip("media/wheel.wav");
         wheelSound.open();
+        ball = new CannonBall(0,1, 743);
 
         //imports the photo
         try {
@@ -92,6 +95,8 @@ public class Cannon {
             g2d.fillPolygon(new int[]{(int)x,(int)15, (int)105},new int[]{(int)y-5, 743, 743},3);
             g2d.setColor(Color.BLACK);
             g2d.fillOval((int)(x-5),(int)(y-5), 10, 10);
+            
+
         } else {
             g2d.setColor(Color.BLUE);
             g2d.drawString("Unable to load image!", 25, 25);
