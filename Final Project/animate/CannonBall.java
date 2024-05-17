@@ -6,6 +6,7 @@ import java.io.File;
 import javax.imageio.ImageIO;
 import java.awt.geom.AffineTransform;
 
+
 public class CannonBall {
     public enum STATE {
         IDLE,
@@ -21,7 +22,10 @@ public class CannonBall {
     private double ay; // y -acell.
     private STATE currentState;
     private double ground;
-    private BufferedImage img;
+    private BufferedImage img1;
+    private BufferedImage img2;
+    private BufferedImage img3;
+    private BufferedImage img4;
     private SoundClip boom;
 
     public CannonBall(double ax, double ay, double ground) {
@@ -30,8 +34,14 @@ public class CannonBall {
         this.ground = ground;
 
         try {
-            File imageFile = new File("media/flame01.png");
-            img = ImageIO.read(imageFile);
+            File imageFile1 = new File("media/flame01.png");
+            File imageFile2 = new File("media/flame02.png");
+            File imageFile3 = new File("media/flame03.png");
+            File imageFile4 = new File("media/flame04.png");
+            img1 = ImageIO.read(imageFile1);
+            img2 = ImageIO.read(imageFile2);
+            img3 = ImageIO.read(imageFile3);
+            img4 = ImageIO.read(imageFile3);
         } catch (Exception fileNotException) {
             System.err.println(fileNotException.getMessage());
         }
@@ -46,7 +56,8 @@ public class CannonBall {
         } else if (currentState == STATE.EXPLODING) {
             AffineTransform af = new AffineTransform();
             af.translate(x, ground - 25);
-            g2d.drawImage(img, af, null);
+            while(true)
+            g2d.drawImage(img1, af, null);
         }
     }
 
