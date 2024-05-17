@@ -112,7 +112,6 @@ public class Cannon {
         double x = getX() + x0;
         double y = getY() - y0;
         ball.launch(x, y, vx0, vy0);
-        //System.out.println(x +", "+y+ ", "+vy0+", "+vx0);
         this.fireCannon();
     }
 

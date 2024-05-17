@@ -19,7 +19,7 @@ import java.util.TimerTask;
 public class Board extends JPanel implements KeyListener,MouseListener{
     private final int B_WIDTH = 1366;
     private final int B_HEIGHT = 768;
-    private final int B_FLOOR = B_HEIGHT - 25;
+    final int B_FLOOR = B_HEIGHT - 25;
     private final int INITAL_DELAY = 0;
     private final int PERIOD_DELAY = 20;
     private Timer timer;

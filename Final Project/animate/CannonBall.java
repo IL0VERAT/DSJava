@@ -3,8 +3,8 @@ package animate;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
-
 import javax.imageio.ImageIO;
+import java.awt.geom.AffineTransform;
 
 public class CannonBall {
     public enum STATE {
@@ -12,57 +12,59 @@ public class CannonBall {
         FLYING,
         EXPLODING
     }
-    private double x; //position of center of ball
-    private double y; //position of center of ball
-    private double vx; //x-velocity
-    private double vy; //v-velocity
-    private double ax; //x -accel.
-    private double ay;  //y -acell. 
+
+    private double x; // position of center of ball
+    private double y; // position of center of ball
+    private double vx; // x-velocity
+    private double vy; // v-velocity
+    private double ax; // x -accel.
+    private double ay; // y -acell.
     private STATE currentState;
     private double ground;
-   //private BufferedImage img;
-
+    private BufferedImage img;
+    private SoundClip boom;
 
     public CannonBall(double ax, double ay, double ground) {
-       this.ax = ax;
-       this.ay = ay;
-       this.ground = ground;
-    }
+        this.ax = ax;
+        this.ay = ay;
+        this.ground = ground;
 
-    /* 
-    private BufferedImage loadImage(String path) {
         try {
             File imageFile = new File("media/flame01.png");
             img = ImageIO.read(imageFile);
         } catch (Exception fileNotException) {
             System.err.println(fileNotException.getMessage());
         }
+
+        boom = new SoundClip("media/boom.wav");
+        boom.open(); 
     }
-    */
 
     public void draw(Graphics2D g2d) {
-        if(currentState == STATE.FLYING){
-            g2d.fillOval((int)x-5,(int)y-5,10,10);
+        if (currentState == STATE.FLYING) {
+            g2d.fillOval((int) x - 5, (int) y - 5, 10, 10);
         } else if (currentState == STATE.EXPLODING) {
-            //have to translate image to x,y using affine
+            AffineTransform af = new AffineTransform();
+            af.translate(x, ground - 25);
+            g2d.drawImage(img, af, null);
         }
     }
 
     public void updateBall() {
-        if(currentState == STATE.FLYING){
-            vx = vx+ax;
+        if (currentState == STATE.FLYING) {
+            vx = vx + ax;
             x = x + vx;
             vy = vy + ay;
             y = y + vy;
-            if((y + 5) > ground){
+            if ((y + 5) > ground) {
+                boom.play();
                 currentState = STATE.EXPLODING;
-                //play boom sound
             }
         }
     }
 
     public void launch(double x, double y, double vx, double vy) {
-        if(currentState != STATE.FLYING){
+        if (currentState != STATE.FLYING) {
             this.x = x;
             this.y = y;
             this.vy = vy;
@@ -99,8 +101,8 @@ public class CannonBall {
         return ay;
     }
 
-    //public double getTimeScale() {
-    //}
+    // public double getTimeScale() {
+    // }
 
     public double getGround() {
         return ground;
