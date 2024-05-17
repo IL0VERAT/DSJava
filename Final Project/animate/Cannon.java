@@ -64,11 +64,6 @@ public class Cannon {
         return rotation;
     }
 
-    //fires the cannon
-    public void fireCannon(){
-        cannonSound.play();
-    }
-
     //get and set muzzle velocities
     public int getMuzzleVelocity(){
         return muzzleVelocity;
@@ -101,6 +96,11 @@ public class Cannon {
             g2d.setColor(Color.BLUE);
             g2d.drawString("Unable to load image!", 25, 25);
         }
+    }
+
+    //fires the cannon
+    public void fireCannon(){
+        cannonSound.play();
     }
 
     //ensures cannon does not over rotate
