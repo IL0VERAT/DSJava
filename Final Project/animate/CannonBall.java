@@ -23,10 +23,8 @@ public class CannonBall {
     private STATE currentState;
     private double ground;
     private BufferedImage img1;
-    private BufferedImage img2;
-    private BufferedImage img3;
-    private BufferedImage img4;
     private SoundClip boom;
+    private double timeScale;
 
     public CannonBall(double ax, double ay, double ground) {
         this.ax = ax;
@@ -35,13 +33,7 @@ public class CannonBall {
 
         try {
             File imageFile1 = new File("media/flame01.png");
-            File imageFile2 = new File("media/flame02.png");
-            File imageFile3 = new File("media/flame03.png");
-            File imageFile4 = new File("media/flame04.png");
             img1 = ImageIO.read(imageFile1);
-            img2 = ImageIO.read(imageFile2);
-            img3 = ImageIO.read(imageFile3);
-            img4 = ImageIO.read(imageFile3);
         } catch (Exception fileNotException) {
             System.err.println(fileNotException.getMessage());
         }
@@ -63,9 +55,9 @@ public class CannonBall {
 
     public void updateBall() {
         if (currentState == STATE.FLYING) {
-            vx = vx + ax;
+            vx = (vx + ax)/timeScale;
             x = x + vx;
-            vy = vy + ay;
+            vy = (vy + ay)/timeScale;
             y = y + vy;
             if ((y + 5) > ground) {
                 boom.play();
@@ -112,8 +104,9 @@ public class CannonBall {
         return ay;
     }
 
-    // public double getTimeScale() {
-    // }
+    public double getTimeScale() {
+        return timeScale;
+    }
 
     public double getGround() {
         return ground;
@@ -148,9 +141,11 @@ public class CannonBall {
     }
 
     public void setTimeScale(double timeScale) {
+        this.timeScale = timeScale;
     }
 
     public void changeTimeScale(double delta) {
+        timeScale = timeScale/delta;
     }
 
     public void setGround(double ground) {

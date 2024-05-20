@@ -25,6 +25,7 @@ public class Board extends JPanel implements KeyListener,MouseListener{
     private Timer timer;
     private Cannon cannon;
     private CannonBall ball;
+    private double timeChange;
 
     // constructor
     public Board() {
@@ -32,6 +33,8 @@ public class Board extends JPanel implements KeyListener,MouseListener{
         setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));
         cannon = new Cannon(60, B_HEIGHT-60, -45);
         ball = new CannonBall(0, 1, B_FLOOR);
+        timeChange = 1;
+        ball.setTimeScale(timeChange);
 
         //needs to be able to get focus of user interface
         this.setFocusable(true);
@@ -58,9 +61,13 @@ public class Board extends JPanel implements KeyListener,MouseListener{
             cannon.rotationRight(1.0);
             repaint();
         } else if (e.getKeyCode() == KeyEvent.VK_UP) {
-            System.out.println("Up arrow was pressed.");
+            timeChange++;
+            ball.setTimeScale(timeChange);
         } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            System.out.println("Down arrow was pressed.");
+            if(timeChange >1){
+                timeChange--;
+                ball.setTimeScale(timeChange);
+            }
         } else {
         }
     }
@@ -69,6 +76,13 @@ public class Board extends JPanel implements KeyListener,MouseListener{
     }
 
     public void keyTyped(KeyEvent e) {  
+    }
+
+    public void display(Graphics gd){
+        Graphics2D displayer = (Graphics2D) gd;
+        displayer.drawString("CANNON SIMULATOR",B_HEIGHT/2, 30);
+        displayer.drawString("Instructions: Use < or > arrow keys to rotate cannon and space to fire", B_HEIGHT/2,50);
+        displayer.drawString("Timescale Value: " + timeChange,B_HEIGHT/2,70);
     }
 
     //paints the photo onto window
@@ -84,6 +98,7 @@ public class Board extends JPanel implements KeyListener,MouseListener{
         g2d.setColor(Color.GREEN);
         g2d.fill(transformedShape);
         cannon.draw(g2d);
+        display(g);
         ball.draw(g2d);
     }
 
