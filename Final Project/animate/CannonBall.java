@@ -22,7 +22,7 @@ public class CannonBall {
     private double ay; // y -acell.
     private STATE currentState;
     private double ground;
-    private BufferedImage img1;
+    private BufferedImage img;
     private SoundClip boom;
     private double timeScale;
 
@@ -33,7 +33,7 @@ public class CannonBall {
 
         try {
             File imageFile1 = new File("media/flame01.png");
-            img1 = ImageIO.read(imageFile1);
+            img = ImageIO.read(imageFile1);
         } catch (Exception fileNotException) {
             System.err.println(fileNotException.getMessage());
         }
@@ -48,17 +48,16 @@ public class CannonBall {
         } else if (currentState == STATE.EXPLODING) {
             AffineTransform af = new AffineTransform();
             af.translate(x, ground - 25);
-            while(true)
-            g2d.drawImage(img1, af, null);
+            g2d.drawImage(img, af, null);
         }
     }
 
     public void updateBall() {
         if (currentState == STATE.FLYING) {
-            vx = (vx + ax)/timeScale;
-            x = x + vx;
-            vy = (vy + ay)/timeScale;
-            y = y + vy;
+            vx = vx + ax/timeScale; //time scale
+            x = x + vx/timeScale;//time scale
+            vy = vy + ay/timeScale;
+            y = y + vy/timeScale;
             if ((y + 5) > ground) {
                 boom.play();
                 currentState = STATE.EXPLODING;

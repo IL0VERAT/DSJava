@@ -80,9 +80,12 @@ public class Board extends JPanel implements KeyListener,MouseListener{
 
     public void display(Graphics gd){
         Graphics2D displayer = (Graphics2D) gd;
-        displayer.drawString("CANNON SIMULATOR",B_HEIGHT/2, 30);
-        displayer.drawString("Instructions: Use < or > arrow keys to rotate cannon and space to fire", B_HEIGHT/2,50);
-        displayer.drawString("Timescale Value: " + timeChange,B_HEIGHT/2,70);
+        displayer.drawString("CANNON SIMULATOR",30, 30);
+        displayer.drawString("Instructions: Press space to fire cannon", 30, 50);
+        displayer.drawString("Instructions: Use < or > arrow keys to rotate cannon", 30,70);
+        displayer.drawString("Instructions: Use ^ or v arrow keys to modify time scale", 30,90);
+        displayer.drawString("Timescale Value: " + timeChange, 30,110);
+        displayer.drawString("Cannon Angle: " + cannon.getRotation(),30,130);
     }
 
     //paints the photo onto window
