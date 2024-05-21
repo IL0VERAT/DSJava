@@ -65,7 +65,6 @@ public class CannonBall {
             AffineTransform af = new AffineTransform();
             af.translate(x, ground - 25);
             g2d.drawImage(imageSwitcher[i], af, null);
-            System.out.println(i);
         }
     }
 
@@ -86,7 +85,6 @@ public class CannonBall {
             if(j == 0){
             i++;
             i = i%4;
-            //System.out.println(i);
             }
         }
     }
