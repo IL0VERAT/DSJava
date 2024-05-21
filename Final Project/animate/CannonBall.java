@@ -32,6 +32,7 @@ public class CannonBall {
     private int i = 0;
     private int j = 10;
 
+    //constructor
     public CannonBall(double ax, double ay, double ground) {
         this.ax = ax;
         this.ay = ay;
@@ -58,6 +59,7 @@ public class CannonBall {
         boom.open(); 
     }
 
+    //draws the cannonball, and the flame graphics
     public void draw(Graphics2D g2d) {
         if (currentState == STATE.FLYING) {
             g2d.fillOval((int) x - 5, (int) y - 5, 10, 10);
@@ -68,6 +70,7 @@ public class CannonBall {
         }
     }
 
+    //updates the balls position in the air
     public void updateBall() {
         if (currentState == STATE.FLYING) {
             vx = vx + ax/timeScale; //time scale
@@ -79,6 +82,7 @@ public class CannonBall {
                 currentState = STATE.EXPLODING;
           
             }
+            //switches through the flame graphics
         } else if (currentState == STATE.EXPLODING) {
             j++;
             j = j%10;
@@ -89,6 +93,7 @@ public class CannonBall {
         }
     }
 
+    //launches the ball
     public void launch(double x, double y, double vx, double vy) {
         if (currentState != STATE.FLYING) {
             this.x = x;
