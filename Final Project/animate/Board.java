@@ -119,4 +119,8 @@ public class Board extends JPanel implements KeyListener,MouseListener{
 
     public void mouseExited(MouseEvent e) {
     }
+
+    public int getBoard(){
+        return B_FLOOR;
+    }
 }
