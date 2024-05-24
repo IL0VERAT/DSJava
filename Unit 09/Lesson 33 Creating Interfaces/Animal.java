@@ -1,6 +1,7 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 
-public class Animal implements Measurable{
+public class Animal implements Comparable {
     private String name;
     private double weight;
 
@@ -34,5 +35,10 @@ public class Animal implements Measurable{
     public double getMeasure() {
     
         return weight;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        
     }
 }
