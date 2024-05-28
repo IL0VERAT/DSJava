@@ -7,6 +7,8 @@ public class Part1{
       int MAX_lengths = 0;
       int max = 0;
       double avg = 0;
+      String temp1;
+      String temp2;
 
       names.add("Steve");
       names.add("Tracy");
@@ -17,13 +19,22 @@ public class Part1{
 
       System.out.println("List of names: ");
       for(int i = 0; i < names.size(); i++){
-        String temp = String.valueOf(names.get(i));
-        max = max + temp.length();
-        if(i == 0||temp.length() > MAX_lengths){
-            MAX_lengths = temp.length();
+        temp1 = String.valueOf(names.get(i));
+        max = max + temp1.length();
+        if(i == 0||temp1.length() > MAX_lengths){
+            MAX_lengths = temp1.length();
         }
-        System.out.print(names.get(i));
-        System.out.printf("(%d)%n",temp.length());
+      }
+
+      for(int j = 0; j< names.size(); j++){
+        temp2 = String.valueOf(names.get(j));
+        if(temp2.length() == MAX_lengths){
+        System.out.print(names.get(j));
+        System.out.printf("(%d) <= MAX LENGTH %n",temp2.length());
+        } else {
+        System.out.print(names.get(j));
+        System.out.printf("(%d)%n",temp2.length());
+        }
       }
       avg = max/names.size();
       System.out.println("-----");
