@@ -30,10 +30,10 @@ public class Part1{
         temp2 = String.valueOf(names.get(j));
         if(temp2.length() == MAX_lengths){
         System.out.print(names.get(j));
-        System.out.printf("(%d) <= MAX LENGTH %n",temp2.length());
+        System.out.printf(" (%d) <= MAX LENGTH %n",temp2.length());
         } else {
         System.out.print(names.get(j));
-        System.out.printf("(%d)%n",temp2.length());
+        System.out.printf(" (%d)%n",temp2.length());
         }
       }
       avg = max/names.size();
