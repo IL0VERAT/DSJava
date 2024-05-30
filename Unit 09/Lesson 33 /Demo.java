@@ -10,7 +10,7 @@ public class Demo {
         if(gary.compareTo(george) == +1){
             System.out.println("Gary weighs more than George");
         } else if(gary.compareTo(george) == -1){
-            System.out.println("George weighs more than Gary.");
+            System.out.println("George weighs more than Gary");
         } else {
             System.out.println("They weigh the same amount");
         }

@@ -1,0 +1,49 @@
+#1:
+Consider the interface declaration below:
+public interface Resizable {
+   void resize(double factor);
+}
+Assuming that classes Square, Circle, and Triangle all implement Resizable, which of the following statements will cause a compilation error and why?
+a. Resizable shape = new Resizable();
+b. Resizable shape = new Square();
+c. Resizable shape = new Circle();
+d. Resizable shape = new Triangle();
+
+Answer: 
+Answer a. will cause a compilation error as Resizable is an interface, and not a class like Square, Circle, or Triangle.
+Instead, Resizable is like an abstract class, as it cannot be used to create objects. 
+
+#2:
+Consider the interface and class declarations below:
+public interface Resizable {
+   void resize(double factor);
+}
+
+public class Circle implements Resizable {
+  private double radius;...
+
+  public Circle(double theRadius) { ... }
+
+  public double getRadius() { ... }
+
+  public void setRadius(double theRadius) { ... }
+
+  public double getArea() { ... }
+
+  public void resize(double factor) { ... }...
+}
+Given the declaration  
+Resizable circle = new Circle(5.5);
+
+Which of the following statements will compile successfully and why?
+
+a. System.out.println(circle.getRadius());
+b. circle.resize(2.5);
+c. System.out.println(circle.getArea());
+d. circle.setRadius(7.8);
+
+Answer:
+Answer b. should compile as it is already defined as an abstract method in the Resizable interface. 
+Furthermore, since the Circle class implements Resizable, meaning that Circle can only call methods from the interface.
+
+
