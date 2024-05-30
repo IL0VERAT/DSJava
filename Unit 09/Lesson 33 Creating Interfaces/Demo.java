@@ -1,18 +1,21 @@
-import java.util.ArrayList;
+//Milo Linn-Boggs 30 May 2024
 public class Demo {
     public static void main(String[] args) {
-        ArrayList<Measurable> animals = new ArrayList<>();
-        animals.add(new Animal("Gerald", 1200));
-        animals.add(new Animal("Claudette", 1000));
-        animals.add(new Animal("Kathy", 1100));
 
-        System.out.println("The average weight of the animals is " + Measurable.calcAvg(animals));
+        //created two objects of animal type
+        Animal gary = new Animal("Gary", 1000.0);
+        Animal george = new Animal("George", 1100.0);
 
-        ArrayList<Measurable> accounts = new ArrayList<>();
-        accounts.add(new BankAccount(1, 1000));
-        accounts.add(new BankAccount(2, 100));
-        accounts.add(new BankAccount(3, 100));
+        //compares their weights using compareTo method
+        if(gary.compareTo(george) == +1){
+            System.out.println("Gary weighs more than George");
+        } else if(gary.compareTo(george) == -1){
+            System.out.println("George weighs more than Gary.");
+        } else {
+            System.out.println("They weigh the same amount");
+        }
 
-        System.out.println("The average balance of the accounts are " + Measurable.calcAvg(accounts));
+        
+
     }
 }

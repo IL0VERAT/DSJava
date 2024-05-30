@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Comparator;
 
-public class Animal implements Comparable {
+public class Animal implements Comparable<Animal> {
     private String name;
     private double weight;
 
@@ -37,8 +37,14 @@ public class Animal implements Comparable {
         return weight;
     }
 
-    @Override
-    public int compareTo(Object o) {
-        
+    public int compareTo(Animal o) {
+        final double SMALL_NUMBER = 1.0e-100;
+        if (Math.abs(this.weight - o.weight) < SMALL_NUMBER) {
+            return 0;
+        } else if (this.weight < o.weight) {
+            return -1;
+        } else {
+            return +1;
+        }
     }
 }
