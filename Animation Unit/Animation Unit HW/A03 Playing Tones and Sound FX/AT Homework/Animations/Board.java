@@ -25,7 +25,7 @@ public class Board extends JPanel {
     private final int INITAL_DELAY = 100;
     private final int PERIOD_DELAY = 25;
     private int xSpeed = 2;
-    private int ySpeed = 2;
+    private int ySpeed = 5;
     private int angle = 0;
     private BufferedImage img;
     private SoundClip sitar;
