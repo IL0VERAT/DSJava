@@ -3,7 +3,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Codeforanalyzing {
+public class CodeforanalizingSimple {
 
     static class DataPoint {
         String[] values;
@@ -33,7 +33,7 @@ public class Codeforanalyzing {
             BufferedReader br = new BufferedReader(new FileReader(filePath));
             String line = br.readLine();
             if (line != null) {
-                headers = line.split(",");
+                headers = parseCsvLine(line);
                 isNumeric = new boolean[headers.length];
             }
 
@@ -77,8 +77,8 @@ public class Codeforanalyzing {
             // Save results to file
             saveResults(clusters, headers, filePath);
 
-            // Generate visual HTML summary
-            generateVisualReport(clusters, headers, filePath);
+            // Generate scatter plot visualization
+            generateScatterPlot(clusters, headers, filePath, isNumeric);
 
         } catch (IOException e) {
             System.out.println("Error reading file: " + e.getMessage());
@@ -267,12 +267,11 @@ public class Codeforanalyzing {
     }
 
     static List<Cluster> kMedoidsClustering(List<DataPoint> data, int k, boolean[] isNumeric) {
-        Random rand = new Random();
         List<DataPoint> medoids = new ArrayList<>();
 
-        // Initialize medoids randomly
+        // Initialize medoids randomly with fixed seed for reproducibility
         List<DataPoint> shuffled = new ArrayList<>(data);
-        Collections.shuffle(shuffled);
+        Collections.shuffle(shuffled, new Random(42));
         for (int i = 0; i < k; i++) {
             medoids.add(shuffled.get(i));
         }
@@ -394,110 +393,179 @@ public class Codeforanalyzing {
         }
     }
 
-    static void generateVisualReport(List<Cluster> clusters, String[] headers, String originalPath) {
+    static void generateScatterPlot(List<Cluster> clusters, String[] headers, String originalPath,
+            boolean[] isNumeric) {
         try {
-            String htmlPath = originalPath.replace(".csv", "_visual_report.html");
+            String htmlPath = originalPath.replace(".csv", "_scatter_plot.html");
             PrintWriter writer = new PrintWriter(new FileWriter(htmlPath));
 
             writer.println("<!DOCTYPE html>");
             writer.println("<html><head><meta charset='UTF-8'>");
-            writer.println("<title>Cluster Analysis Results</title>");
+            writer.println("<meta name='viewport' content='width=device-width, initial-scale=1.0'>");
+            writer.println("<title>Cluster Scatter Plot</title>");
+            writer.println("<script src='https://cdn.jsdelivr.net/npm/chart.js'></script>");
             writer.println("<style>");
-            writer.println("body { font-family: Arial, sans-serif; margin: 20px; background: #f5f5f5; }");
-            writer.println("h1 { color: #333; }");
+
+            writer.println("* { margin: 0; padding: 0; box-sizing: border-box; }");
             writer.println(
-                    ".summary { background: white; padding: 20px; margin: 20px 0; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }");
+                    "body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f7fa; padding: 2rem; }");
+            writer.println(".container { max-width: 1200px; margin: 0 auto; }");
+            writer.println("h1 { color: #2c3e50; margin-bottom: 2rem; text-align: center; }");
             writer.println(
-                    ".cluster { background: white; margin: 20px 0; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border-left: 5px solid; }");
-            writer.println(".cluster-1 { border-left-color: #3498db; }");
-            writer.println(".cluster-2 { border-left-color: #e74c3c; }");
-            writer.println(".cluster-3 { border-left-color: #2ecc71; }");
-            writer.println(".cluster-4 { border-left-color: #f39c12; }");
-            writer.println(".cluster-5 { border-left-color: #9b59b6; }");
-            writer.println(".cluster-6 { border-left-color: #1abc9c; }");
-            writer.println(".cluster-7 { border-left-color: #e67e22; }");
-            writer.println(".cluster-8 { border-left-color: #34495e; }");
-            writer.println(".cluster-9 { border-left-color: #16a085; }");
-            writer.println(".cluster-10 { border-left-color: #c0392b; }");
-            writer.println(".cluster h2 { margin-top: 0; }");
+                    ".card { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.07); }");
             writer.println(
-                    ".response { background: #f9f9f9; padding: 15px; margin: 10px 0; border-radius: 5px; border: 1px solid #e0e0e0; }");
-            writer.println(".response-header { font-weight: bold; color: #555; margin-bottom: 10px; }");
-            writer.println(".field { margin: 8px 0; }");
-            writer.println(".field-name { font-weight: bold; color: #666; display: inline-block; min-width: 150px; }");
-            writer.println(".field-value { color: #333; }");
+                    ".controls { margin-bottom: 2rem; display: flex; gap: 2rem; justify-content: center; align-items: center; }");
+            writer.println("label { font-weight: 600; color: #2c3e50; }");
             writer.println(
-                    ".stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }");
-            writer.println(".stat-box { background: #ecf0f1; padding: 15px; border-radius: 5px; text-align: center; }");
-            writer.println(".stat-number { font-size: 2em; font-weight: bold; color: #2c3e50; }");
-            writer.println(".stat-label { color: #7f8c8d; margin-top: 5px; }");
+                    "select { padding: 0.5rem 1rem; border: 2px solid #ecf0f1; border-radius: 8px; font-size: 1rem; cursor: pointer; }");
+            writer.println("select:focus { outline: none; border-color: #3498db; }");
+
             writer.println("</style></head><body>");
 
-            writer.println("<h1>Cluster Analysis Visual Report</h1>");
+            writer.println("<div class='container'>");
+            writer.println("<h1>📊 Cluster Scatter Plot Visualization</h1>");
 
-            // Summary statistics
-            writer.println("<div class='summary'>");
-            writer.println("<h2>Summary Statistics</h2>");
-            writer.println("<div class='stats'>");
-            writer.println("<div class='stat-box'><div class='stat-number'>" + clusters.size()
-                    + "</div><div class='stat-label'>Total Clusters</div></div>");
-
-            int totalResponses = 0;
-            for (Cluster c : clusters)
-                totalResponses += c.points.size();
-            writer.println("<div class='stat-box'><div class='stat-number'>" + totalResponses
-                    + "</div><div class='stat-label'>Total Responses</div></div>");
-
-            int maxSize = 0, minSize = Integer.MAX_VALUE;
-            for (Cluster c : clusters) {
-                maxSize = Math.max(maxSize, c.points.size());
-                minSize = Math.min(minSize, c.points.size());
+            writer.println("<div class='card'>");
+            writer.println("<div class='controls'>");
+            writer.println("<label>X-Axis: <select id='xAxis' onchange='updateScatterPlot()'>");
+            for (int i = 0; i < headers.length; i++) {
+                writer.println("<option value='" + i + "'>" + escapeHtml(headers[i]) + "</option>");
             }
-            writer.println("<div class='stat-box'><div class='stat-number'>" + maxSize
-                    + "</div><div class='stat-label'>Largest Cluster</div></div>");
-            writer.println("<div class='stat-box'><div class='stat-number'>" + minSize
-                    + "</div><div class='stat-label'>Smallest Cluster</div></div>");
-            writer.println("</div></div>");
+            writer.println("</select></label>");
+            writer.println("<label>Y-Axis: <select id='yAxis' onchange='updateScatterPlot()'>");
+            for (int i = 0; i < headers.length; i++) {
+                writer.println("<option value='" + i + "'" + (i == Math.min(1, headers.length - 1) ? " selected" : "")
+                        + ">" + escapeHtml(headers[i]) + "</option>");
+            }
+            writer.println("</select></label>");
+            writer.println("</div>");
+            writer.println("<canvas id='scatterPlot'></canvas>");
+            writer.println("</div>");
 
-            // Each cluster
+            writer.println("</div>");
+
+            // JavaScript
+            writer.println("<script>");
+
+            String[] colors = { "#3498db", "#e74c3c", "#2ecc71", "#f39c12", "#9b59b6", "#1abc9c", "#e67e22", "#34495e",
+                    "#16a085", "#c0392b" };
+
+            writer.println("const allData = [");
             for (int i = 0; i < clusters.size(); i++) {
                 Cluster cluster = clusters.get(i);
-                writer.println("<div class='cluster cluster-" + ((i % 10) + 1) + "'>");
-                writer.println("<h2>Cluster " + (i + 1) + " <span style='color: #7f8c8d; font-size: 0.8em;'>("
-                        + cluster.points.size() + " responses)</span></h2>");
-
-                // Show first 10 responses in detail, then just count the rest
-                int displayLimit = Math.min(10, cluster.points.size());
-                for (int j = 0; j < displayLimit; j++) {
-                    DataPoint dp = cluster.points.get(j);
-                    writer.println("<div class='response'>");
-                    writer.println("<div class='response-header'>Response " + (j + 1) + "</div>");
-                    for (int k = 0; k < Math.min(headers.length, dp.values.length); k++) {
-                        writer.println("<div class='field'>");
-                        writer.println("<span class='field-name'>" + escapeHtml(headers[k]) + ":</span> ");
-                        writer.println("<span class='field-value'>" + escapeHtml(dp.values[k]) + "</span>");
-                        writer.println("</div>");
+                for (DataPoint dp : cluster.points) {
+                    writer.print("{cluster: " + (i + 1) + ", values: [");
+                    for (int j = 0; j < dp.values.length; j++) {
+                        String val = dp.values[j];
+                        if (isNumeric[j]) {
+                            try {
+                                Double.parseDouble(val);
+                                writer.print(val);
+                            } catch (NumberFormatException e) {
+                                writer.print("0");
+                            }
+                        } else {
+                            writer.print(Math.abs(val.hashCode()) % 100);
+                        }
+                        if (j < dp.values.length - 1)
+                            writer.print(", ");
                     }
-                    writer.println("</div>");
+                    writer.print("]},");
                 }
-
-                if (cluster.points.size() > displayLimit) {
-                    writer.println("<div style='text-align: center; color: #7f8c8d; margin: 15px 0;'>");
-                    writer.println("... and " + (cluster.points.size() - displayLimit) + " more similar responses");
-                    writer.println("</div>");
-                }
-
-                writer.println("</div>");
             }
+            writer.println("];");
 
+            writer.println("const headers = [");
+            for (int i = 0; i < headers.length; i++) {
+                writer.print("'" + escapeHtml(headers[i]).replace("'", "\\'") + "'");
+                if (i < headers.length - 1)
+                    writer.print(", ");
+            }
+            writer.println("];");
+
+            writer.println("const isNumeric = [");
+            for (int i = 0; i < isNumeric.length; i++) {
+                writer.print(isNumeric[i]);
+                if (i < isNumeric.length - 1)
+                    writer.print(", ");
+            }
+            writer.println("];");
+
+            writer.println("const clusterColors = [");
+            for (int i = 0; i < clusters.size(); i++) {
+                writer.print("'" + colors[i % colors.length] + "'");
+                if (i < clusters.size() - 1)
+                    writer.print(", ");
+            }
+            writer.println("];");
+
+            writer.println("let scatterChart;");
+            writer.println("function updateScatterPlot() {");
+            writer.println("  const xIdx = parseInt(document.getElementById('xAxis').value);");
+            writer.println("  const yIdx = parseInt(document.getElementById('yAxis').value);");
+            writer.println("  const datasets = [];");
+            writer.println("  for (let c = 1; c <= " + clusters.size() + "; c++) {");
+            writer.println("    const points = allData.filter(d => d.cluster === c).map(d => ({");
+            writer.println("      x: d.values[xIdx],");
+            writer.println("      y: d.values[yIdx]");
+            writer.println("    }));");
+            writer.println("    datasets.push({");
+            writer.println("      label: 'Cluster ' + c,");
+            writer.println("      data: points,");
+            writer.println("      backgroundColor: clusterColors[c-1],");
+            writer.println("      borderColor: clusterColors[c-1],");
+            writer.println("      pointRadius: 7,");
+            writer.println("      pointHoverRadius: 10");
+            writer.println("    });");
+            writer.println("  }");
+            writer.println("  if (scatterChart) scatterChart.destroy();");
+            writer.println("  scatterChart = new Chart(document.getElementById('scatterPlot'), {");
+            writer.println("    type: 'scatter',");
+            writer.println("    data: { datasets: datasets },");
+            writer.println("    options: {");
+            writer.println("      responsive: true,");
+            writer.println("      maintainAspectRatio: true,");
+            writer.println("      plugins: {");
+            writer.println(
+                    "        legend: { position: 'top', labels: { font: { size: 14 }, padding: 15 } },");
+            writer.println("        tooltip: {");
+            writer.println("          callbacks: {");
+            writer.println("            label: function(context) {");
+            writer.println("              let label = context.dataset.label || '';");
+            writer.println("              if (label) label += ': ';");
+            writer.println(
+                    "              label += '(' + context.parsed.x.toFixed(2) + ', ' + context.parsed.y.toFixed(2) + ')';");
+            writer.println("              return label;");
+            writer.println("            }");
+            writer.println("          }");
+            writer.println("        }");
+            writer.println("      },");
+            writer.println("      scales: {");
+            writer.println("        x: {");
+            writer.println(
+                    "          title: { display: true, text: headers[xIdx] + (isNumeric[xIdx] ? '' : ' (text hashed)'), font: { size: 14, weight: 'bold' } },");
+            writer.println("          beginAtZero: true");
+            writer.println("        },");
+            writer.println("        y: {");
+            writer.println(
+                    "          title: { display: true, text: headers[yIdx] + (isNumeric[yIdx] ? '' : ' (text hashed)'), font: { size: 14, weight: 'bold' } },");
+            writer.println("          beginAtZero: true");
+            writer.println("        }");
+            writer.println("      }");
+            writer.println("    }");
+            writer.println("  });");
+            writer.println("}");
+            writer.println("updateScatterPlot();");
+
+            writer.println("</script>");
             writer.println("</body></html>");
             writer.close();
 
-            System.out.println("Visual report saved to: " + htmlPath);
-            System.out.println("Open this file in your web browser to view the formatted results.");
+            System.out.println("Scatter plot visualization saved to: " + htmlPath);
+            System.out.println("Open this file in your web browser to view the cluster plot.");
 
         } catch (IOException e) {
-            System.out.println("Error generating visual report: " + e.getMessage());
+            System.out.println("Error generating scatter plot: " + e.getMessage());
         }
     }
 
