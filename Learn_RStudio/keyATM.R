@@ -55,7 +55,7 @@ top_words(out)
 
 out <- keyATM(
   docs              = docs_withSplit, # 70% of the corpus
-  no_keyword_topics = 5, # number of topics without keywords
+  no_keyword_topics = 3, # number of topics without keywords
   keywords          = keywords,
   model             = "base",
   options           = list(seed = 250)
@@ -65,3 +65,5 @@ saveRDS(out, file = "SAVENAME.rds")
 out <- readRDS(file = "SAVENAME.rds")
 top_words(out)
 
+fig_modelfit <- plot_modelfit(out)
+fig_modelfit
