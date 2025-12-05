@@ -34,10 +34,14 @@ keyATM_docs <- keyATM_read(texts = data_dfm)
 summary(keyATM_docs)
 
 keywords <- list(
-  Understanding  = c("knowledge", "understanding", "skills"),
-  Career         = c("degree", "job"),
-  Grades         = c("classes", "grades", "studies")
+  Understanding  = c("knowledge", "understanding", "skills", "achieving"),
+  Career         = c("degree", "job", "work"),
+  Grades         = c("classes", "grades", "studies", "gpa"),
+  Future         = c("future", "success", "reaching")
 )
+
+key_viz <- visualize_keywords(docs = keyATM_docs, keywords = keywords)
+key_viz
 
 set.seed(225) # set the seed before spliting the dfm
 docs_withSplit <- keyATM_read(

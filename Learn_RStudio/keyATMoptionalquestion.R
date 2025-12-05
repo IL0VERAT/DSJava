@@ -34,10 +34,14 @@ keyATM_docs <- keyATM_read(texts = data_dfm)
 summary(keyATM_docs)
 
 keywords <- list(
-  Understanding  = c("knowledge", "understanding", "skills"),
-  Career         = c("degree", "job"),
-  Grades         = c("classes", "grades", "studies")
+  Stuck  = c("stuck", "unable","behind"),
+  Career         = c("degree", "job", "program"),
+  Salary        = c("salary", "money", "income"),
+  Confidence = c("confidence", "ability", "feel", "fail")
 )
+
+key_viz <- visualize_keywords(docs = keyATM_docs, keywords = keywords)
+key_viz
 
 set.seed(225) # set the seed before spliting the dfm
 docs_withSplit <- keyATM_read(
@@ -60,10 +64,6 @@ out <- keyATM(
   model             = "base",
   options           = list(seed = 250)
 )
-
-saveRDS(out, file = "SAVENAME.rds")
-out <- readRDS(file = "SAVENAME.rds")
-top_words(out)
 
 fig_modelfit <- plot_modelfit(out)
 fig_modelfit
